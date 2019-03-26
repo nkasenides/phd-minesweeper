@@ -4,15 +4,14 @@ public class PartialState {
 
     public static final int DEFAULT_WIDTH = 10;
     public static final int DEFAULT_HEIGHT = 10;
+    public static final int DEFAULT_STARTING_X = 0;
+    public static final int DEFAULT_STARTING_Y = 0;
 
-    private int width = DEFAULT_WIDTH;
-    private int height = DEFAULT_HEIGHT;
-
+    private final int width;
+    private final int height;
+    private final int startingX;
+    private final int startingY;
     private CellState[][] cells;
-
-    private int startingX = 0;
-    private int startingY = 0;
-
     private UserState userState;
 
     public PartialState(int width, int height, int startingX, int startingY) {
@@ -23,8 +22,35 @@ public class PartialState {
         this.startingY = startingY;
     }
 
-    public PartialState() {
-        this.cells = new CellState[width][height];
+    public PartialState(int startingX, int startingY) {
+        this(DEFAULT_WIDTH, DEFAULT_HEIGHT, startingX, startingY);
     }
 
+    public PartialState() {
+        this(DEFAULT_WIDTH, DEFAULT_HEIGHT, DEFAULT_STARTING_X, DEFAULT_STARTING_Y);
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getStartingX() {
+        return startingX;
+    }
+
+    public int getStartingY() {
+        return startingY;
+    }
+
+    public CellState[][] getCells() {
+        return cells;
+    }
+
+    public UserState getUserState() {
+        return userState;
+    }
 }

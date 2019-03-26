@@ -7,8 +7,8 @@ public class State {
     public static final int DEFAULT_WIDTH = 100;
     public static final int DEFAULT_HEIGHT = 100;
 
-    private int width = DEFAULT_WIDTH;
-    private int height = DEFAULT_HEIGHT;
+    private final int width;
+    private final int height;
 
     private CellState[][] cells;
 
@@ -19,6 +19,18 @@ public class State {
     }
 
     public State() {
-        this.cells = new CellState[width][height];
+        this(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+    }
+
+    public CellState[][] getCells() {
+        return cells;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
     }
 }

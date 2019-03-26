@@ -2,7 +2,19 @@ package org.inspirecenter.minesweeper.api.Model;
 
 public enum UserState {
 
-    ALIVE, // user is alive and ready to play
-    DEAD; // user already lost
+    ALIVE("Alive"), // user is alive and ready to play
+    DEAD("Dead")// user already lost
+
+    ;
+
+    private final String name;
+
+    UserState(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
 
 }

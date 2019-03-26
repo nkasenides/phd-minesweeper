@@ -13,5 +13,8 @@ public enum CellState {
     REVEALED_6,
     REVEALED_7,
     REVEALED_8,
-    REVEALED_MINE;
+    REVEALED_MINE
+
+    ;
+
 }
