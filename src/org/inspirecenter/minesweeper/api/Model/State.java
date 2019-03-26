@@ -1,6 +1,6 @@
 package org.inspirecenter.minesweeper.api.Model;
 
-import org.inspirecenter.minesweeper.api.Model.CellState;
+import org.inspirecenter.minesweeper.api.Exception.InvalidCellReferenceException;
 
 public class State {
 
@@ -12,13 +12,18 @@ public class State {
 
     private CellState[][] cells;
 
-    public State(int width, int height) {
+    public State(int width, int height) throws InvalidCellReferenceException {
+
+        if (width < 0 || height < 0) {
+            throw new InvalidCellReferenceException("Cannot initialize state with: width=" + width + ", height=" + height);
+        }
+
         this.width = width;
         this.height = height;
         this.cells = new CellState[width][height];
     }
 
-    public State() {
+    public State() throws InvalidCellReferenceException {
         this(DEFAULT_WIDTH, DEFAULT_HEIGHT);
     }
 
@@ -33,4 +38,5 @@ public class State {
     public int getHeight() {
         return height;
     }
+
 }

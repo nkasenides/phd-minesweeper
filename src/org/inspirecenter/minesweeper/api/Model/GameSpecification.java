@@ -1,5 +1,7 @@
 package org.inspirecenter.minesweeper.api.Model;
 
+import org.inspirecenter.minesweeper.api.Exception.InvalidGameSpecificationException;
+
 import java.util.UUID;
 
 public class GameSpecification {
@@ -12,7 +14,12 @@ public class GameSpecification {
     private final String token;
     private final Difficulty difficulty;
 
-    public GameSpecification(int maxPlayers, int width, int height, String token, Difficulty difficulty) {
+    public GameSpecification(int maxPlayers, int width, int height, Difficulty difficulty) throws InvalidGameSpecificationException {
+
+        if (maxPlayers < 1 || width < 0 || height < 0 || difficulty == null) {
+            throw new InvalidGameSpecificationException("Game specification cannot be initialized (Invalid parameters)");
+        }
+
         this.maxPlayers = maxPlayers;
         this.width = width;
         this.height = height;
@@ -20,8 +27,8 @@ public class GameSpecification {
         this.difficulty = difficulty;
     }
 
-    public GameSpecification(int maxPlayers, int width, int height, String token) {
-        this(maxPlayers, width, height, token, DEFAULT_DIFFICULTY);
+    public GameSpecification(int maxPlayers, int width, int height) throws InvalidGameSpecificationException {
+        this(maxPlayers, width, height, DEFAULT_DIFFICULTY);
     }
 
     public int getMaxPlayers() {
