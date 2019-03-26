@@ -1,10 +1,7 @@
 package org.inspirecenter.minesweeper.api;
 
-import org.inspirecenter.minesweeper.api.Exception.InvalidGameSpecificationException;
-import org.inspirecenter.minesweeper.api.Model.Difficulty;
-import org.inspirecenter.minesweeper.api.Model.Game;
-import org.inspirecenter.minesweeper.api.Model.GameSpecification;
-import org.inspirecenter.minesweeper.api.Model.Player;
+import org.inspirecenter.minesweeper.api.Model.*;
+import org.inspirecenter.minesweeper.api.Util.StatePrinter;
 
 public class Main {
 
@@ -18,9 +15,16 @@ public class Main {
             Player player2 = new Player("Bravo");
             game.addPlayer(player1);
             game.addPlayer(player2);
-            game.printAsMatrix();
 
-        } catch (InvalidGameSpecificationException e) {
+            System.out.println("== FULL STATE ==");
+            StatePrinter.print(game.getFullGameState());
+
+            PartialGameState partialGameState = new PartialGameState(3, 3, 6, 6, game.getFullGameState());
+
+            System.out.println("== PARTIAL STATE ==");
+            StatePrinter.print(partialGameState);
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

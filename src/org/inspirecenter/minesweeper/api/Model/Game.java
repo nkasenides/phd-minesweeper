@@ -7,13 +7,13 @@ import java.util.Random;
 public class Game {
 
     private GameSpecification gameSpecification;
-    private State state;
+    private FullGameState fullGameState;
     private ArrayList<Player> players;
 
     public Game(GameSpecification gameSpecification) {
         this.gameSpecification = gameSpecification;
         try {
-            state = new State(gameSpecification.getWidth(), gameSpecification.getHeight());
+            fullGameState = new FullGameState(gameSpecification.getWidth(), gameSpecification.getHeight());
             players = new ArrayList<>();
             initializeMatrix();
             generateMines();
@@ -26,8 +26,8 @@ public class Game {
         return gameSpecification;
     }
 
-    public State getState() {
-        return state;
+    public FullGameState getFullGameState() {
+        return fullGameState;
     }
 
     public ArrayList<Player> getPlayers() {
@@ -42,9 +42,9 @@ public class Game {
     }
 
     private void initializeMatrix() {
-        for (int x = 0; x < state.getCells().length; x++) {
-            for (int y = 0; y < state.getCells()[x].length; y++) {
-                state.getCells()[x][y] = new CellState(MineState.NOT_MINED, RevealState.COVERED);
+        for (int x = 0; x < fullGameState.getCells().length; x++) {
+            for (int y = 0; y < fullGameState.getCells()[x].length; y++) {
+                fullGameState.getCells()[x][y] = new CellState(MineState.NOT_MINED, RevealState.COVERED);
             }
         }
     }
@@ -56,21 +56,11 @@ public class Game {
         do {
             int randomX = random.nextInt(gameSpecification.getWidth());
             int randomY = random.nextInt(gameSpecification.getHeight());
-            if (state.getCells()[randomX][randomY].getMineState() == MineState.NOT_MINED) {
-                state.getCells()[randomX][randomY].setMineState(MineState.MINED);
+            if (fullGameState.getCells()[randomX][randomY].getMineState() == MineState.NOT_MINED) {
+                fullGameState.getCells()[randomX][randomY].setMineState(MineState.MINED);
                 generatedMines++;
             }
         } while (generatedMines < numberOfMines);
-    }
-
-    public void printAsMatrix() {
-        for (int x = 0; x < state.getCells().length; x++) {
-            for (int y = 0; y < state.getCells()[x].length; y++) {
-                if (state.getCells()[x][y].getMineState() == MineState.MINED) System.out.print("*");
-                else System.out.print("_");
-            }
-            System.out.println();
-        }
     }
 
 }
