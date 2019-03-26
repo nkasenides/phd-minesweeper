@@ -1,4 +1,4 @@
-package org.inspirecenter.minesweeper.api;
+package org.inspirecenter.minesweeper.api.Model;
 
 public enum Direction {
 

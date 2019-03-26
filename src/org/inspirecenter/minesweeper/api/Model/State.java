@@ -1,4 +1,6 @@
-package org.inspirecenter.minesweeper.api;
+package org.inspirecenter.minesweeper.api.Model;
+
+import org.inspirecenter.minesweeper.api.Model.CellState;
 
 public class State {
 
