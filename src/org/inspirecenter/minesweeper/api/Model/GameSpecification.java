@@ -1,6 +1,7 @@
 package org.inspirecenter.minesweeper.api.Model;
 
 import org.inspirecenter.minesweeper.api.Exception.InvalidGameSpecificationException;
+import org.inspirecenter.minesweeper.api.Util.Storage;
 
 import java.util.UUID;
 

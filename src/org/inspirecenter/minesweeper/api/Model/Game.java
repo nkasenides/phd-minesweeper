@@ -1,6 +1,8 @@
 package org.inspirecenter.minesweeper.api.Model;
 
 import org.inspirecenter.minesweeper.api.Exception.InvalidCellReferenceException;
+import org.inspirecenter.minesweeper.api.Util.Storage;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -8,15 +10,21 @@ public class Game {
 
     private GameSpecification gameSpecification;
     private FullGameState fullGameState;
-    private ArrayList<Player> players;
+
+    public static Game findGameSpecification(String token) {
+        for (final Game g : Storage.GAMES) {
+            if (g.getGameSpecification().getToken().equals(token)) return g;
+        }
+        return null;
+    }
 
     public Game(GameSpecification gameSpecification) {
         this.gameSpecification = gameSpecification;
         try {
             fullGameState = new FullGameState(gameSpecification.getWidth(), gameSpecification.getHeight());
-            players = new ArrayList<>();
             initializeMatrix();
             generateMines();
+            Storage.GAMES.add(this);
         } catch (InvalidCellReferenceException e) {
             e.printStackTrace();
         }
@@ -30,21 +38,10 @@ public class Game {
         return fullGameState;
     }
 
-    public ArrayList<Player> getPlayers() {
-        return players;
-    }
-
-    public boolean addPlayer(Player player) {
-        if (players.size() < gameSpecification.getMaxPlayers()) {
-            return players.add(player);
-        }
-        return false;
-    }
-
     private void initializeMatrix() {
         for (int x = 0; x < fullGameState.getCells().length; x++) {
             for (int y = 0; y < fullGameState.getCells()[x].length; y++) {
-                fullGameState.getCells()[x][y] = new CellState(MineState.NOT_MINED, RevealState.COVERED);
+                fullGameState.getCells()[x][y] = new CellState(false, RevealState.COVERED);
             }
         }
     }
@@ -56,8 +53,8 @@ public class Game {
         do {
             int randomX = random.nextInt(gameSpecification.getWidth());
             int randomY = random.nextInt(gameSpecification.getHeight());
-            if (fullGameState.getCells()[randomX][randomY].getMineState() == MineState.NOT_MINED) {
-                fullGameState.getCells()[randomX][randomY].setMineState(MineState.MINED);
+            if (!fullGameState.getCells()[randomX][randomY].isMined()) {
+                fullGameState.getCells()[randomX][randomY].setMined(true);
                 generatedMines++;
             }
         } while (generatedMines < numberOfMines);

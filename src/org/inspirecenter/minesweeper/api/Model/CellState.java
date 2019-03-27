@@ -2,24 +2,24 @@ package org.inspirecenter.minesweeper.api.Model;
 
 public class CellState {
 
-    private MineState mineState;
+    private boolean isMined;
     private RevealState revealState;
 
-    public CellState(MineState mineState, RevealState revealState) {
-        this.mineState = mineState;
+    public CellState(boolean isMined, RevealState revealState) {
+        this.isMined = isMined;
         this.revealState = revealState;
     }
 
-    public MineState getMineState() {
-        return mineState;
+    public boolean isMined() {
+        return isMined;
     }
 
     public RevealState getRevealState() {
         return revealState;
     }
 
-    public void setMineState(MineState mineState) {
-        this.mineState = mineState;
+    public void setMined(boolean mined) {
+        isMined = mined;
     }
 
     public void setRevealState(RevealState revealState) {
