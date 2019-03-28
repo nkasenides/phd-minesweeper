@@ -27,4 +27,13 @@ public class Storage {
         return count;
     }
 
+    public static boolean playerIsInGame(String playerName, String gameUUID) {
+        for (Map.Entry<String, Session> entry : SESSIONS.entrySet()) {
+            if (entry.getValue().getGame().getGameSpecification().getToken().equals(gameUUID) && entry.getValue().getPlayerName().equals(playerName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

@@ -40,7 +40,7 @@ public class Main {
 
             System.out.println("~~~~~ CREATE GAMES ~~~~~");
             System.out.println(masterService.createGame(1, 10, 10, Difficulty.EASY) + " created.");
-            System.out.println(masterService.createGame(1, 10, 10, Difficulty.MEDIUM) + " created.");
+            System.out.println(masterService.createGame(2, 10, 10, Difficulty.MEDIUM) + " created.");
 
             System.out.println("~~~~~ LIST GAMES ~~~~~");
             ArrayList<Game> games = masterService.listGames();
@@ -51,27 +51,26 @@ public class Main {
             System.out.println("~~~~~ JOIN GAME ~~~~~");
             System.out.print("Enter game to join: ");
             String input = SCANNER.nextLine();
-            //String sessionIDx = masterService.join(input, new Player("Bravo").getName(), new PartialStatePreference(5, 5));
+//            String sessionIDx = masterService.join(input, player1.getName(), new PartialStatePreference(5, 5));
             String sessionID = masterService.join(input, player1.getName(), new PartialStatePreference(5, 5));
             if (sessionID == null) {
                 System.out.println("Error joining game '" + input + "'.");
             }
             else {
                 System.out.println("Player '" + player1.getName() + "' joined game '" + input + "'.");
+
+                System.out.println("~~~~~ SHOW STATE (PARTIAL) AT INITIAL POSITION (0,0) ~~~~~");
+                PartialGameState state = userService.getPartialState(sessionID);
+                StatePrinter.print(state);
+
+                System.out.println("~~~~~ SHIFT POSITION RIGHT (0,1) ~~~~~");
+                state = userService.move(sessionID, Direction.RIGHT);
+                StatePrinter.print(state);
+
+                System.out.println("~~~~~ SHIFT POSITION DOWN (1,1) ~~~~~");
+                state = userService.move(sessionID, Direction.DOWN);
+                StatePrinter.print(state);
             }
-
-            System.out.println("~~~~~ SHOW STATE (PARTIAL) AT INITIAL POSITION (0,0) ~~~~~");
-            PartialGameState state = userService.getPartialState(sessionID);
-            StatePrinter.print(state);
-
-            System.out.println("~~~~~ SHIFT POSITION RIGHT (0,1) ~~~~~");
-            state = userService.move(sessionID, Direction.RIGHT);
-            StatePrinter.print(state);
-
-            System.out.println("~~~~~ SHIFT POSITION DOWN (1,1) ~~~~~");
-            state = userService.move(sessionID, Direction.DOWN);
-            StatePrinter.print(state);
-
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -32,7 +32,9 @@ public class LocalMasterService implements MasterService {
         Game game = Game.findGameSpecification(token);
         int sessionsInGame = Storage.countSessionsPerGame(token);
 
-        //TODO - Check if player is already in this game.
+        if (Storage.playerIsInGame(playerName, token)) {
+            return null;
+        }
 
         if (sessionsInGame < game.getGameSpecification().getMaxPlayers()) {
             Session session = new Session(partialStatePreference, playerName, game);
