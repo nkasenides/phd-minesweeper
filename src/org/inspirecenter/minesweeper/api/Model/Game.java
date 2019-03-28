@@ -41,7 +41,7 @@ public class Game {
     private void initializeMatrix() {
         for (int x = 0; x < fullGameState.getCells().length; x++) {
             for (int y = 0; y < fullGameState.getCells()[x].length; y++) {
-                fullGameState.getCells()[x][y] = new CellState(false, RevealState.COVERED);
+                fullGameState.getCells()[x][y] = new CellState(false);
             }
         }
     }

@@ -5,9 +5,9 @@ public class CellState {
     private boolean isMined;
     private RevealState revealState;
 
-    public CellState(boolean isMined, RevealState revealState) {
+    public CellState(boolean isMined) {
         this.isMined = isMined;
-        this.revealState = revealState;
+        this.revealState = RevealState.COVERED;
     }
 
     public boolean isMined() {
