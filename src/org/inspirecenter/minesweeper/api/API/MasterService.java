@@ -15,6 +15,6 @@ public interface MasterService {
     public ArrayList<Game> listGames();
 
     //Allows a player to join a specified game using a provided token
-    public String join(String token, String playerName, PartialStatePreference partialStatePreference); // returns session ID
+    public JoinBundle join(String token, String playerName, PartialStatePreference partialStatePreference); // returns session ID
 
 }

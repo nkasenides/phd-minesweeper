@@ -1,5 +1,6 @@
 package org.inspirecenter.minesweeper.api;
 
+import org.inspirecenter.minesweeper.api.API.JoinBundle;
 import org.inspirecenter.minesweeper.api.API.LocalMasterService;
 import org.inspirecenter.minesweeper.api.API.LocalUserService;
 import org.inspirecenter.minesweeper.api.Model.*;
@@ -16,6 +17,8 @@ public class Main {
     public static final LocalUserService USER_SERVICE;
     public static final LocalMasterService MASTER_SERVICE;
     public static String sessionID;
+    public static int currentGameWidth;
+    public static int currentGameHeight;
 
     static {
         SCANNER = new Scanner(System.in);
@@ -28,21 +31,6 @@ public class Main {
         try {
 
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-
-//            GameSpecification gameSpecification = new GameSpecification(1, 10, 10, Difficulty.EASY);
-//            Game game = new Game(gameSpecification);
-//            Player player1 = new Player("Alpha");
-//            Player player2 = new Player("Bravo");
-//            game.addPlayer(player1);
-//            game.addPlayer(player2);
-//
-//            System.out.println("== FULL STATE ==");
-//            StatePrinter.print(game.getFullGameState());
-//
-//            PartialGameState partialGameState = new PartialGameState(3, 3, 6, 6, game.getFullGameState());
-//
-//            System.out.println("== PARTIAL STATE ==");
-//            StatePrinter.print(partialGameState);
 
             Player player1 = new Player("Alpha");
 
@@ -59,8 +47,13 @@ public class Main {
             System.out.println("~~~~~ JOIN GAME ~~~~~");
             System.out.print("Enter game to join: ");
             String input = SCANNER.nextLine();
+
 //            String sessionIDx = MASTER_SERVICE.join(input, player1.getName(), new PartialStatePreference(5, 5));
-            sessionID = MASTER_SERVICE.join(input, player1.getName(), new PartialStatePreference(5, 5));
+            JoinBundle bundle = MASTER_SERVICE.join(input, player1.getName(), new PartialStatePreference(5, 5));
+            sessionID = bundle.getSessionID();
+            currentGameWidth = bundle.getWidth();
+            currentGameHeight = bundle.getHeight();
+
             if (sessionID == null) {
                 System.out.println("Error joining game '" + input + "'.");
             }
@@ -89,7 +82,7 @@ public class Main {
             }
 
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
 
 

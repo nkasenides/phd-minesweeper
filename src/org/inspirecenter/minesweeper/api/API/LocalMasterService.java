@@ -28,8 +28,11 @@ public class LocalMasterService implements MasterService {
     }
 
     @Override
-    public String join(String token, String playerName, PartialStatePreference partialStatePreference) {
+    public JoinBundle join(String token, String playerName, PartialStatePreference partialStatePreference) {
         Game game = Game.findGameSpecification(token);
+
+        assert game != null;
+
         int sessionsInGame = Storage.countSessionsPerGame(token);
 
         if (Storage.playerIsInGame(playerName, token)) {
@@ -40,7 +43,7 @@ public class LocalMasterService implements MasterService {
             Session session = new Session(partialStatePreference, playerName, game);
             UUID sessionID = UUID.randomUUID();
             Storage.SESSIONS.put(sessionID.toString(), session);
-            return sessionID.toString();
+            return new JoinBundle(sessionID.toString(), game.getGameSpecification().getWidth(), game.getGameSpecification().getHeight());
         }
         else {
             return null;

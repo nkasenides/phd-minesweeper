@@ -1,6 +1,5 @@
 package org.inspirecenter.minesweeper.api.UI;
 
-import org.inspirecenter.minesweeper.api.Exception.InvalidCellReferenceException;
 import org.inspirecenter.minesweeper.api.Main;
 import org.inspirecenter.minesweeper.api.Model.Direction;
 import org.inspirecenter.minesweeper.api.Model.PartialGameState;
@@ -22,7 +21,7 @@ public class GameForm extends JFrame {
 
     private static final int WINDOW_SIZE = 500;
 
-    private int currentX = 0; //TODO - Ideally these would be returned by userService.move()...
+    private int currentX = 0;
     private int currentY = 0;
 
     public GameForm(PartialStatePreference partialStatePreference, PartialGameState state) {
@@ -39,25 +38,57 @@ public class GameForm extends JFrame {
 
         KeyEventDispatcher keyEventDispatcher = new KeyEventDispatcher() {
             @Override
+
+            /**
+             * case UP:
+             *                 if (x > 0) session.setPositionX(x - 1);
+             *                 break;
+             *             case DOWN:
+             *                 if (x < session.getGame().getGameSpecification().getWidth() - 1) session.setPositionX(x + 1);
+             *                 break;
+             *             case LEFT:
+             *                 if (y > 0) session.setPositionY(y - 1);
+             *                 break;
+             *             case RIGHT:
+             *                 if (y < session.getGame().getGameSpecification().getHeight() - 1) session.setPositionY(y + 1);
+             *                 break;
+             */
+
             public boolean dispatchKeyEvent(final KeyEvent e) {
                 if (e.getID() == KeyEvent.KEY_PRESSED) {
                     Direction direction = null;
                     switch (e.getKeyCode()) {
                         case KeyEvent.VK_UP:
-                            direction = Direction.UP;
+                            if (currentX > 0) {
+                                direction = Direction.UP;
+                                currentX--;
+                            }
                             break;
                         case KeyEvent.VK_DOWN:
-                            direction = Direction.DOWN;
+                            if (currentX + partialStatePreference.getWidth() < Main.currentGameWidth) {
+                                direction = Direction.DOWN;
+                                currentX++;
+                            }
                             break;
                         case KeyEvent.VK_LEFT:
-                            direction = Direction.LEFT;
+                            if (currentY > 0) {
+                                direction = Direction.LEFT;
+                                currentY--;
+                            }
                             break;
                         case KeyEvent.VK_RIGHT:
-                            direction = Direction.RIGHT;
+                            if (currentY + partialStatePreference.getHeight() < Main.currentGameHeight) {
+                                direction = Direction.RIGHT;
+                                currentY++;
+                            }
                             break;
                     }
+                    System.out.println("cX: " + currentX + ", cY: " + currentY + ", w: " + Main.currentGameWidth + ", h: " + Main.currentGameHeight);
                     if (direction != null) {
-                        GameForm.this.state = Main.USER_SERVICE.move(Main.sessionID, direction);
+                        PartialGameState partialGameState = Main.USER_SERVICE.move(Main.sessionID, direction);
+                        if (partialGameState != null) {
+                            GameForm.this.state = partialGameState;
+                        }
                         updateButtons();
                     }
                 }
