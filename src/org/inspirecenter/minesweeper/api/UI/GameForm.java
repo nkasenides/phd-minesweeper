@@ -1,6 +1,8 @@
 package org.inspirecenter.minesweeper.api.UI;
 
+import org.inspirecenter.minesweeper.api.Exception.InvalidCellReferenceException;
 import org.inspirecenter.minesweeper.api.Main;
+import org.inspirecenter.minesweeper.api.Model.Direction;
 import org.inspirecenter.minesweeper.api.Model.PartialGameState;
 import org.inspirecenter.minesweeper.api.Model.PartialStatePreference;
 import org.inspirecenter.minesweeper.api.Model.RevealState;
@@ -9,16 +11,19 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.ArrayList;
+import java.awt.event.KeyEvent;
 
 public class GameForm extends JFrame {
 
-    private JPanel p;
+    private JPanel gamePanel;
     private final PartialStatePreference partialStatePreference;
     private PartialGameState state;
     private MinesweeperButton[][] buttons;
+
+    private static final int WINDOW_SIZE = 500;
+
+    private int currentX = 0; //TODO - Ideally these would be returned by userService.move()...
+    private int currentY = 0;
 
     public GameForm(PartialStatePreference partialStatePreference, PartialGameState state) {
 
@@ -29,14 +34,42 @@ public class GameForm extends JFrame {
 
 //        setExtendedState(JFrame.MAXIMIZED_BOTH);
 //        setUndecorated(true);
-        setSize(800, 600);
+        setSize(WINDOW_SIZE, WINDOW_SIZE);
         initializeButtons();
 
+        KeyEventDispatcher keyEventDispatcher = new KeyEventDispatcher() {
+            @Override
+            public boolean dispatchKeyEvent(final KeyEvent e) {
+                if (e.getID() == KeyEvent.KEY_PRESSED) {
+                    Direction direction = null;
+                    switch (e.getKeyCode()) {
+                        case KeyEvent.VK_UP:
+                            direction = Direction.UP;
+                            break;
+                        case KeyEvent.VK_DOWN:
+                            direction = Direction.DOWN;
+                            break;
+                        case KeyEvent.VK_LEFT:
+                            direction = Direction.LEFT;
+                            break;
+                        case KeyEvent.VK_RIGHT:
+                            direction = Direction.RIGHT;
+                            break;
+                    }
+                    if (direction != null) {
+                        GameForm.this.state = Main.USER_SERVICE.move(Main.sessionID, direction);
+                        updateButtons();
+                    }
+                }
+                return false;
+            }
+        };
+        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(keyEventDispatcher);
     }
 
     private void initializeButtons() {
-        p = new JPanel();
-        p.setLayout(new GridLayout(partialStatePreference.getWidth(), partialStatePreference.getHeight()));
+        gamePanel = new JPanel();
+        gamePanel.setLayout(new GridLayout(partialStatePreference.getWidth(), partialStatePreference.getHeight()));
         for (int x = 0; x < state.getWidth(); x++) {
             for (int y = 0; y < state.getHeight(); y++) {
                 MinesweeperButton button = new MinesweeperButton();
@@ -52,10 +85,10 @@ public class GameForm extends JFrame {
                     }
                 });
                 buttons[x][y] = button;
-                p.add(button);
+                gamePanel.add(button);
             }
         }
-        add(p);
+        add(gamePanel);
         setVisible(true);
     }
 
@@ -63,7 +96,10 @@ public class GameForm extends JFrame {
         for (int x = 0; x < state.getWidth(); x++) {
             for (int y = 0; y < state.getHeight(); y++) {
 
-                //Disable any buttons that are already revealed:
+                //Set default background:
+                buttons[x][y].setBackground(Color.LIGHT_GRAY);
+
+                //Revealed buttons without any object are shown with grey background:
                 if (state.getCells()[x][y].getRevealState() == RevealState.REVEALED_0) {
                     buttons[x][y].setBackground(Color.GRAY);
                 }

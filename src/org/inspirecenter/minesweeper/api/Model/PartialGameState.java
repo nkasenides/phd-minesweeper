@@ -17,7 +17,7 @@ public class PartialGameState extends GameState {
 
         super(width, height);
 
-        if (startingX + width >= entireFullGameState.getWidth() || startingY + height >= entireFullGameState.getHeight()
+        if (startingX + width > entireFullGameState.getWidth() || startingY + height > entireFullGameState.getHeight()
                 || startingX < 0 || startingY < 0) {
             throw new InvalidCellReferenceException("The partial state with x: " + startingX + ", y: " + startingY + ", width: " + width + ", height: " + height + " is not valid.");
         }

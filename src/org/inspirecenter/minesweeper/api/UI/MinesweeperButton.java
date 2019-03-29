@@ -55,13 +55,13 @@ public class MinesweeperButton extends JButton {
 
         EIGHT = new ImageIcon(RESOURCE_FOLDER + "eight.png");
         EIGHT.setImage(EIGHT.getImage().getScaledInstance(ICON_SIZE, ICON_SIZE, Image.SCALE_SMOOTH));
-
     }
 
     public MinesweeperButton() {
         setContentAreaFilled(false);
         setOpaque(true);
         setBorder(MinesweeperButton.BUTTON_BORDER);
+        setBackground(Color.LIGHT_GRAY);
     }
 
     public static Icon getIconFromState(CellState cellState) {
