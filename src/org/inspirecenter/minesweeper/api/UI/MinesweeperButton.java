@@ -3,8 +3,9 @@ package org.inspirecenter.minesweeper.api.UI;
 import org.inspirecenter.minesweeper.api.Model.CellState;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 
 public class MinesweeperButton extends JButton {
 
@@ -21,6 +22,8 @@ public class MinesweeperButton extends JButton {
     public static final ImageIcon EIGHT;
 
     public static final int ICON_SIZE = 64;
+
+    public static final Border BUTTON_BORDER = new LineBorder(Color.BLACK, 1);
 
     static {
         MINE = new ImageIcon(RESOURCE_FOLDER + "mine.png");
@@ -55,64 +58,41 @@ public class MinesweeperButton extends JButton {
 
     }
 
-    private CellState cellState;
-
-    public MinesweeperButton(CellState cellState) {
-
-        this.cellState = cellState;
-        switch (cellState.getRevealState()) {
-            case COVERED:
-                setIcon(null);
-                break;
-            case FLAGGED:
-                setIcon(FLAG);
-                setEnabled(false);
-                break;
-            case REVEALED_0:
-                setIcon(null);
-                setEnabled(false);
-                break;
-            case REVEALED_1:
-                setIcon(ONE);
-                setEnabled(false);
-                break;
-            case REVEALED_2:
-                setIcon(TWO);
-                setEnabled(false);
-                break;
-            case REVEALED_3:
-                setIcon(THREE);
-                setEnabled(false);
-                break;
-            case REVEALED_4:
-                setIcon(FOUR);
-                setEnabled(false);
-                break;
-            case REVEALED_5:
-                setIcon(FIVE);
-                setEnabled(false);
-                break;
-            case REVEALED_6:
-                setIcon(SIX);
-                setEnabled(false);
-                break;
-            case REVEALED_7:
-                setIcon(SEVEN);
-                setEnabled(false);
-                break;
-            case REVEALED_8:
-                setIcon(EIGHT);
-                setEnabled(false);
-                break;
-            case REVEALED_MINE:
-                setIcon(MINE);
-                setEnabled(false);
-                break;
-        }
+    public MinesweeperButton() {
+        setContentAreaFilled(false);
+        setOpaque(true);
+        setBorder(MinesweeperButton.BUTTON_BORDER);
     }
 
-    public CellState getCellState() {
-        return cellState;
+    public static Icon getIconFromState(CellState cellState) {
+        switch (cellState.getRevealState()) {
+            case COVERED:
+                return null;
+            case FLAGGED:
+                return FLAG;
+            case REVEALED_0:
+                return null;
+            case REVEALED_1:
+                return ONE;
+            case REVEALED_2:
+                return TWO;
+            case REVEALED_3:
+                return THREE;
+            case REVEALED_4:
+                return FOUR;
+            case REVEALED_5:
+                return FIVE;
+            case REVEALED_6:
+                return SIX;
+            case REVEALED_7:
+                return SEVEN;
+            case REVEALED_8:
+                return EIGHT;
+            case REVEALED_MINE:
+                return MINE;
+            default:
+                return null;
+        }
     }
 
 }

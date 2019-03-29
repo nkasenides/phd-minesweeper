@@ -27,6 +27,8 @@ public class Main {
 
         try {
 
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+
 //            GameSpecification gameSpecification = new GameSpecification(1, 10, 10, Difficulty.EASY);
 //            Game game = new Game(gameSpecification);
 //            Player player1 = new Player("Alpha");
