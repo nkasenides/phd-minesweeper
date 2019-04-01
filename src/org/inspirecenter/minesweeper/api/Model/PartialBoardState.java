@@ -2,7 +2,7 @@ package org.inspirecenter.minesweeper.api.Model;
 
 import org.inspirecenter.minesweeper.api.Exception.InvalidCellReferenceException;
 
-public class PartialGameState extends GameState {
+public class PartialBoardState extends BoardState {
 
     public static final int DEFAULT_WIDTH = 10;
     public static final int DEFAULT_HEIGHT = 10;
@@ -13,7 +13,7 @@ public class PartialGameState extends GameState {
     private final int startingY;
     private UserState userState; //TODO WHY IS THIS NEEDED?
 
-    public PartialGameState(int width, int height, int startingX, int startingY, FullGameState entireFullGameState) throws InvalidCellReferenceException {
+    public PartialBoardState(int width, int height, int startingX, int startingY, FullBoardState entireFullGameState) throws InvalidCellReferenceException {
 
         super(width, height);
 
@@ -34,11 +34,11 @@ public class PartialGameState extends GameState {
         }
     }
 
-    public PartialGameState(int startingX, int startingY, FullGameState entireFullGameState) throws InvalidCellReferenceException {
+    public PartialBoardState(int startingX, int startingY, FullBoardState entireFullGameState) throws InvalidCellReferenceException {
         this(DEFAULT_WIDTH, DEFAULT_HEIGHT, startingX, startingY, entireFullGameState);
     }
 
-    public PartialGameState(FullGameState entireFullGameState) throws InvalidCellReferenceException {
+    public PartialBoardState(FullBoardState entireFullGameState) throws InvalidCellReferenceException {
         this(DEFAULT_WIDTH, DEFAULT_HEIGHT, DEFAULT_STARTING_X, DEFAULT_STARTING_Y, entireFullGameState);
     }
 

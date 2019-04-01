@@ -36,7 +36,7 @@ public class Main {
 
             System.out.println("~~~~~ CREATE GAMES ~~~~~");
             System.out.println(MASTER_SERVICE.createGame(1, 10, 10, Difficulty.EASY) + " created.");
-            System.out.println(MASTER_SERVICE.createGame(2, 10, 10, Difficulty.MEDIUM) + " created.");
+            System.out.println(MASTER_SERVICE.createGame(2, 5, 5, Difficulty.MEDIUM) + " created.");
 
             System.out.println("~~~~~ LIST GAMES ~~~~~");
             ArrayList<Game> games = MASTER_SERVICE.listGames();
@@ -60,23 +60,12 @@ public class Main {
             else {
                 System.out.println("Player '" + player1.getName() + "' joined game '" + input + "'.");
 
-                System.out.println("~~~~~ SHOW STATE (PARTIAL) AT INITIAL POSITION (0,0) ~~~~~");
-                PartialGameState state = USER_SERVICE.getPartialState(sessionID);
+                PartialBoardState state = USER_SERVICE.getPartialState(sessionID).getPartialGameState();
+
+                System.out.println("Printing state... (CHEATER!!!)");
                 StatePrinter.print(state);
 
-                System.out.println("~~~~~ SHIFT POSITION RIGHT (0,1) ~~~~~");
-                state = USER_SERVICE.move(sessionID, Direction.RIGHT);
-                StatePrinter.print(state);
-
-                System.out.println("~~~~~ SHIFT POSITION DOWN (1,1) ~~~~~");
-                state = USER_SERVICE.move(sessionID, Direction.DOWN);
-                StatePrinter.print(state);
-
-                System.out.println("~~~~~ SHIFT POSITION BACK TO NORMAL (0,0) ~~~~~");
-                state = USER_SERVICE.move(sessionID, Direction.LEFT);
-                state = USER_SERVICE.move(sessionID, Direction.UP);
-
-                GameForm application = new GameForm(new PartialStatePreference(5,5), state);
+                GameForm application = new GameForm(new PartialStatePreference(5,5));
                 application.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 
             }

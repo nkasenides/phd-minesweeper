@@ -1,22 +1,19 @@
 package org.inspirecenter.minesweeper.api.UI;
 
+import org.inspirecenter.minesweeper.api.API.RevealBundle;
 import org.inspirecenter.minesweeper.api.Main;
-import org.inspirecenter.minesweeper.api.Model.Direction;
-import org.inspirecenter.minesweeper.api.Model.PartialGameState;
-import org.inspirecenter.minesweeper.api.Model.PartialStatePreference;
-import org.inspirecenter.minesweeper.api.Model.RevealState;
+import org.inspirecenter.minesweeper.api.Model.*;
+import sun.rmi.log.LogOutputStream;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 
 public class GameForm extends JFrame {
 
     private JPanel gamePanel;
     private final PartialStatePreference partialStatePreference;
-    private PartialGameState state;
+    private PartialBoardState localGameState;
     private MinesweeperButton[][] buttons;
 
     private static final int WINDOW_SIZE = 500;
@@ -24,36 +21,22 @@ public class GameForm extends JFrame {
     private int currentX = 0;
     private int currentY = 0;
 
-    public GameForm(PartialStatePreference partialStatePreference, PartialGameState state) {
+    public GameForm(PartialStatePreference partialStatePreference) {
 
         super("Minesweeper");
         this.partialStatePreference = partialStatePreference;
-        this.state = state;
-        this.buttons = new MinesweeperButton[state.getWidth()][state.getHeight()];
+        this.buttons = new MinesweeperButton[partialStatePreference.getWidth()][partialStatePreference.getHeight()];
 
 //        setExtendedState(JFrame.MAXIMIZED_BOTH);
 //        setUndecorated(true);
         setSize(WINDOW_SIZE, WINDOW_SIZE);
+
+        localGameState = Main.USER_SERVICE.getPartialState(Main.sessionID).getPartialGameState();
+
         initializeButtons();
 
         KeyEventDispatcher keyEventDispatcher = new KeyEventDispatcher() {
             @Override
-
-            /**
-             * case UP:
-             *                 if (x > 0) session.setPositionX(x - 1);
-             *                 break;
-             *             case DOWN:
-             *                 if (x < session.getGame().getGameSpecification().getWidth() - 1) session.setPositionX(x + 1);
-             *                 break;
-             *             case LEFT:
-             *                 if (y > 0) session.setPositionY(y - 1);
-             *                 break;
-             *             case RIGHT:
-             *                 if (y < session.getGame().getGameSpecification().getHeight() - 1) session.setPositionY(y + 1);
-             *                 break;
-             */
-
             public boolean dispatchKeyEvent(final KeyEvent e) {
                 if (e.getID() == KeyEvent.KEY_PRESSED) {
                     Direction direction = null;
@@ -85,11 +68,11 @@ public class GameForm extends JFrame {
                     }
                     System.out.println("cX: " + currentX + ", cY: " + currentY + ", w: " + Main.currentGameWidth + ", h: " + Main.currentGameHeight);
                     if (direction != null) {
-                        PartialGameState partialGameState = Main.USER_SERVICE.move(Main.sessionID, direction);
-                        if (partialGameState != null) {
-                            GameForm.this.state = partialGameState;
+                        RevealBundle bundle = Main.USER_SERVICE.move(Main.sessionID, direction);
+                        if (bundle != null) {
+                            GameForm.this.localGameState = bundle.getPartialGameState();
+                            updateButtons(bundle.getGameState());
                         }
-                        updateButtons();
                     }
                 }
                 return false;
@@ -101,20 +84,68 @@ public class GameForm extends JFrame {
     private void initializeButtons() {
         gamePanel = new JPanel();
         gamePanel.setLayout(new GridLayout(partialStatePreference.getWidth(), partialStatePreference.getHeight()));
-        for (int x = 0; x < state.getWidth(); x++) {
-            for (int y = 0; y < state.getHeight(); y++) {
+        for (int x = 0; x < partialStatePreference.getWidth(); x++) {
+            for (int y = 0; y < partialStatePreference.getHeight(); y++) {
                 MinesweeperButton button = new MinesweeperButton();
                 final int innerX = x;
                 final int innerY = y;
-                button.addActionListener(new ActionListener() {
+
+                button.addMouseListener(new MouseListener() {
                     @Override
-                    public void actionPerformed(ActionEvent e) {
-                        if (state.getCells()[innerX][innerY].getRevealState() == RevealState.COVERED) {
-                            state = Main.USER_SERVICE.reveal(Main.sessionID, innerX, innerY);
-                            updateButtons();
+                    public void mouseClicked(MouseEvent e) {
+
+                    }
+
+                    @Override
+                    public void mousePressed(MouseEvent e) {
+
+                    }
+
+                    @Override
+                    public void mouseReleased(MouseEvent e) {
+
+                        //Left mouse button
+                        if (e.getButton() == MouseEvent.BUTTON1) {
+                            if (localGameState.getCells()[innerX][innerY].getRevealState() == RevealState.COVERED) {
+                                RevealBundle bundle = Main.USER_SERVICE.reveal(Main.sessionID, innerX, innerY);
+                                if (bundle != null) {
+                                    localGameState = bundle.getPartialGameState();
+                                    if (bundle.getGameState() == GameState.ENDED_LOST) {
+                                        RevealBundle bundleLost = Main.USER_SERVICE.revealAll(Main.sessionID);
+                                        if (bundleLost != null) {
+                                            localGameState = bundle.getPartialGameState();
+                                            updateButtons(bundleLost.getGameState());
+                                        }
+                                    }
+                                    else {
+                                        updateButtons(bundle.getGameState());
+                                    }
+                                }
+                            }
                         }
+
+                        //Right mouse button
+                        else if (e.getButton() == MouseEvent.BUTTON3){
+                            RevealBundle bundle = Main.USER_SERVICE.flag(Main.sessionID, innerX, innerY);
+                            if (bundle != null) {
+                                localGameState = bundle.getPartialGameState();
+                                updateButtons(bundle.getGameState());
+                            }
+                        }
+
+                    }
+
+                    @Override
+                    public void mouseEntered(MouseEvent e) {
+
+                    }
+
+                    @Override
+                    public void mouseExited(MouseEvent e) {
+
                     }
                 });
+
                 buttons[x][y] = button;
                 gamePanel.add(button);
             }
@@ -123,20 +154,28 @@ public class GameForm extends JFrame {
         setVisible(true);
     }
 
-    private void updateButtons() {
-        for (int x = 0; x < state.getWidth(); x++) {
-            for (int y = 0; y < state.getHeight(); y++) {
+    private void updateButtons(GameState gameState) {
+        for (int x = 0; x < localGameState.getWidth(); x++) {
+            for (int y = 0; y < localGameState.getHeight(); y++) {
 
-                //Set default background:
-                buttons[x][y].setBackground(Color.LIGHT_GRAY);
+                if (gameState == GameState.STARTED) {
+                    //Set default background:
+                    buttons[x][y].setBackground(Color.LIGHT_GRAY);
 
-                //Revealed buttons without any object are shown with grey background:
-                if (state.getCells()[x][y].getRevealState() == RevealState.REVEALED_0) {
-                    buttons[x][y].setBackground(Color.GRAY);
+                    //Revealed buttons without any object are shown with grey background:
+                    if (localGameState.getCells()[x][y].getRevealState() == RevealState.REVEALED_0) {
+                        buttons[x][y].setBackground(Color.GRAY);
+                    }
+                }
+                else if (gameState == GameState.ENDED_WON) {
+                    buttons[x][y].setBackground(Color.GREEN);
+                }
+                else if (gameState == GameState.ENDED_LOST) {
+                    buttons[x][y].setBackground(Color.RED);
                 }
 
                 //Set the icon:
-                buttons[x][y].setIcon(MinesweeperButton.getIconFromState(state.getCells()[x][y]));
+                buttons[x][y].setIcon(MinesweeperButton.getIconFromState(localGameState.getCells()[x][y]));
 
             }
         }
@@ -145,4 +184,5 @@ public class GameForm extends JFrame {
     public PartialStatePreference getPartialStatePreference() {
         return partialStatePreference;
     }
+
 }

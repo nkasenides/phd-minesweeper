@@ -3,13 +3,13 @@ package org.inspirecenter.minesweeper.api.Model;
 import org.inspirecenter.minesweeper.api.Exception.InvalidCellReferenceException;
 import org.inspirecenter.minesweeper.api.Util.Storage;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public class Game {
 
     private GameSpecification gameSpecification;
-    private FullGameState fullGameState;
+    private FullBoardState fullBoardState;
+    private GameState gameState;
 
     public static Game findGameSpecification(String token) {
         for (final Game g : Storage.GAMES) {
@@ -20,8 +20,9 @@ public class Game {
 
     public Game(GameSpecification gameSpecification) {
         this.gameSpecification = gameSpecification;
+        this.gameState = GameState.NOT_STARTED;
         try {
-            fullGameState = new FullGameState(gameSpecification.getWidth(), gameSpecification.getHeight());
+            fullBoardState = new FullBoardState(gameSpecification.getWidth(), gameSpecification.getHeight());
             initializeMatrix();
             generateMines();
             Storage.GAMES.add(this);
@@ -34,14 +35,14 @@ public class Game {
         return gameSpecification;
     }
 
-    public FullGameState getFullGameState() {
-        return fullGameState;
+    public FullBoardState getFullBoardState() {
+        return fullBoardState;
     }
 
     private void initializeMatrix() {
-        for (int x = 0; x < fullGameState.getCells().length; x++) {
-            for (int y = 0; y < fullGameState.getCells()[x].length; y++) {
-                fullGameState.getCells()[x][y] = new CellState(false);
+        for (int x = 0; x < fullBoardState.getCells().length; x++) {
+            for (int y = 0; y < fullBoardState.getCells()[x].length; y++) {
+                fullBoardState.getCells()[x][y] = new CellState(false);
             }
         }
     }
@@ -53,11 +54,75 @@ public class Game {
         do {
             int randomX = random.nextInt(gameSpecification.getWidth());
             int randomY = random.nextInt(gameSpecification.getHeight());
-            if (!fullGameState.getCells()[randomX][randomY].isMined()) {
-                fullGameState.getCells()[randomX][randomY].setMined(true);
+            if (!fullBoardState.getCells()[randomX][randomY].isMined()) {
+                fullBoardState.getCells()[randomX][randomY].setMined(true);
                 generatedMines++;
             }
         } while (generatedMines < numberOfMines);
+    }
+
+    public GameState getGameState() {
+        return gameState;
+    }
+
+    public void setGameState(GameState gameState) {
+        this.gameState = gameState;
+    }
+
+    public int countFlaggedMines() {
+        int count = 0;
+        for (int x = 0; x < fullBoardState.getWidth(); x++) {
+            for (int y = 0; y < fullBoardState.getHeight(); y++) {
+                if (fullBoardState.getCells()[x][y].isMined() && fullBoardState.getCells()[x][y].getRevealState() == RevealState.FLAGGED) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    public int countMines() {
+        int count = 0;
+        for (int x = 0; x < fullBoardState.getWidth(); x++) {
+            for (int y = 0; y < fullBoardState.getHeight(); y++) {
+                if (fullBoardState.getCells()[x][y].isMined()) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    public GameState computeGameState() {
+
+        if (gameState != GameState.STARTED) {
+            return gameState;
+        }
+
+        int covered = 0;
+        final int flaggedMines = countFlaggedMines();
+        final int totalMines = countMines();
+
+        for (int x = 0; x < fullBoardState.getWidth(); x++) {
+            for (int y = 0; y < fullBoardState.getHeight(); y++) {
+
+                if (fullBoardState.cells[x][y].isMined() && fullBoardState.cells[x][y].getRevealState() == RevealState.REVEALED_MINE) {
+                    return GameState.ENDED_LOST;
+                }
+
+                if (fullBoardState.cells[x][y].getRevealState() == RevealState.COVERED) {
+                    covered++;
+                }
+
+            }
+        }
+
+        if (covered == 0 && flaggedMines == totalMines ) {
+            return GameState.ENDED_WON;
+        }
+
+        return GameState.STARTED;
+
     }
 
 }

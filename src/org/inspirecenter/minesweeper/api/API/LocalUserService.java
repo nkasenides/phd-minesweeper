@@ -7,11 +7,12 @@ import org.inspirecenter.minesweeper.api.Util.Storage;
 public class LocalUserService implements UserService {
 
     @Override
-    public PartialGameState getPartialState(String sessionID) {
+    public RevealBundle getPartialState(String sessionID) {
         Session session = Storage.SESSIONS.get(sessionID);
         Game game = session.getGame();
         try {
-            return new PartialGameState(session.getPartialStatePreference().getWidth(),session.getPartialStatePreference().getHeight(), session.getPositionX(), session.getPositionY(), game.getFullGameState());
+            PartialBoardState partialBoardState = new PartialBoardState(session.getPartialStatePreference().getWidth(),session.getPartialStatePreference().getHeight(), session.getPositionX(), session.getPositionY(), game.getFullBoardState());
+            return new RevealBundle(partialBoardState, game.getGameState());
         }
         catch (InvalidCellReferenceException e) {
             e.printStackTrace();
@@ -20,7 +21,7 @@ public class LocalUserService implements UserService {
     }
 
     @Override
-    public PartialGameState move(String sessionID, Direction direction) {
+    public RevealBundle move(String sessionID, Direction direction) {
         Session session = Storage.SESSIONS.get(sessionID);
         final int x = session.getPositionX();
         final int y = session.getPositionY();
@@ -42,12 +43,20 @@ public class LocalUserService implements UserService {
     }
 
     @Override
-    public PartialGameState reveal(String sessionID, int x, int y) {
+    public RevealBundle reveal(String sessionID, int x, int y) {
         Session session = Storage.SESSIONS.get(sessionID);
         Game game = session.getGame();
-        FullGameState state = game.getFullGameState();
+        FullBoardState state = game.getFullBoardState();
 
         if (x >= state.getWidth() + session.getPositionX() || y >= state.getHeight() + session.getPositionY()) {
+            return null;
+        }
+
+        if (game.getGameState() == GameState.NOT_STARTED) {
+            game.setGameState(GameState.STARTED);
+        }
+
+        if (game.getGameState() != GameState.STARTED) {
             return null;
         }
 
@@ -57,23 +66,33 @@ public class LocalUserService implements UserService {
             referencedCell.setRevealState(RevealState.REVEALED_MINE);
         }
         else {
-            int adjacentMines = game.getFullGameState().countAdjacentMines(x + session.getPositionX(), y + session.getPositionY());
+            int adjacentMines = game.getFullBoardState().countAdjacentMines(x + session.getPositionX(), y + session.getPositionY());
             referencedCell.setRevealState(RevealState.getRevealStateFromNumberOfAdjacentMines(adjacentMines));
         }
 
+        GameState gameState = game.computeGameState();
+        game.setGameState(gameState);
         return getPartialState(sessionID);
     }
 
     @Override
-    public PartialGameState revealAll(String sessionID) {
+    public RevealBundle revealAll(String sessionID) {
         Session session = Storage.SESSIONS.get(sessionID);
         Game game = session.getGame();
-        FullGameState state = game.getFullGameState();
+
+        if (game.getGameState() != GameState.ENDED_LOST) {
+            return null;
+        }
+
+        FullBoardState state = game.getFullBoardState();
 
         for (int x = 0; x < state.getWidth(); x++) {
             for (int y = 0; y < state.getHeight(); y++) {
-                if (state.getCells()[x][y].getRevealState() == RevealState.COVERED) {
-                    int adjacentMines = state.countAdjacentMines(x, y);
+                if (state.getCells()[x][y].isMined()) {
+                    state.getCells()[x][y].setRevealState(RevealState.REVEALED_MINE);
+                }
+                else {
+                    int adjacentMines = game.getFullBoardState().countAdjacentMines(x + session.getPositionX(), y + session.getPositionY());
                     state.getCells()[x][y].setRevealState(RevealState.getRevealStateFromNumberOfAdjacentMines(adjacentMines));
                 }
             }
@@ -83,10 +102,19 @@ public class LocalUserService implements UserService {
     }
 
     @Override
-    public PartialGameState flag(String sessionID, int x, int y) {
+    public RevealBundle flag(String sessionID, int x, int y) {
         Session session = Storage.SESSIONS.get(sessionID);
         Game game = session.getGame();
-        FullGameState state = game.getFullGameState();
+
+        if (game.getGameState() == GameState.NOT_STARTED) {
+            game.setGameState(GameState.STARTED);
+        }
+
+        if (game.getGameState() != GameState.STARTED) {
+            return null;
+        }
+
+        FullBoardState state = game.getFullBoardState();
 
         if (x >= state.getWidth() || y >= state.getHeight()) {
             return null;
@@ -94,10 +122,13 @@ public class LocalUserService implements UserService {
 
         if (state.getCells()[x][y].getRevealState() == RevealState.COVERED) {
             state.getCells()[x][y].setRevealState(RevealState.FLAGGED);
-            return getPartialState(sessionID);
         }
-        else return null;
+        else if (state.getCells()[x][y].getRevealState() == RevealState.FLAGGED) {
+            state.getCells()[x][y].setRevealState(RevealState.COVERED);
+        }
 
+        game.setGameState(game.computeGameState());
+        return getPartialState(sessionID);
     }
 
 }
