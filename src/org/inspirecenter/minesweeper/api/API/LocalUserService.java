@@ -60,15 +60,10 @@ public class LocalUserService implements UserService {
             return null;
         }
 
-        CellState referencedCell = state.getCells()[x + session.getPositionX()][y + session.getPositionY()];
+        final int cX = x + session.getPositionX();
+        final int cY = y + session.getPositionY();
 
-        if (referencedCell.isMined()) {
-            referencedCell.setRevealState(RevealState.REVEALED_MINE);
-        }
-        else {
-            int adjacentMines = game.getFullBoardState().countAdjacentMines(x + session.getPositionX(), y + session.getPositionY());
-            referencedCell.setRevealState(RevealState.getRevealStateFromNumberOfAdjacentMines(adjacentMines));
-        }
+        game.reveal(cX, cY);
 
         GameState gameState = game.computeGameState();
         game.setGameState(gameState);

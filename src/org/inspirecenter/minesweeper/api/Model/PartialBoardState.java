@@ -11,7 +11,6 @@ public class PartialBoardState extends BoardState {
 
     private final int startingX;
     private final int startingY;
-    private UserState userState; //TODO WHY IS THIS NEEDED?
 
     public PartialBoardState(int width, int height, int startingX, int startingY, FullBoardState entireFullGameState) throws InvalidCellReferenceException {
 
@@ -48,10 +47,6 @@ public class PartialBoardState extends BoardState {
 
     public int getStartingY() {
         return startingY;
-    }
-
-    public UserState getUserState() {
-        return userState;
     }
 
 }
