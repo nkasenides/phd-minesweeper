@@ -126,7 +126,6 @@ public class Game {
     }
 
     public void reveal(int x, int y) {
-        System.out.println("reveal(" + x + "," + y + ")");
         CellState referencedCell = fullBoardState.getCells()[x][y];
         if (referencedCell.getRevealState() == RevealState.COVERED) {
             if (referencedCell.isMined()) {
