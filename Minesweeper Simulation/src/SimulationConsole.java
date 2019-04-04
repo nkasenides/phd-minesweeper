@@ -66,17 +66,10 @@ public class SimulationConsole {
                 }
 
                 //Present statistics:
-                System.out.println("---------------------------------------------------------------------------------");
-                System.out.println("---------------------------------------------------------------------------------");
-                System.out.println("                                RESULTS                                          ");
-                System.out.println("---------------------------------------------------------------------------------");
-                System.out.println("Started on: " + simulationManager.getTimeStarted());
-                System.out.println("Ended on: " + simulationManager.getTimeEnded());
-                System.out.println("Time taken: " + simulationManager.getTotalTimeTaken());
-                System.out.println("Average latency: " + simulationManager.getAverageLatency() + "ms");
-                System.out.println("Minimum latency: " + simulationManager.getMinLatency() + "ms");
-                System.out.println("Maximum latency: " + simulationManager.getMaxLatency() + "ms");
-                System.out.println("---------------------------------------------------------------------------------");
+                for (int i = 0; i < simulationManager.getSimulations().size(); i++) {
+                    printSimulation(i);
+                }
+                printAllResults();
 
             }
             else {
@@ -99,6 +92,33 @@ public class SimulationConsole {
         System.out.println("Free RAM: " + formatMemoryNumber(RUNTIME.freeMemory()));
     }
 
+    public static void printAllResults() {
+        System.out.println("---------------------------------------------------------------------------------");
+        System.out.println("                                RESULTS (ALL)                                    ");
+        System.out.println("---------------------------------------------------------------------------------");
+        System.out.println("Simulations ran: " + simulationManager.getSimulationsRan());
+        System.out.println("Started on: " + simulationManager.getTimeStarted());
+        System.out.println("Ended on: " + simulationManager.getTimeEnded());
+        System.out.println("Initialization time: " + simulationManager.getInitializationTimeTaken());
+        System.out.println("Run time: " + simulationManager.getRunTimeTaken());
+        System.out.println("Average latency: " + simulationManager.getAverageLatency() + "ms");
+        System.out.println("Minimum latency: " + simulationManager.getMinLatency() + "ms");
+        System.out.println("Maximum latency: " + simulationManager.getMaxLatency() + "ms");
+        System.out.println("---------------------------------------------------------------------------------");
+    }
 
+    public static void printSimulation(int index) {
+        System.out.println("---------------------------------------------------------------------------------");
+        System.out.println("        RESULTS (" + (index+1) + "/" + simulationManager.getSimulations().size() + ")");
+        System.out.println("---------------------------------------------------------------------------------");
+        System.out.println("Started on: " + simulationManager.getSimulations().get(index).getSimulationStats().getRunStartTime());
+        System.out.println("Ended on: " + simulationManager.getSimulations().get(index).getSimulationStats().getRunEndTime());
+        System.out.println("Initialization time: " + (simulationManager.getSimulations().get(index).getSimulationStats().getInitEndTime() - simulationManager.getSimulations().get(index).getSimulationStats().getInitStartTime()));
+        System.out.println("Run time: " + (simulationManager.getSimulations().get(index).getSimulationStats().getRunEndTime() - simulationManager.getSimulations().get(index).getSimulationStats().getRunStartTime()));
+        System.out.println("Average latency: " + simulationManager.getSimulations().get(index).getSimulationStats().getAverageLatency() + "ms");
+        System.out.println("Minimum latency: " + simulationManager.getSimulations().get(index).getSimulationStats().getMinimumLatency().getLatency() + "ms");
+        System.out.println("Maximum latency: " + simulationManager.getSimulations().get(index).getSimulationStats().getMaximumLatency().getLatency() + "ms");
+        System.out.println("---------------------------------------------------------------------------------");
+    }
 
 }

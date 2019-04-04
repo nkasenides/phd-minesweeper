@@ -2,42 +2,42 @@ import Measurements.LatencyMeasurement;
 
 public class SimulationStats {
 
-    private long startTime;
-    private long endTime;
+    private long runStartTime;
+    private long runEndTime;
+    private long initStartTime;
+    private long initEndTime;
     private LatencyMeasurement maximumLatency;
     private LatencyMeasurement minimumLatency;
     private long averageLatency;
-    private long setupStartTime;
-    private long setupEndTime;
 
-    public SimulationStats(long startTime, long endTime, LatencyMeasurement maximumLatency, LatencyMeasurement minimumLatency, long averageLatency, long setupStartTime, long setupEndTime) {
-        this.startTime = startTime;
-        this.endTime = endTime;
+    public SimulationStats(long runStartTime, long runEndTime, LatencyMeasurement maximumLatency, LatencyMeasurement minimumLatency, long averageLatency, long initStartTime, long initEndTime) {
+        this.runStartTime = runStartTime;
+        this.runEndTime = runEndTime;
         this.maximumLatency = maximumLatency;
         this.minimumLatency = minimumLatency;
         this.averageLatency = averageLatency;
-        this.setupStartTime = setupStartTime;
-        this.setupEndTime = setupEndTime;
+        this.initStartTime = initStartTime;
+        this.initEndTime = initEndTime;
     }
 
     public SimulationStats() {
         this(0, 0, new LatencyMeasurement(0, 0), new LatencyMeasurement(0, 0), 0, 0, 0);
     }
 
-    public long getStartTime() {
-        return startTime;
+    public long getRunStartTime() {
+        return runStartTime;
     }
 
-    public void setStartTime(long startTime) {
-        this.startTime = startTime;
+    public void setRunStartTime(long runStartTime) {
+        this.runStartTime = runStartTime;
     }
 
-    public long getEndTime() {
-        return endTime;
+    public long getRunEndTime() {
+        return runEndTime;
     }
 
-    public void setEndTime(long endTime) {
-        this.endTime = endTime;
+    public void setRunEndTime(long runEndTime) {
+        this.runEndTime = runEndTime;
     }
 
     public LatencyMeasurement getMaximumLatency() {
@@ -65,22 +65,23 @@ public class SimulationStats {
     }
 
     public long getTimeTaken() {
-        return endTime - startTime;
+        return runEndTime - runStartTime;
     }
 
-    public long getSetupStartTime() {
-        return setupStartTime;
+    public long getInitStartTime() {
+        return initStartTime;
     }
 
-    public void setSetupStartTime(long setupStartTime) {
-        this.setupStartTime = setupStartTime;
+    public void setInitStartTime(long setupStartTime) {
+        this.initStartTime = setupStartTime;
     }
 
-    public long getSetupEndTime() {
-        return setupEndTime;
+    public long getInitEndTime() {
+        return initEndTime;
     }
 
-    public void setSetupEndTime(long setupEndTime) {
-        this.setupEndTime = setupEndTime;
+    public void setInitEndTime(long initEndTime) {
+        this.initEndTime = initEndTime;
     }
+
 }

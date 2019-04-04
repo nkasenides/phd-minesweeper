@@ -7,6 +7,7 @@ import java.util.Date;
 public class SimulationManager {
 
     public static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss:SS");
+    private int simulationsRan = 0;
 
     private ArrayList<Simulation> simulations;
 
@@ -18,31 +19,41 @@ public class SimulationManager {
         return simulations.add(simulation);
     }
 
-    public void initializeAll() {
-        for (int i = 0; i < simulations.size(); i++) {
-            System.out.print("Initializing simulation " + (i + 1) + "/" + simulations.size() + "...");
-            try {
-                simulations.get(i).initialize();
-            }
-            catch (InvalidGameSpecificationException e) {
-                System.out.println("ERROR: " + e.getMessage());
-                simulations.get(i).setInitialized(false);
-            }
-            System.out.println(" - DONE");
-        }
+    public int getSimulationsRan() {
+        return simulationsRan;
     }
 
     public void runAll() {
+        simulationsRan = 0;
         for (int i = 0; i < simulations.size(); i++) {
+            try {
+                System.out.print("Initializing simulation " + (i + 1) + "/" + simulations.size() + "...");
+                simulations.get(i).initialize();
+                System.out.println(" - DONE");
+            }
+            catch (InvalidGameSpecificationException e) {
+                System.out.println("ERROR: " + e.getMessage());
+            }
+
             if (simulations.get(i).isInitialized()) {
                 System.out.print("Running simulation " + (i + 1) + "/" + simulations.size() + "...");
                 simulations.get(i).run();
                 System.out.println(" - DONE");
+                simulationsRan++;
             }
         }
     }
 
     public void runSingle(int index) {
+        try {
+            System.out.print("Initializing simulation ...");
+            simulations.get(index).initialize();
+            System.out.println(" - DONE");
+        }
+        catch (InvalidGameSpecificationException e) {
+            System.out.println("ERROR: " + e.getMessage());
+        }
+
         if (simulations.get(index).isInitialized()) {
             try {
                 simulations.get(index).run();
@@ -57,37 +68,37 @@ public class SimulationManager {
         return simulations;
     }
 
-    private long _getTimeStarted() {
+    private long _getRunTimeStarted() {
         long minTimeStarted = Long.MAX_VALUE;
         for (Simulation s : simulations) {
-            if (s.getSimulationStats().getStartTime() < minTimeStarted) {
-                minTimeStarted = s.getSimulationStats().getStartTime();
+            if (s.getSimulationStats().getRunStartTime() < minTimeStarted) {
+                minTimeStarted = s.getSimulationStats().getRunStartTime();
             }
         }
         return minTimeStarted;
     }
 
-    private long _getTimeEnded() {
+    private long _getRunTimeEnded() {
         long maxTimeEnded = 0;
         for (Simulation s : simulations) {
-            if (s.getSimulationStats().getStartTime() > maxTimeEnded) {
-                maxTimeEnded = s.getSimulationStats().getStartTime();
+            if (s.getSimulationStats().getRunEndTime() > maxTimeEnded) {
+                maxTimeEnded = s.getSimulationStats().getRunEndTime();
             }
         }
         return maxTimeEnded;
     }
 
     public String getTimeStarted() {
-        return SIMPLE_DATE_FORMAT.format(new Date(_getTimeStarted()));
+        return SIMPLE_DATE_FORMAT.format(new Date(_getRunTimeStarted()));
     }
 
     public String getTimeEnded() {
-        return SIMPLE_DATE_FORMAT.format(new Date(_getTimeEnded()));
+        return SIMPLE_DATE_FORMAT.format(new Date(_getRunTimeEnded()));
     }
 
-    public String getTotalTimeTaken() {
-        long started = _getTimeStarted();
-        long ended = _getTimeEnded();
+    public String getRunTimeTaken() {
+        long started = _getRunTimeStarted();
+        long ended = _getRunTimeEnded();
         long timeTaken = ended - started;
 
         long minutes = (timeTaken / 1000) / 60;
@@ -121,6 +132,27 @@ public class SimulationManager {
             latencySum += s.getSimulationStats().getAverageLatency();
         }
         return latencySum / simulations.size();
+    }
+
+    public long _getInitializationTimeTaken() {
+        long lowestInitStartTime = Long.MAX_VALUE;
+        long largestInitEndTime = 0;
+        for (Simulation s : simulations) {
+            if (s.getSimulationStats().getInitStartTime() < lowestInitStartTime) {
+                lowestInitStartTime = s.getSimulationStats().getInitStartTime();
+            }
+            if (s.getSimulationStats().getInitEndTime() > largestInitEndTime) {
+                largestInitEndTime = s.getSimulationStats().getInitEndTime();
+            }
+        }
+        return largestInitEndTime - lowestInitStartTime;
+    }
+
+    public String getInitializationTimeTaken() {
+        long timeTaken = _getInitializationTimeTaken();
+        long minutes = (timeTaken / 1000) / 60;
+        long seconds = (timeTaken / 1000) % 60;
+        return String.format("%2dm %2ds (%d ms)", minutes, seconds, timeTaken);
     }
 
 }

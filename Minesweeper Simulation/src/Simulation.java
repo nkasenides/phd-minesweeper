@@ -15,7 +15,6 @@ public abstract class Simulation {
     private Game game;
     private final PartialStatePreference partialStatePreference;
     private boolean initialized = false;
-
     private SimulationStats simulationStats;
 
     public Simulation(int totalWidth, int totalHeight, int partialWidth, int partialHeight, int numOfPlayers) {
@@ -81,8 +80,8 @@ public abstract class Simulation {
         game = new Game(new GameSpecification(numOfPlayers, totalWidth, totalHeight));
         initializeGame();
         long endTime = System.currentTimeMillis();
-        simulationStats.setSetupStartTime(startTime);
-        simulationStats.setSetupEndTime(endTime);
+        simulationStats.setInitStartTime(startTime);
+        simulationStats.setInitEndTime(endTime);
         initialized = true;
     }
 
@@ -119,8 +118,8 @@ public abstract class Simulation {
         //Add more measurement refinements here...
 
         //Timing:
-        simulationStats.setEndTime(endTime);
-        simulationStats.setStartTime(startTime);
+        simulationStats.setRunEndTime(endTime);
+        simulationStats.setRunStartTime(startTime);
     }
 
     public abstract void initializeGame();
