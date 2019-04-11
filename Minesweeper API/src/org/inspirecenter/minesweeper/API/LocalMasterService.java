@@ -2,8 +2,11 @@ package org.inspirecenter.minesweeper.API;
 
 import org.inspirecenter.minesweeper.Model.*;
 import org.inspirecenter.minesweeper.Model.Exception.InvalidGameSpecificationException;
+import org.inspirecenter.minesweeper.Model.Solver.MinesweeperSolver;
+import org.inspirecenter.minesweeper.Model.Solver.RandomMinesweeperSolver;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.UUID;
 
 public class LocalMasterService implements MasterService {
@@ -27,8 +30,15 @@ public class LocalMasterService implements MasterService {
     }
 
     @Override
-    public JoinBundle join(String token, String playerName, PartialStatePreference partialStatePreference) {
+    public JoinBundle join(String token, String playerName, String solverName, PartialStatePreference partialStatePreference) {
         Game game = Game.findGameSpecification(token);
+
+        Class<? extends MinesweeperSolver> solverClass = MinesweeperSolver.getSolverFromName(solverName);
+        MinesweeperSolver solver;
+
+        //TODO Determine the type of solver from its name...
+
+        Player player = new Player(playerName, ) //TODO Create a player with that solver.
 
         assert game != null;
 

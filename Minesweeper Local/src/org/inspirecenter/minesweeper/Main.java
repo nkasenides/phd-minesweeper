@@ -30,7 +30,7 @@ public class Main {
 
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
-            Player player1 = new Player("Alpha", RandomMinesweeperSolver.class);
+            Player player1 = new Player("Alpha", new RandomMinesweeperSolver());
 
             System.out.println("~~~~~ CREATE GAMES ~~~~~");
             System.out.println(MASTER_SERVICE.createGame(1, 10, 10, Difficulty.EASY) + " created.");
