@@ -2,8 +2,13 @@ package org.inspirecenter.minesweeper;
 
 import org.inspirecenter.minesweeper.API.LocalMasterService;
 import org.inspirecenter.minesweeper.API.LocalUserService;
+import org.inspirecenter.minesweeper.IO.FileWriter;
+import org.inspirecenter.minesweeper.Log.SimulationLogEntry;
+import org.inspirecenter.minesweeper.Measurements.LatencyMeasurement;
+import org.inspirecenter.minesweeper.Measurements.SimulationMeasurementBundle;
 import org.inspirecenter.minesweeper.Model.Exception.InvalidGameSpecificationException;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class SimulationConsole {
@@ -53,7 +58,7 @@ public class SimulationConsole {
                     try {
                         LocalSimulation localSimulation = new LocalSimulation(totalWidth, totalHeight, partialWidth, partialHeight, numOfPlayers);
                         if (simulationManager.addSimulation(localSimulation)) {
-                            System.out.println("org.inspirecenter.minesweeper.Simulation added: totalWidth=" + totalWidth + ", totalHeight=" + totalHeight + ", partialWidth=" + partialWidth + ", partialHeight=" + partialHeight + ", numOfPlayers=" + numOfPlayers);
+                            System.out.println("Simulation added: totalWidth=" + totalWidth + ", totalHeight=" + totalHeight + ", partialWidth=" + partialWidth + ", partialHeight=" + partialHeight + ", numOfPlayers=" + numOfPlayers);
                         }
                         else {
                             System.out.println("ERROR: Failed to add simulation.");
@@ -74,6 +79,34 @@ public class SimulationConsole {
                 }
                 else {
                     System.out.println("ERROR: No simulations found to run.");
+                }
+
+                //Write logs to files:
+                for (int i = 0; i < simulationManager.getSimulations().size(); i++) {
+                    StringBuilder builder = new StringBuilder();
+
+                    //Event log:
+                    builder.append("EVENT LOG" + System.lineSeparator() + System.lineSeparator());
+                    int id = 1;
+                    for (SimulationLogEntry e : simulationManager.getSimulations().get(i).log.getEntries()) {
+                        builder.append(id + "\t[" + e.getType().getName() + " @ " + SimulationManager.formatAsSimpleDate(e.getTimestamp()) + "]\t" + e.getText() + System.lineSeparator());
+                        id++;
+                    }
+
+                    //Measurements:
+                    builder.append(System.lineSeparator() + System.lineSeparator() + "MEASUREMENTS" + System.lineSeparator() + System.lineSeparator());
+                    SimulationMeasurementBundle bundle = simulationManager.getSimulations().get(i).getMeasurementBundle();
+                    for (LatencyMeasurement lm : bundle.getLatencyMeasurements()) {
+                        builder.append(SimulationManager.formatAsSimpleDate(lm.getTimestamp()) + " - " + lm.getLatency() + "ms" + System.lineSeparator());
+                    }
+
+
+
+                    try {
+                        FileWriter.writeFile("Simulation " + simulationManager.getTimeStarted().replace(":", ".") + ".txt", builder.toString());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
 
                 //Present statistics:
@@ -124,11 +157,11 @@ public class SimulationConsole {
         System.out.println("---------------------------------------------------------------------------------");
         System.out.println("Started on: " + SimulationManager.formatAsSimpleDate(simulationManager.getSimulations().get(index).getSimulationStats().getRunStartTime()));
         System.out.println("Ended on: " + SimulationManager.formatAsSimpleDate(simulationManager.getSimulations().get(index).getSimulationStats().getRunEndTime()));
-        System.out.println("Initialization time: " + (simulationManager.getSimulations().get(index).getSimulationStats().getInitEndTime() - simulationManager.getSimulations().get(index).getSimulationStats().getInitStartTime()) + "ms");
-        System.out.println("Run time: " + (simulationManager.getSimulations().get(index).getSimulationStats().getRunEndTime() - simulationManager.getSimulations().get(index).getSimulationStats().getRunStartTime()) + "ms");
-        System.out.println("Average latency: " + simulationManager.getSimulations().get(index).getSimulationStats().getAverageLatency() + "ms");
-        System.out.println("Minimum latency: " + simulationManager.getSimulations().get(index).getSimulationStats().getMinimumLatency().getLatency() + "ms");
-        System.out.println("Maximum latency: " + simulationManager.getSimulations().get(index).getSimulationStats().getMaximumLatency().getLatency() + "ms");
+        System.out.println("Initialization time: " + simulationManager.getSimulations().get(index).getSimulationStats().getInitTotalTime() + "ms");
+        System.out.println("Run time: " + simulationManager.getSimulations().get(index).getSimulationStats().getRunTotalTime() + "ms");
+        System.out.println("Average latency: " + simulationManager.getSimulations().get(index).getAverageLatency() + "ms");
+        System.out.println("Minimum latency: " + simulationManager.getSimulations().get(index).getMinLatency() + "ms");
+        System.out.println("Maximum latency: " + simulationManager.getSimulations().get(index).getMaxLatency() + "ms");
         System.out.println("---------------------------------------------------------------------------------");
     }
 

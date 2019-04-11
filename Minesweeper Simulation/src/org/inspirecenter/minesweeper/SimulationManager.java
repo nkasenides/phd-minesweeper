@@ -1,5 +1,7 @@
 package org.inspirecenter.minesweeper;
 
+import org.inspirecenter.minesweeper.Measurements.LatencyMeasurement;
+import org.inspirecenter.minesweeper.Measurements.SimulationMeasurementBundle;
 import org.inspirecenter.minesweeper.Model.Exception.InvalidGameSpecificationException;
 
 import java.text.SimpleDateFormat;
@@ -110,9 +112,10 @@ public class SimulationManager {
 
     public long getMinLatency() {
         long minLatency = Long.MAX_VALUE;
+        if (simulations.size() < 1) return -1;
         for (Simulation s : simulations) {
-            if (s.getSimulationStats().getMinimumLatency().getLatency() < minLatency) {
-                minLatency = s.getSimulationStats().getMinimumLatency().getLatency();
+            if (s.getMinLatency() < minLatency) {
+                minLatency = s.getMinLatency();
             }
         }
         return minLatency;
@@ -120,9 +123,10 @@ public class SimulationManager {
 
     public long getMaxLatency() {
         long maxLatency = 0;
+        if (simulations.size() < 1) return -1;
         for (Simulation s : simulations) {
-            if (s.getSimulationStats().getMaximumLatency().getLatency() > maxLatency) {
-                maxLatency = s.getSimulationStats().getMaximumLatency().getLatency();
+            if (s.getMaxLatency() > maxLatency) {
+                maxLatency = s.getMaxLatency();
             }
         }
         return maxLatency;
@@ -131,8 +135,9 @@ public class SimulationManager {
     public long getAverageLatency() {
         long latencySum = 0;
         for (Simulation s : simulations) {
-            latencySum += s.getSimulationStats().getAverageLatency();
+            latencySum += s.getAverageLatency();
         }
+        if (simulations.size() < 1) return 0;
         return latencySum / simulations.size();
     }
 

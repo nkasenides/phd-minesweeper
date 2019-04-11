@@ -5,12 +5,12 @@ public class LatencyMeasurement {
     private long timestamp;
     private long latency;
 
-    public LatencyMeasurement(long timestamp, long latency) {
-        this.timestamp = timestamp;
+    public LatencyMeasurement(long latency) {
+        this.timestamp = System.currentTimeMillis();
         this.latency = latency;
     }
 
-    public LatencyMeasurement() { this(Integer.MIN_VALUE, Integer.MIN_VALUE); }
+    public LatencyMeasurement() { this(0); }
 
     public long getTimestamp() {
         return timestamp;

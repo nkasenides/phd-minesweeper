@@ -10,7 +10,6 @@ public class RandomMinesweeperSolver extends MinesweeperSolver {
 
     @Override
     public Move solve() {
-
         //TODO
         return new Move(0, 0, MoveType.NONE);
 

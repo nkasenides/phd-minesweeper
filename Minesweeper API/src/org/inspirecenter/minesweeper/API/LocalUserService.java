@@ -63,9 +63,6 @@ public class LocalUserService implements UserService {
         final int cY = y + session.getPositionY();
 
         game.reveal(cX, cY);
-
-        GameState gameState = game.computeGameState();
-        game.setGameState(gameState);
         return getPartialState(sessionID);
     }
 
@@ -100,6 +97,10 @@ public class LocalUserService implements UserService {
         Session session = Backend.SESSIONS.get(sessionID);
         Game game = session.getGame();
 
+        if (x >= game.getFullBoardState().getWidth() + session.getPositionX() || y >= game.getFullBoardState().getHeight() + session.getPositionY()) {
+            return null;
+        }
+
         if (game.getGameState() == GameState.NOT_STARTED) {
             game.setGameState(GameState.STARTED);
         }
@@ -114,14 +115,10 @@ public class LocalUserService implements UserService {
             return null;
         }
 
-        if (state.getCells()[x][y].getRevealState() == RevealState.COVERED) {
-            state.getCells()[x][y].setRevealState(RevealState.FLAGGED);
-        }
-        else if (state.getCells()[x][y].getRevealState() == RevealState.FLAGGED) {
-            state.getCells()[x][y].setRevealState(RevealState.COVERED);
-        }
+        final int cX = x + session.getPositionX();
+        final int cY = y + session.getPositionY();
 
-        game.setGameState(game.computeGameState());
+        game.flag(cX, cY);
         return getPartialState(sessionID);
     }
 
