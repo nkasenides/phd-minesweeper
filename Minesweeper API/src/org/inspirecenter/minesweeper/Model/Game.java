@@ -2,16 +2,16 @@ package org.inspirecenter.minesweeper.Model;
 
 import org.inspirecenter.minesweeper.API.Backend;
 import org.inspirecenter.minesweeper.Model.Exception.InvalidCellReferenceException;
+import org.inspirecenter.minesweeper.Model.Solver.MinesweeperSolver;
 
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
 
 public class Game {
 
     private GameSpecification gameSpecification;
     private FullBoardState fullBoardState;
     private GameState gameState;
-    private ArrayList<Player> players;
+    private HashMap<String, MinesweeperSolver> players;
 
     public static Game findGameSpecification(String token) {
         for (final Game g : Backend.GAMES) {
@@ -27,29 +27,36 @@ public class Game {
             fullBoardState = new FullBoardState(gameSpecification.getWidth(), gameSpecification.getHeight());
             initializeMatrix();
             generateMines();
-            players = new ArrayList<>();
+            players = new HashMap<>();
             Backend.GAMES.add(this);
         } catch (InvalidCellReferenceException e) {
             e.printStackTrace();
         }
     }
 
-    public ArrayList<Player> getPlayers() {
+    public HashMap<String, MinesweeperSolver> getPlayers() {
         return players;
     }
 
-    public boolean playerExists(Player player) {
-        for (Player p : players) {
-            if (player.getName().toLowerCase().equals(p.getName().toLowerCase())) {
-                return true;
-            }
+    public ArrayList<Player> getPlayersAsList() {
+        ArrayList<Player> playersList = new ArrayList<>();
+        Iterator it = players.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry) it.next();
+            playersList.add(new Player((String) pair.getKey(), (MinesweeperSolver) pair.getValue()));
+            it.remove();
         }
-        return false;
+        return playersList;
+    }
+
+    public boolean playerExists(String playerName) {
+        return (players.containsKey(playerName));
     }
 
     public boolean addPlayer(Player player) {
-        if (playerExists(player)) return false;
-        else return players.add(player);
+        if (playerExists(player.getName())) return false;
+        players.put(player.getName(), player.getMinesweeperSolver());
+        return true;
     }
 
     public GameSpecification getGameSpecification() {

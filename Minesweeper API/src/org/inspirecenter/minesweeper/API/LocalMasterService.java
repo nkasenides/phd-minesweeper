@@ -32,30 +32,38 @@ public class LocalMasterService implements MasterService {
     @Override
     public JoinBundle join(String token, String playerName, String solverName, PartialStatePreference partialStatePreference) {
         Game game = Game.findGameSpecification(token);
-
-        Class<? extends MinesweeperSolver> solverClass = MinesweeperSolver.getSolverFromName(solverName);
-        MinesweeperSolver solver;
-
-        //TODO Determine the type of solver from its name...
-
-        Player player = new Player(playerName, ) //TODO Create a player with that solver.
-
         assert game != null;
 
+        //TODO MORE SOLVERS
+        MinesweeperSolver solver = null;
+        if (solverName.toLowerCase().equals("random")) {
+            solver = new RandomMinesweeperSolver(game, partialStatePreference);
+        }
+
+        if (solver == null) {
+            return null; //Invalid solver
+        }
+
+        Player player = new Player(playerName, solver);
         int sessionsInGame = Backend.countSessionsPerGame(token);
 
         if (Backend.playerIsInGame(playerName, token)) {
-            return null;
+            return null; //Player already exists in game
         }
 
         if (sessionsInGame < game.getGameSpecification().getMaxPlayers()) {
             Session session = new Session(partialStatePreference, playerName, game);
             UUID sessionID = UUID.randomUUID();
             Backend.SESSIONS.put(sessionID.toString(), session);
-            return new JoinBundle(sessionID.toString(), game.getGameSpecification().getWidth(), game.getGameSpecification().getHeight());
+            if (game.addPlayer(player)) {
+                return new JoinBundle(sessionID.toString(), game.getGameSpecification().getWidth(), game.getGameSpecification().getHeight());
+            }
+            else {
+                return null; //Could not add the player to the game
+            }
         }
         else {
-            return null;
+            return null; //Max players reached
         }
     }
 

@@ -1,6 +1,7 @@
 package org.inspirecenter.minesweeper.API;
 
 import org.inspirecenter.minesweeper.Model.Game;
+import org.inspirecenter.minesweeper.Model.Position2D;
 import org.inspirecenter.minesweeper.Model.Session;
 
 import java.util.ArrayList;
@@ -38,6 +39,12 @@ public class Backend {
             }
         }
         return false;
+    }
+
+    public static Position2D getPositionFromSession(String sessionID) {
+        int x = SESSIONS.get(sessionID).getPositionX();
+        int y = SESSIONS.get(sessionID).getPositionY();
+        return new Position2D(x, y);
     }
 
 }

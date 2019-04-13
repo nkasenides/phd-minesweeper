@@ -33,7 +33,7 @@ public class LocalSimulation extends Simulation {
 
             if (game.getPlayers().size() > 0) {
                 //Perform player moves and log them, one at a time:
-                for (Player player : getGame().getPlayers()) {
+                for (Player player : getGame().getPlayersAsList()) {
                     Move nextMove = player.getMinesweeperSolver().solve();
                     switch (nextMove.getMoveType()) {
                         case REVEAL:

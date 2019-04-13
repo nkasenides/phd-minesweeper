@@ -1,13 +1,12 @@
 package org.inspirecenter.minesweeper;
 
+import org.inspirecenter.minesweeper.API.Backend;
+import org.inspirecenter.minesweeper.API.JoinBundle;
 import org.inspirecenter.minesweeper.Log.SimulationLog;
 import org.inspirecenter.minesweeper.Measurements.LatencyMeasurement;
 import org.inspirecenter.minesweeper.Measurements.SimulationMeasurementBundle;
+import org.inspirecenter.minesweeper.Model.*;
 import org.inspirecenter.minesweeper.Model.Exception.InvalidGameSpecificationException;
-import org.inspirecenter.minesweeper.Model.Game;
-import org.inspirecenter.minesweeper.Model.GameSpecification;
-import org.inspirecenter.minesweeper.Model.PartialStatePreference;
-import org.inspirecenter.minesweeper.Model.Player;
 import org.inspirecenter.minesweeper.Model.Solver.RandomMinesweeperSolver;
 
 public abstract class Simulation {
@@ -23,6 +22,8 @@ public abstract class Simulation {
     protected SimulationStats simulationStats;
     protected SimulationLog log;
     protected SimulationMeasurementBundle measurementBundle;
+
+    String sessionID;
 
     public Simulation(int totalWidth, int totalHeight, int partialWidth, int partialHeight, int numOfPlayers) {
         this.totalWidth = totalWidth;
@@ -128,13 +129,15 @@ public abstract class Simulation {
     public void initialize() throws InvalidGameSpecificationException {
         long startTime = System.currentTimeMillis();
 
-        game = new Game(new GameSpecification(numOfPlayers, totalWidth, totalHeight)); //TODO DIFFICULTY VARIETY
+        String gameToken = SimulationConsole.MASTER_SERVICE.createGame(numOfPlayers, totalWidth, totalHeight, Difficulty.EASY);//TODO DIFFICULTY VARIETY
 
         //Create and add players:
         for (int i = 0; i < numOfPlayers; i++) {
-            boolean added = game.addPlayer(new Player("Player " + (i + 1), new RandomMinesweeperSolver(game, partialStatePreference))); //TODO SOLVER VARIETY
-            if (!added) {
-                System.out.println("ERROR - Could not add player!");
+            Player player = new Player("Player " + (i + 1), new RandomMinesweeperSolver(game, partialStatePreference)); //TODO SOLVER VARIETY
+            JoinBundle joinBundle = SimulationConsole.MASTER_SERVICE.join(gameToken, player.getName(), RandomMinesweeperSolver.NAME, partialStatePreference);
+            if (joinBundle != null) {
+                sessionID = joinBundle.getSessionID();
+                game = Game.findGameSpecification(gameToken);
             }
         }
 

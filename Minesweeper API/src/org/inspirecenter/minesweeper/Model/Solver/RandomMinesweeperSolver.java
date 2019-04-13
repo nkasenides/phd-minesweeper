@@ -6,19 +6,27 @@ import java.util.Random;
 
 public class RandomMinesweeperSolver extends MinesweeperSolver {
 
+    public static final String NAME = "random";
+
     public RandomMinesweeperSolver(Game game, PartialStatePreference partialStatePreference) {
         super(game, partialStatePreference);
-        registerSolver(this.getClass());
     }
 
     @Override
     public Move solve() {
 
-        Random random = new Random();
-        int randomX = random.nextInt(partialStatePreference.getWidth());
-        int randomY = random.nextInt(partialStatePreference.getHeight());
+        if (moves.size() == 0) {
+            Random random = new Random();
+            int randomX = random.nextInt(partialStatePreference.getWidth());
+            int randomY = random.nextInt(partialStatePreference.getHeight());
+            Move move = new Move(randomX, randomY, MoveType.REVEAL);
+            moves.add(move);
+            return move;
+        }
+        else {
+            Move previousMove = moves.get(moves.size() - 1);
 
-        if (game.)
+        }
 
         //TODO
         return new Move(0, 0, MoveType.NONE);
