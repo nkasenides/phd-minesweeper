@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff075937-68b5-4d27-bcf0-122d75a25178" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/Position2D.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/API/Backend.java" beforeDir="false" afterPath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/API/Backend.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/API/LocalMasterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/API/LocalMasterService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/Solver/MinesweeperSolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/Solver/MinesweeperSolver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/Solver/RandomMinesweeperSolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/Solver/RandomMinesweeperSolver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper Simulation/src/org/inspirecenter/minesweeper/LocalSimulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Minesweeper Simulation/src/org/inspirecenter/minesweeper/LocalSimulation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper Simulation/src/org/inspirecenter/minesweeper/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Minesweeper Simulation/src/org/inspirecenter/minesweeper/Simulation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Minesweeper Local/src/org/inspirecenter/minesweeper/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Minesweeper Local/src/org/inspirecenter/minesweeper/OldMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Minesweeper Local/src/org/inspirecenter/minesweeper/UI/GameForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/Minesweeper Local/src/org/inspirecenter/minesweeper/UI/GameForm.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,10 +23,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/Solver/MinesweeperSolver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="36" lean-forward="true" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
+            <state relative-caret-position="177">
+              <caret line="11" column="36" lean-forward="true" selection-start-line="11" selection-start-column="36" selection-end-line="12" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#862#863#0" expanded="true" />
+                <element signature="e#889#890#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -39,72 +37,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/Solver/RandomMinesweeperSolver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="27" selection-start-line="27" selection-end-line="27" />
+            <state relative-caret-position="381">
+              <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/API/LocalUserService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="705">
-              <caret line="122" column="5" selection-start-line="122" selection-start-column="5" selection-end-line="122" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/API/LocalMasterService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="14" column="94" selection-start-line="14" selection-start-column="94" selection-end-line="14" selection-end-column="94" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Minesweeper Simulation/src/org/inspirecenter/minesweeper/SimulationConsole.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="833">
-              <caret line="58" column="68" selection-start-line="58" selection-start-column="68" selection-end-line="58" selection-end-column="68" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Minesweeper Simulation/src/org/inspirecenter/minesweeper/Simulation.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="136" column="103" selection-start-line="136" selection-start-column="103" selection-end-line="136" selection-end-column="131" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Minesweeper Simulation/src/org/inspirecenter/minesweeper/LocalSimulation.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="40" column="110" selection-start-line="40" selection-start-column="110" selection-end-line="40" selection-end-column="110" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1040#1041#0" expanded="true" />
-                <element signature="e#1068#1069#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -113,12 +49,24 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1156">
-              <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+            <state relative-caret-position="-231">
+              <caret line="123" column="9" lean-forward="true" selection-start-line="123" selection-start-column="9" selection-end-line="123" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#initializeMatrix#0;class#Game#0" />
                 <element signature="method#generateMines#0;class#Game#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/BoardState.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+              <folding>
+                <element signature="method#BoardState#0;class#BoardState#0" />
               </folding>
             </state>
           </provider>
@@ -164,9 +112,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/org/inspirecenter/minesweeper/api/UI/GameForm.form" />
-        <option value="$PROJECT_DIR$/src/org/inspirecenter/minesweeper/api/Model/Game.java" />
-        <option value="$PROJECT_DIR$/src/Simulation.java" />
         <option value="$PROJECT_DIR$/Minesweeper Simulation/src/SimulationInstance.java" />
         <option value="$PROJECT_DIR$/Minesweeper Simulation/src/SimulationMeasurements.java" />
         <option value="$PROJECT_DIR$/Minesweeper Simulation/src/SimulationMeasurement.java" />
@@ -204,23 +149,26 @@
         <option value="$PROJECT_DIR$/Minesweeper Simulation/src/org/inspirecenter/minesweeper/Log/SimulationLog.java" />
         <option value="$PROJECT_DIR$/Minesweeper Simulation/src/org/inspirecenter/minesweeper/SimulationManager.java" />
         <option value="$PROJECT_DIR$/Minesweeper Simulation/src/org/inspirecenter/minesweeper/SimulationConsole.java" />
-        <option value="$PROJECT_DIR$/Minesweeper Local/src/org/inspirecenter/minesweeper/Main.java" />
         <option value="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/API/MasterService.java" />
-        <option value="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/Solver/MinesweeperSolver.java" />
         <option value="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/API/LocalMasterService.java" />
-        <option value="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/Game.java" />
         <option value="$PROJECT_DIR$/Minesweeper Simulation/src/org/inspirecenter/minesweeper/LocalSimulation.java" />
         <option value="$PROJECT_DIR$/Minesweeper Simulation/src/org/inspirecenter/minesweeper/Simulation.java" />
         <option value="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/Position2D.java" />
         <option value="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/API/Backend.java" />
         <option value="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/API/LocalUserService.java" />
+        <option value="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/Game.java" />
+        <option value="$PROJECT_DIR$/Minesweeper Local/src/org/inspirecenter/minesweeper/UI/SimulationForm.java" />
+        <option value="$PROJECT_DIR$/Minesweeper Local/src/org/inspirecenter/minesweeper/Main.java" />
+        <option value="$PROJECT_DIR$/Minesweeper Local/src/org/inspirecenter/minesweeper/OldMain.java" />
+        <option value="$PROJECT_DIR$/Minesweeper Local/src/org/inspirecenter/minesweeper/NewMain.java" />
+        <option value="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/Solver/MinesweeperSolver.java" />
         <option value="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/Solver/RandomMinesweeperSolver.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="425" />
+    <option name="y" value="-15" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -231,7 +179,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -263,7 +210,7 @@
               <item name="Minesweeper API" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="minesweeper" type="462c0819:PsiDirectoryNode" />
-              <item name="API" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="minesweeper" type="b2602c69:ProjectViewProjectNode" />
@@ -272,24 +219,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="minesweeper" type="462c0819:PsiDirectoryNode" />
               <item name="Model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minesweeper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minesweeper" type="462c0819:PsiDirectoryNode" />
-              <item name="Minesweeper Local" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minesweeper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minesweeper" type="462c0819:PsiDirectoryNode" />
-              <item name="Minesweeper Local" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minesweeper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minesweeper" type="462c0819:PsiDirectoryNode" />
-              <item name="Minesweeper Local" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="minesweeper" type="462c0819:PsiDirectoryNode" />
+              <item name="Solver" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="minesweeper" type="b2602c69:ProjectViewProjectNode" />
@@ -308,35 +238,12 @@
               <item name="Minesweeper Simulation" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="minesweeper" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minesweeper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minesweeper" type="462c0819:PsiDirectoryNode" />
-              <item name="Minesweeper Simulation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="minesweeper" type="462c0819:PsiDirectoryNode" />
-              <item name="IO" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minesweeper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minesweeper" type="462c0819:PsiDirectoryNode" />
-              <item name="Minesweeper Simulation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="minesweeper" type="462c0819:PsiDirectoryNode" />
-              <item name="Log" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minesweeper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minesweeper" type="462c0819:PsiDirectoryNode" />
-              <item name="Minesweeper Simulation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="minesweeper" type="462c0819:PsiDirectoryNode" />
-              <item name="Measurements" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -373,8 +280,8 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.SimulationConsole">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.inspirecenter.minesweeper.Main" />
+    <configuration name="OldMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.inspirecenter.minesweeper.OldMain" />
       <module name="Minesweeper Local" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
@@ -413,12 +320,12 @@
     </configuration>
     <list>
       <item itemvalue="Application.SimulationConsole" />
-      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.OldMain" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.SimulationConsole" />
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.OldMain" />
       </list>
     </recent_temporary>
   </component>
@@ -447,17 +354,19 @@
       <workItem from="1555070321387" duration="600000" />
       <workItem from="1555096193175" duration="3323000" />
       <workItem from="1555140577607" duration="2170000" />
+      <workItem from="1555145414996" duration="12000" />
+      <workItem from="1555352850832" duration="4172000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85037000" />
+    <option name="totallyTimeSpent" value="89221000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20415778" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20842217" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -466,7 +375,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.32936078" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -503,37 +412,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/Direction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="e#182#183#0" expanded="true" />
-            <element signature="e#213#214#0" expanded="true" />
-            <element signature="e#268#269#0" expanded="true" />
-            <element signature="e#295#296#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/inspirecenter/minesweeper/api/Model/MineState.java" />
-    <entry file="file://$PROJECT_DIR$/Minesweeper Local/src/org/inspirecenter/minesweeper/Util/StatePrinter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/GameSpecification.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/inspirecenter/minesweeper/api/API/MoveCallReturnBundle.java" />
     <entry file="file://$PROJECT_DIR$/Minesweeper Local/src/org/inspirecenter/minesweeper/UI/MinesweeperButton.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -592,9 +470,6 @@
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Minesweeper Local/src/org/inspirecenter/minesweeper/UI/GameForm.form">
-      <provider selected="true" editor-type-id="ui-designer" />
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/lang/Runtime.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -663,16 +538,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/BoardState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-          <folding>
-            <element signature="method#BoardState#0;class#BoardState#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/FullBoardState.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-7">
@@ -705,16 +570,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Minesweeper Local/src/org/inspirecenter/minesweeper/UI/GameForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="42" lean-forward="true" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -852,16 +707,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Minesweeper Local/src/org/inspirecenter/minesweeper/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="41" column="44" selection-start-line="41" selection-start-column="44" selection-end-line="41" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/Position2D.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -885,6 +730,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/API/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/API/LocalMasterService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -905,6 +757,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Minesweeper Simulation/src/org/inspirecenter/minesweeper/Simulation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1717">
+          <caret line="136" column="103" selection-start-line="136" selection-start-column="103" selection-end-line="136" selection-end-column="131" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Minesweeper Simulation/src/org/inspirecenter/minesweeper/LocalSimulation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
@@ -917,10 +779,81 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/API/LocalUserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="466">
+          <caret line="64" column="17" selection-start-line="64" selection-start-column="17" selection-end-line="64" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Minesweeper Local/src/org/inspirecenter/minesweeper/UI/GameForm.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Minesweeper Local/src/org/inspirecenter/minesweeper/UI/SimulationForm.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Minesweeper Local/src/org/inspirecenter/minesweeper/UI/SimulationForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#initializeButtons#0;class#SimulationForm#0" />
+            <element signature="method#updateButtons#0;class#SimulationForm#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Minesweeper Local/src/org/inspirecenter/minesweeper/NewMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="30" column="12" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Simulation 2019-04-15 22.21.22.498.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Minesweeper Local/src/org/inspirecenter/minesweeper/UI/GameForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="32" column="38" lean-forward="true" selection-start-line="32" selection-start-column="38" selection-end-line="32" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Minesweeper Local/src/org/inspirecenter/minesweeper/OldMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="30" column="45" selection-start-line="30" selection-end-line="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/BoardState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+          <folding>
+            <element signature="method#BoardState#0;class#BoardState#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1156">
-          <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+        <state relative-caret-position="-231">
+          <caret line="123" column="9" lean-forward="true" selection-start-line="123" selection-start-column="9" selection-end-line="123" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#initializeMatrix#0;class#Game#0" />
@@ -931,45 +864,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/Solver/MinesweeperSolver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="36" lean-forward="true" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
+        <state relative-caret-position="177">
+          <caret line="11" column="36" lean-forward="true" selection-start-line="11" selection-start-column="36" selection-end-line="12" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/API/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/API/LocalUserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="122" column="5" selection-start-line="122" selection-start-column="5" selection-end-line="122" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Minesweeper Simulation/src/org/inspirecenter/minesweeper/Simulation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="136" column="103" selection-start-line="136" selection-start-column="103" selection-end-line="136" selection-end-column="131" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#862#863#0" expanded="true" />
+            <element signature="e#889#890#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/Solver/RandomMinesweeperSolver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
+        <state relative-caret-position="381">
+          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -13,7 +13,7 @@ import java.util.Scanner;
 import static org.inspirecenter.minesweeper.API.Backend.MASTER_SERVICE;
 import static org.inspirecenter.minesweeper.API.Backend.USER_SERVICE;
 
-public class Main {
+public class OldMain {
 
     public static final Scanner SCANNER;
     public static String sessionID;
@@ -30,8 +30,6 @@ public class Main {
 
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
-            Player player1 = new Player("Alpha", new RandomMinesweeperSolver());
-
             System.out.println("~~~~~ CREATE GAMES ~~~~~");
             System.out.println(MASTER_SERVICE.createGame(1, 10, 10, Difficulty.EASY) + " created.");
             System.out.println(MASTER_SERVICE.createGame(2, 5, 5, Difficulty.MEDIUM) + " created.");
@@ -46,8 +44,7 @@ public class Main {
             System.out.print("Enter game to join: ");
             String input = SCANNER.nextLine();
 
-//            String sessionIDx = MASTER_SERVICE.join(input, player1.getName(), new PartialStatePreference(5, 5));
-            JoinBundle bundle = MASTER_SERVICE.join(input, player1.getName(), new PartialStatePreference(5, 5));
+            JoinBundle bundle = MASTER_SERVICE.join(input, "player 1", "random", new PartialStatePreference(5, 5));
             sessionID = bundle.getSessionID();
             currentGameWidth = bundle.getWidth();
             currentGameHeight = bundle.getHeight();
@@ -56,7 +53,7 @@ public class Main {
                 System.out.println("Error joining game '" + input + "'.");
             }
             else {
-                System.out.println("Player '" + player1.getName() + "' joined game '" + input + "'.");
+                System.out.println("Player joined game '" + input + "'.");
 
                 PartialBoardState state = USER_SERVICE.getPartialState(sessionID).getPartialGameState();
 

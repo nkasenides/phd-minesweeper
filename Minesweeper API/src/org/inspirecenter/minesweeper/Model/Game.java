@@ -136,6 +136,7 @@ public class Game {
 
                     if (fullBoardState.getCells()[x][y].isMined() && fullBoardState.getCells()[x][y].getRevealState() == RevealState.REVEALED_MINE) {
                         gameState = GameState.ENDED_LOST;
+                        return;
                     }
 
                     if (fullBoardState.getCells()[x][y].getRevealState() == RevealState.COVERED) {
@@ -147,6 +148,7 @@ public class Game {
 
             if (covered == 0 && flaggedMines == totalMines ) {
                 gameState = GameState.ENDED_WON;
+                return;
             }
 
             gameState = GameState.STARTED;

@@ -1,6 +1,6 @@
 package org.inspirecenter.minesweeper.UI;
 
-import org.inspirecenter.minesweeper.Main;
+import org.inspirecenter.minesweeper.OldMain;
 import org.inspirecenter.minesweeper.Model.*;
 import org.inspirecenter.minesweeper.API.RevealBundle;
 
@@ -32,7 +32,7 @@ public class GameForm extends JFrame {
 //        setUndecorated(true);
         setSize(WINDOW_SIZE, WINDOW_SIZE);
 
-        localGameState = USER_SERVICE.getPartialState(Main.sessionID).getPartialGameState();
+        localGameState = USER_SERVICE.getPartialState(OldMain.sessionID).getPartialGameState();
 
         initializeButtons();
 
@@ -49,7 +49,7 @@ public class GameForm extends JFrame {
                             }
                             break;
                         case KeyEvent.VK_DOWN:
-                            if (currentX + partialStatePreference.getWidth() < Main.currentGameWidth) {
+                            if (currentX + partialStatePreference.getWidth() < OldMain.currentGameWidth) {
                                 direction = Direction.DOWN;
                                 currentX++;
                             }
@@ -61,15 +61,15 @@ public class GameForm extends JFrame {
                             }
                             break;
                         case KeyEvent.VK_RIGHT:
-                            if (currentY + partialStatePreference.getHeight() < Main.currentGameHeight) {
+                            if (currentY + partialStatePreference.getHeight() < OldMain.currentGameHeight) {
                                 direction = Direction.RIGHT;
                                 currentY++;
                             }
                             break;
                     }
-                    System.out.println("cX: " + currentX + ", cY: " + currentY + ", w: " + Main.currentGameWidth + ", h: " + Main.currentGameHeight);
+                    System.out.println("cX: " + currentX + ", cY: " + currentY + ", w: " + OldMain.currentGameWidth + ", h: " + OldMain.currentGameHeight);
                     if (direction != null) {
-                        RevealBundle bundle = USER_SERVICE.move(Main.sessionID, direction);
+                        RevealBundle bundle = USER_SERVICE.move(OldMain.sessionID, direction);
                         if (bundle != null) {
                             GameForm.this.localGameState = bundle.getPartialGameState();
                             updateButtons(bundle.getGameState());
@@ -108,11 +108,11 @@ public class GameForm extends JFrame {
                         //Left mouse button
                         if (e.getButton() == MouseEvent.BUTTON1) {
                             if (localGameState.getCells()[innerX][innerY].getRevealState() == RevealState.COVERED) {
-                                RevealBundle bundle = USER_SERVICE.reveal(Main.sessionID, innerX, innerY);
+                                RevealBundle bundle = USER_SERVICE.reveal(OldMain.sessionID, innerX, innerY);
                                 if (bundle != null) {
                                     localGameState = bundle.getPartialGameState();
                                     if (bundle.getGameState() == GameState.ENDED_LOST) {
-                                        RevealBundle bundleLost = USER_SERVICE.revealAll(Main.sessionID);
+                                        RevealBundle bundleLost = USER_SERVICE.revealAll(OldMain.sessionID);
                                         if (bundleLost != null) {
                                             localGameState = bundle.getPartialGameState();
                                             updateButtons(bundleLost.getGameState());
@@ -127,7 +127,7 @@ public class GameForm extends JFrame {
 
                         //Right mouse button
                         else if (e.getButton() == MouseEvent.BUTTON3){
-                            RevealBundle bundle = USER_SERVICE.flag(Main.sessionID, innerX, innerY);
+                            RevealBundle bundle = USER_SERVICE.flag(OldMain.sessionID, innerX, innerY);
                             if (bundle != null) {
                                 localGameState = bundle.getPartialGameState();
                                 updateButtons(bundle.getGameState());
