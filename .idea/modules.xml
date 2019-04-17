@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/API/API.iml" filepath="$PROJECT_DIR$/API/API.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Local/Local.iml" filepath="$PROJECT_DIR$/Local/Local.iml" />
       <module fileurl="file://$PROJECT_DIR$/Minesweeper.iml" filepath="$PROJECT_DIR$/Minesweeper.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Minesweeper API/Minesweeper API.iml" filepath="$PROJECT_DIR$/Minesweeper API/Minesweeper API.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Minesweeper Local/Minesweeper Local.iml" filepath="$PROJECT_DIR$/Minesweeper Local/Minesweeper Local.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Minesweeper Simulation/Minesweeper Simulation.iml" filepath="$PROJECT_DIR$/Minesweeper Simulation/Minesweeper Simulation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Response/Response.iml" filepath="$PROJECT_DIR$/Response/Response.iml" />
     </modules>
   </component>
 </project>

@@ -1,0 +1,12 @@
+EVENT LOG
+
+1	[Info @ 2019-04-16 11:06:26:715]	Game initialized.
+2	[Info @ 2019-04-16 11:06:26:715]	Game started.
+3	[Info @ 2019-04-16 11:06:26:762]	'Player 1' performed move 'Reveal' on cell (1,3).
+4	[Info @ 2019-04-16 11:06:26:762]	Game finished.
+
+
+MEASUREMENTS
+
+2019-04-16 11:06:26:762 - 47ms
+2019-04-16 11:06:26:762 - 0ms
