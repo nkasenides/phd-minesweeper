@@ -1,6 +1,6 @@
 package model;
 
-import org.inspirecenter.minesweeper.Model.Exception.InvalidCellReferenceException;
+import model.exception.InvalidCellReferenceException;
 
 public class FullBoardState extends BoardState {
 

@@ -2,104 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a608b0a-6e3a-43c4-8371-7eadd75f3133" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/com_google_code_gson_gson_2_8_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/API.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/api/MasterService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/api/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/model/BoardState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/model/CellState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/model/Difficulty.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/model/Direction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/model/FullBoardState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/model/Game.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/model/GameSpecification.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/model/GameState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/model/PartialBoardState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/model/PartialStatePreference.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/model/RevealState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/model/Session.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/model/UserState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/model/exception/InvalidCellReferenceException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/model/exception/InvalidGameSpecificationException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Local/Local.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Local/src/datastore/Datastore.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Local/src/services/LocalMasterService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Local/src/services/LocalUserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Local/src/ui/component/MinesweeperButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Local/src/ui/form/GameForm.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Local/src/ui/form/GameForm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Response/Response.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Response/src/response/ErrorResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Response/src/response/JsonConvert.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Response/src/response/Response.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Response/src/response/ResponseDateTimeFormat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Response/src/response/ResponseStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Response/src/response/SuccessResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Response/src/response/WarningResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Local/src/ui/LocalMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper API/Minesweeper API.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/API/Backend.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/API/JoinBundle.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/API/LocalMasterService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/API/LocalUserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/API/MasterService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/API/RevealBundle.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/API/UserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/BoardState.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/CellState.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/Difficulty.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/Direction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/Exception/InvalidCellReferenceException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/Exception/InvalidGameSpecificationException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/FullBoardState.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/Game.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/GameSpecification.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/GameState.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/PartialBoardState.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/PartialStatePreference.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/Player.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/Position2D.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/RevealState.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/Session.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/Solver/MinesweeperSolver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/Solver/Move.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/Solver/MoveType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/Solver/RandomMinesweeperSolver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper API/src/org/inspirecenter/minesweeper/Model/UserState.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper Local/Minesweeper Local.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper Local/src/org/inspirecenter/minesweeper/OldMain.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper Local/src/org/inspirecenter/minesweeper/UI/GameForm.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper Local/src/org/inspirecenter/minesweeper/UI/GameForm.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper Local/src/org/inspirecenter/minesweeper/UI/MinesweeperButton.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper Local/src/org/inspirecenter/minesweeper/Util/StatePrinter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper Simulation/Minesweeper Simulation.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper Simulation/src/org/inspirecenter/minesweeper/IO/FileWriter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper Simulation/src/org/inspirecenter/minesweeper/LocalSimulation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper Simulation/src/org/inspirecenter/minesweeper/Log/SimulationLog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper Simulation/src/org/inspirecenter/minesweeper/Log/SimulationLogEntry.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper Simulation/src/org/inspirecenter/minesweeper/Log/SimulationLogEntryType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper Simulation/src/org/inspirecenter/minesweeper/Measurements/LatencyMeasurement.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper Simulation/src/org/inspirecenter/minesweeper/Measurements/MemoryMeasurement.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper Simulation/src/org/inspirecenter/minesweeper/Measurements/SimulationMeasurementBundle.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper Simulation/src/org/inspirecenter/minesweeper/Simulation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper Simulation/src/org/inspirecenter/minesweeper/SimulationConsole.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper Simulation/src/org/inspirecenter/minesweeper/SimulationManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper Simulation/src/org/inspirecenter/minesweeper/SimulationStats.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minesweeper.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Minesweeper.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/eight.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/five.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/flag.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/four.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/mine.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/one.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/seven.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/six.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/three.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/two.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/api/MasterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/api/MasterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/model/BoardState.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/model/BoardState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/model/FullBoardState.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/model/FullBoardState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/model/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Local/src/services/LocalMasterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Local/src/services/LocalMasterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Local/src/services/LocalUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Local/src/services/LocalUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Local/src/ui/form/GameForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/Local/src/ui/form/LocalGameForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Response/src/response/ResponseStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/Response/src/response/ResponseStatus.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -109,66 +22,63 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DefaultGradleProjectSettings">
-    <option name="testRunner" value="GRADLE" />
-    <option name="delegatedBuild" value="true" />
+    <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Local/src/services/LocalMasterService.java">
+        <entry file="file://$PROJECT_DIR$/Local/src/datastore/Datastore.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" selection-start-line="26" selection-end-line="26" />
+            <state relative-caret-position="725">
+              <caret line="55" column="25" selection-start-line="55" selection-start-column="25" selection-end-line="55" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#191#192#0" expanded="true" />
-                <element signature="e#218#219#0" expanded="true" />
-                <element signature="e#317#318#0" expanded="true" />
-                <element signature="e#344#345#0" expanded="true" />
-                <element signature="e#418#419#0" expanded="true" />
-                <element signature="e#445#446#0" expanded="true" />
-                <element signature="e#517#518#0" expanded="true" />
-                <element signature="e#544#545#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Local/src/datastore/Datastore.java">
+        <entry file="file://$PROJECT_DIR$/Local/src/services/LocalMasterService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="634">
-              <caret line="60" column="38" selection-start-line="60" selection-start-column="38" selection-end-line="60" selection-end-column="38" />
+            <state relative-caret-position="187">
+              <caret line="54" column="30" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="30" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="method#createGame#0;class#LocalMasterService#0" />
+                <element signature="e#431#468#1" />
+                <element signature="e#657#851#1" />
+                <element signature="e#870#1050#1" />
+                <element signature="e#1361#1543#1" />
+                <element signature="method#listGames#0;class#LocalMasterService#0" />
+                <element signature="method#join#0;class#LocalMasterService#0" />
+                <element signature="e#2532#2561#1" />
+                <element signature="e#2974#3167#1" />
+                <element signature="e#3291#3752#1" />
+                <element signature="e#3395#3729#1" />
+                <element signature="e#3466#3712#1" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Local/src/ui/form/LocalGameForm.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2618">
+              <caret line="188" column="52" selection-start-line="188" selection-start-column="52" selection-end-line="188" selection-end-column="52" />
+              <folding>
+                <element signature="e#9117#9118#0" expanded="true" />
+                <element signature="e#9162#9163#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Local/src/services/LocalUserService.java">
+        <entry file="file://$PROJECT_DIR$/Local/src/ui/LocalMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="901">
-              <caret line="53" column="57" lean-forward="true" selection-start-line="53" selection-start-column="57" selection-end-line="53" selection-end-column="57" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2500#2501#0" expanded="true" />
-                <element signature="e#2527#2528#0" expanded="true" />
-                <element signature="e#2601#2602#0" expanded="true" />
-                <element signature="e#2628#2629#0" expanded="true" />
-                <element signature="e#2700#2701#0" expanded="true" />
-                <element signature="e#2727#2728#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Response/src/response/Response.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="884">
-              <caret line="72" column="47" selection-start-line="72" selection-start-column="47" selection-end-line="72" selection-end-column="47" />
+            <state relative-caret-position="500">
+              <caret line="37" column="98" selection-start-line="37" selection-start-column="98" selection-end-line="37" selection-end-column="98" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -177,13 +87,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Local/src/ui/form/GameForm.java">
+        <entry file="file://$PROJECT_DIR$/Response/src/response/JsonConvert.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="34" column="37" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="272">
+              <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -194,6 +101,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Kotlin File" />
       </list>
     </option>
   </component>
@@ -217,8 +125,6 @@
         <option value="$PROJECT_DIR$/src/ui/form/GameForm.java" />
         <option value="$PROJECT_DIR$/src/org/inspirecenter/minesweeper/ui/form/GameForm.java" />
         <option value="$PROJECT_DIR$/API/src/minesweeper/ui/form/GameForm.java" />
-        <option value="$PROJECT_DIR$/Local/src/ui/form/GameForm.java" />
-        <option value="$PROJECT_DIR$/Local/src/services/LocalMasterService.java" />
         <option value="$PROJECT_DIR$/Local/src/datastore/GameEntity.java" />
         <option value="$PROJECT_DIR$/Local/src/datastore/Entity.java" />
         <option value="$PROJECT_DIR$/API/src/model/exception/InvalidCellReferenceException.java" />
@@ -227,8 +133,18 @@
         <option value="$PROJECT_DIR$/Local/src/datastore/Datastore.java" />
         <option value="$PROJECT_DIR$/Response/src/response/Response.java" />
         <option value="$PROJECT_DIR$/API/src/model/PartialBoardState.java" />
-        <option value="$PROJECT_DIR$/Response/src/response/JsonConvert.java" />
+        <option value="$PROJECT_DIR$/API/src/api/MasterService.java" />
+        <option value="$PROJECT_DIR$/Local/src/ui/form/GameForm.java" />
+        <option value="$PROJECT_DIR$/Local/src/services/LocalMasterService.java" />
         <option value="$PROJECT_DIR$/Local/src/services/LocalUserService.java" />
+        <option value="$PROJECT_DIR$/Local/src/LocalMain.java" />
+        <option value="$PROJECT_DIR$/Local/src/ui/form/LocalGameForm.java" />
+        <option value="$PROJECT_DIR$/API/src/model/BoardState.java" />
+        <option value="$PROJECT_DIR$/API/src/model/FullBoardState.java" />
+        <option value="$PROJECT_DIR$/API/src/model/Game.java" />
+        <option value="$PROJECT_DIR$/Response/src/response/JsonConvert.java" />
+        <option value="$PROJECT_DIR$/Response/src/response/ResponseStatus.java" />
+        <option value="$PROJECT_DIR$/Local/src/ui/LocalMain.java" />
       </list>
     </option>
   </component>
@@ -243,8 +159,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -357,7 +273,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/API/src/model/exception" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -368,17 +284,17 @@
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Nicos\Desktop\minesweeper\API\src" />
-      <recent name="C:\Users\Nicos\Desktop\minesweeper\API" />
-      <recent name="C:\Users\Nicos\Desktop\minesweeper\src\api\response" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Nicos\Desktop\minesweeper\API\src\model\exception" />
       <recent name="C:\Users\Nicos\Desktop\minesweeper\API\src\model" />
       <recent name="C:\Users\Nicos\Desktop\minesweeper\src\ui\form" />
       <recent name="C:\Users\Nicos\Desktop\minesweeper\src\model" />
       <recent name="C:\Users\Nicos\Desktop\minesweeper\src\api" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Nicos\Desktop\minesweeper\API\src" />
+      <recent name="C:\Users\Nicos\Desktop\minesweeper\API" />
+      <recent name="C:\Users\Nicos\Desktop\minesweeper\src\api\response" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -393,6 +309,26 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="LocalMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ui.LocalMain" />
+      <module name="Local" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.LocalMain" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -404,44 +340,47 @@
       <option name="presentableId" value="Default" />
       <updated>1555488013237</updated>
       <workItem from="1555488014581" duration="7227000" />
+      <workItem from="1555500372631" duration="9421000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7227000" />
+    <option name="totallyTimeSpent" value="16648000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Image Layers" />
-      <window_info id="Designer" />
-      <window_info id="UI Designer" />
-      <window_info id="Capture Tool" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25266525" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" weight="0.32936078" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Application Servers" />
+      <window_info anchor="bottom" id="Messages" weight="0.32936078" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Maven" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.32936078" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Maven" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Database" order="8" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -462,16 +401,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/API/src/api/MasterService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="24" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Local/src/ui/component/MinesweeperButton.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1054">
@@ -485,40 +414,9 @@
     <entry file="file://$PROJECT_DIR$/Local/src/ui/form/GameForm.form">
       <provider selected="true" editor-type-id="ui-designer" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Local/src/api.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="16" selection-start-column="16" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/src/api/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="40" column="43" selection-start-line="40" selection-start-column="43" selection-end-line="40" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Local/src/datastore/Entity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Local/src/datastore/GameEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="77" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Local/src/api.java" />
+    <entry file="file://$PROJECT_DIR$/Local/src/datastore/Entity.java" />
+    <entry file="file://$PROJECT_DIR$/Local/src/datastore/GameEntity.java" />
     <entry file="file://$PROJECT_DIR$/API/src/model/exception/InvalidCellReferenceException.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -536,24 +434,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Local/src/services/LocalMasterService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#191#192#0" expanded="true" />
-            <element signature="e#218#219#0" expanded="true" />
-            <element signature="e#317#318#0" expanded="true" />
-            <element signature="e#344#345#0" expanded="true" />
-            <element signature="e#418#419#0" expanded="true" />
-            <element signature="e#445#446#0" expanded="true" />
-            <element signature="e#517#518#0" expanded="true" />
-            <element signature="e#544#545#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Response/src/response/ErrorResponse.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -561,40 +441,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Local/src/ui/form/GameForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="37" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.8.5/gson-2.8.5.jar!/com/google/gson/Gson.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
           <caret line="368" column="33" selection-start-line="368" selection-start-column="33" selection-end-line="368" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Response/src/response/Response.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="72" column="47" selection-start-line="72" selection-start-column="47" selection-end-line="72" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Local/src/datastore/Datastore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="634">
-          <caret line="60" column="38" selection-start-line="60" selection-start-column="38" selection-end-line="60" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -608,6 +458,119 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/API/src/api/MasterService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="48" selection-start-line="30" selection-start-column="48" selection-end-line="30" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/src/api/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="40" column="43" selection-start-line="40" selection-start-column="43" selection-end-line="40" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Local/src/datastore/Datastore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="725">
+          <caret line="55" column="25" selection-start-line="55" selection-start-column="25" selection-end-line="55" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Local/src/services/LocalUserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="279" column="90" selection-start-line="279" selection-start-column="90" selection-end-line="279" selection-end-column="90" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getPartialState#0;class#LocalUserService#0" />
+            <element signature="method#move#0;class#LocalUserService#0" />
+            <element signature="method#reveal#0;class#LocalUserService#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Response/src/response/Response.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Local/src/services/LocalMasterService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="54" column="30" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="30" />
+          <folding>
+            <element signature="method#createGame#0;class#LocalMasterService#0" />
+            <element signature="e#431#468#1" />
+            <element signature="e#657#851#1" />
+            <element signature="e#870#1050#1" />
+            <element signature="e#1361#1543#1" />
+            <element signature="method#listGames#0;class#LocalMasterService#0" />
+            <element signature="method#join#0;class#LocalMasterService#0" />
+            <element signature="e#2532#2561#1" />
+            <element signature="e#2974#3167#1" />
+            <element signature="e#3291#3752#1" />
+            <element signature="e#3395#3729#1" />
+            <element signature="e#3466#3712#1" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Local/src/ui/form/LocalGameForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2618">
+          <caret line="188" column="52" selection-start-line="188" selection-start-column="52" selection-end-line="188" selection-end-column="52" />
+          <folding>
+            <element signature="e#9117#9118#0" expanded="true" />
+            <element signature="e#9162#9163#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/src/model/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="21" column="9" lean-forward="true" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/src/model/FullBoardState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="56" selection-start-line="9" selection-start-column="56" selection-end-line="9" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/src/model/BoardState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="52" selection-start-line="2" selection-start-column="52" selection-end-line="2" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Response/src/response/JsonUtil.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Response/src/response/JsonConvert.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -615,18 +578,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Local/src/services/LocalUserService.java">
+    <entry file="file://$PROJECT_DIR$/Response/src/response/ResponseStatus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="53" column="57" lean-forward="true" selection-start-line="53" selection-start-column="57" selection-end-line="53" selection-end-column="57" />
+        <state relative-caret-position="340">
+          <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Local/src/ui/LocalMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="37" column="98" selection-start-line="37" selection-start-column="98" selection-end-line="37" selection-end-column="98" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2500#2501#0" expanded="true" />
-            <element signature="e#2527#2528#0" expanded="true" />
-            <element signature="e#2601#2602#0" expanded="true" />
-            <element signature="e#2628#2629#0" expanded="true" />
-            <element signature="e#2700#2701#0" expanded="true" />
-            <element signature="e#2727#2728#0" expanded="true" />
           </folding>
         </state>
       </provider>

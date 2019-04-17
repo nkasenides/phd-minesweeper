@@ -28,6 +28,6 @@ public interface MasterService {
      * @param partialStatePreference The partial state preference of the player.
      * @return Returns a JSON formatted string containing the game session's UUID.
      */
-    String join(String token, String playerName, String solverName, PartialStatePreference partialStatePreference);
+    String join(String token, String playerName, PartialStatePreference partialStatePreference);
 
 }

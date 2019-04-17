@@ -18,4 +18,11 @@ public enum ResponseStatus {
         return name;
     }
 
+    public static ResponseStatus fromString(String text) {
+        if (text.equals(OK.name)) return OK;
+        if (text.equals(WARNING.name)) return WARNING;
+        if (text.equals(ERROR.name)) return ERROR;
+        return null;
+    }
+
 }
