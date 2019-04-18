@@ -60,8 +60,12 @@ public class Game {
         this.gameState = gameState;
     }
 
-    public void start() {
-        this.gameState = GameState.STARTED;
+    public boolean start() {
+        if (gameState != GameState.STARTED) {
+            this.gameState = GameState.STARTED;
+            return true;
+        }
+        return false;
     }
 
     private int countFlaggedMines() {

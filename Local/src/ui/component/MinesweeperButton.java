@@ -59,7 +59,7 @@ public class MinesweeperButton extends JButton {
         setContentAreaFilled(false);
         setOpaque(true);
         setBorder(MinesweeperButton.BUTTON_BORDER);
-        setBackground(Color.LIGHT_GRAY);
+        setBackground(Color.BLACK);
     }
 
 }

@@ -1,9 +1,8 @@
 package ui.form;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSyntaxException;
+import com.google.gson.*;
 import model.*;
+import response.Response;
 import response.ResponseStatus;
 import services.LocalMasterService;
 import services.LocalUserService;
@@ -44,10 +43,12 @@ public class LocalGameForm extends JFrame {
 //        setExtendedState(JFrame.MAXIMIZED_BOTH);
 //        setUndecorated(true);
         setSize(WINDOW_SIZE, WINDOW_SIZE);
+        initializeButtons();
 
         //Initialize state:
-        retrieveGameState();
-        initializeButtons();
+        if (retrieveGameState()) {
+            updateButtons();
+        }
 
         //Set key listener:
         KeyEventDispatcher keyEventDispatcher = new KeyEventDispatcher() {
@@ -84,7 +85,7 @@ public class LocalGameForm extends JFrame {
                     System.out.println("cX: " + currentX + ", cY: " + currentY);
                     if (direction != null) {
                         move(direction, 1);
-                        updateButtons(localGameState);
+                        updateButtons();
                     }
                 }
                 return false;
@@ -93,44 +94,39 @@ public class LocalGameForm extends JFrame {
         KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(keyEventDispatcher);
     }
 
-    /**
-     * Calls the userService/getPartialState endpoint.
-     */
-    private void retrieveGameState() {
+    //Calls the userService/getPartialState endpoint.
+    private boolean retrieveGameState() {
         String json = LocalMain.userService.getPartialState(sessionID);
-        System.out.println(json);
+        if (LocalMain.DEBUG) System.out.println(json);
         Gson gson = new Gson();
 
+        JsonElement jsonElement = new JsonParser().parse(json);
+        JsonObject jsonObject = jsonElement.getAsJsonObject();
+        ResponseStatus status = ResponseStatus.fromString(jsonObject.get(Response.STATUS_TAG).getAsString());
 
-
-//        try {
-//
-//            localGameBoardState = gson.fromJson(json, PartialBoardState.class);
-//            updateButtons(); //TODO
-//        } catch (JsonSyntaxException e) {
-//            e.printStackTrace();
-//            JOptionPane.showMessageDialog(this, "Could not retrieve partial state.");
-//            dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
-//        }
-    }
-
-    /**
-     * Calls the userService/move endpoint.
-     */
-    private void move(Direction direction, int units) {
-        if (units > 0) {
-            String json = LocalMain.userService.move(sessionID, direction, units);
-            Gson gson = new Gson();
-            //TODO Deserialize JSON.
-            updateButtons(localGameState);
+        if (status == ResponseStatus.OK) {
+            JsonObject jsonObjectData = jsonObject.getAsJsonObject(Response.DATA_TAG);
+            localGameState = GameState.valueOf(jsonObjectData.get("gameState").getAsString());
+            localGameBoardState = gson.fromJson(jsonObjectData.get("partialBoardState"), PartialBoardState.class);
+            return true;
+        }
+        else {
+            JOptionPane.showMessageDialog(null, jsonObject.get(Response.MESSAGE_TAG).getAsString(), jsonObject.get(Response.TITLE_TAG).getAsString(), JOptionPane.WARNING_MESSAGE);
+            return false;
         }
     }
 
-    /**
-     * Calls the userService/reveal endpoint.
-     * @param x x-coordinate of cell to reveal.
-     * @param y y-coordinate of cell to reveal.
-     */
+    //Calls the userService/move endpoint.
+    private boolean move(Direction direction, int units) {
+        if (units > 0) {
+            String json = LocalMain.userService.move(sessionID, direction, units);
+            Gson gson = new Gson();
+            //TODO
+        }
+        return true;
+    }
+
+    //Calls the userService/reveal endpoint.
     private void reveal(int x, int y) {
 
     }
@@ -165,7 +161,7 @@ public class LocalGameForm extends JFrame {
 
                                 //TODO
 
-                                updateButtons(localGameState);
+                                updateButtons();
 
 //                                RevealBundle bundle = USER_SERVICE.reveal(OldMain.sessionID, innerX, innerY);
 //                                if (bundle != null) {
@@ -190,7 +186,7 @@ public class LocalGameForm extends JFrame {
 
                             // TODO
 
-                            updateButtons(localGameState);
+                            updateButtons();
 
 //                            RevealBundle bundle = USER_SERVICE.flag(OldMain.sessionID, innerX, innerY);
 //                            if (bundle != null) {
@@ -220,36 +216,36 @@ public class LocalGameForm extends JFrame {
         setVisible(true);
     }
 
-    private void updateButtons(GameState gameState) {
+    private void updateButtons() {
         for (int x = 0; x < localGameBoardState.getWidth(); x++) {
             for (int y = 0; y < localGameBoardState.getHeight(); y++) {
 
-                if (gameState == GameState.STARTED) {
-                    //Set default background:
-                    buttons[x][y].setBackground(Color.LIGHT_GRAY);
-
-                    //Revealed buttons without any object are shown with grey background:
-                    if (localGameBoardState.getCells()[x][y].getRevealState() == RevealState.REVEALED_0) {
-                        buttons[x][y].setBackground(Color.GRAY);
-                    }
-                }
-                else if (gameState == GameState.ENDED_WON) {
-                    buttons[x][y].setBackground(Color.GREEN);
-                }
-                else if (gameState == GameState.ENDED_LOST) {
-                    buttons[x][y].setBackground(Color.RED);
+                //Set background:
+                switch (localGameState) {
+                    case NOT_STARTED:
+                        break;
+                    case STARTED:
+                        buttons[x][y].setBackground(Color.LIGHT_GRAY);
+                        if (localGameBoardState.getCells()[x][y].getRevealState() == RevealState.REVEALED_0) {
+                            buttons[x][y].setBackground(Color.GRAY);
+                        }
+                        break;
+                    case ENDED_WON:
+                        buttons[x][y].setBackground(Color.GREEN);
+                        break;
+                    case ENDED_LOST:
+                        buttons[x][y].setBackground(Color.RED);
+                        break;
                 }
 
                 //Set the icon:
                 switch (localGameBoardState.getCells()[x][y].getRevealState()) {
                     case COVERED:
+                    case REVEALED_0:
                         buttons[x][y].setIcon(null);
                         break;
                     case FLAGGED:
                         buttons[x][y].setIcon(MinesweeperButton.FLAG);
-                        break;
-                    case REVEALED_0:
-                        buttons[x][y].setIcon(null);
                         break;
                     case REVEALED_1:
                         buttons[x][y].setIcon(MinesweeperButton.ONE);
@@ -284,8 +280,5 @@ public class LocalGameForm extends JFrame {
         }
     }
 
-    public PartialStatePreference getPartialStatePreference() {
-        return partialStatePreference;
-    }
 
 }

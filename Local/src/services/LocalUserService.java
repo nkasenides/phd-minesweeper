@@ -139,7 +139,7 @@ public class LocalUserService implements UserService {
                     }
                 }
                 else {
-                    ErrorResponse response = new ErrorResponse("Position not shifted", "Could not shift position by " + unitOfMovement + " cells " + direction.getName() + "wards. The intended position is not valid.");
+                    ErrorResponse response = new ErrorResponse("Position not shifted", "Failed to shift position by " + unitOfMovement + " cells " + direction.getName() + "wards. The intended position is not valid.");
                     return response.toJSON();
                 }
 
@@ -189,7 +189,7 @@ public class LocalUserService implements UserService {
 
                 //Check if the cell is revealed:
                 if (referencedGame.getFullBoardState().getCells()[x][y].getRevealState() != RevealState.COVERED) {
-                    ErrorResponse response = new ErrorResponse("Cell already revealed", "The cell (" + x + "," + y + ") has already been revealed.");
+                    SuccessResponse response = new SuccessResponse("Cell already revealed", "The cell (" + x + "," + y + ") has already been revealed.");
                     Gson gson = new Gson();
                     JsonObject data = new JsonObject();
                     data.add("gameState", gson.toJsonTree(referencedGame.getGameState()));

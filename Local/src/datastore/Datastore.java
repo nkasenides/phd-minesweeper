@@ -9,6 +9,7 @@ public class Datastore {
 
     private static HashMap<String, Game> games;  //  Game token -> Game object
     private static HashMap<String, Session> sessions;  // Session ID -> Session object
+    private static String adminPassword = "1234"; //Administrator's password, gives access to AdminService.
 
     static {
         games = new HashMap<>();
@@ -53,6 +54,10 @@ public class Datastore {
 
     public static boolean removeGame(String gameID) {
         return games.remove(gameID) != null;
+    }
+
+    public static boolean checkPassword(String password) {
+        return (password.equals(adminPassword));
     }
 
 }

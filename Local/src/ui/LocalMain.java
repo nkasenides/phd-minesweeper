@@ -6,8 +6,10 @@ import model.GameSpecification;
 import model.PartialStatePreference;
 import response.Response;
 import response.ResponseStatus;
+import services.LocalAdminService;
 import services.LocalMasterService;
 import services.LocalUserService;
+import ui.form.LocalGameForm;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -17,10 +19,11 @@ public class LocalMain {
     //API:
     public static final LocalMasterService masterService = new LocalMasterService();
     public static final LocalUserService userService = new LocalUserService();
+    public static final LocalAdminService adminService = new LocalAdminService();
     private static final Gson gson = new Gson();
 
     //Settings:
-    private static boolean DEBUG = false;
+    public static final boolean DEBUG = true; //Switch true for debugging
     private static final PartialStatePreference partialStatePreference = new PartialStatePreference(5, 5);
     private static final String playerName = "Player1";
     private static ArrayList<GameSpecification> allGames; //All games (retrieved through the listGames() function).
@@ -30,9 +33,6 @@ public class LocalMain {
     public static String sessionID;
 
     public static void main(String[] args) {
-
-        //Switch on for debugging:
-        DEBUG = true;
 
         //Create a 2 new games:
         String game1Token = createGame(10, 10, 10, Difficulty.EASY);
@@ -53,8 +53,14 @@ public class LocalMain {
         //Join the second game:
         System.out.println("Joining game '" + game2Token + "'...");
         if (join(game2Token, playerName, partialStatePreference)) {
-            //TODO
-            System.out.println("Joined game! --> " + sessionID );
+            System.out.println("Joined game! --> " + sessionID);
+
+            //Start the game:
+            adminService.startGame("1234", game2Token); //TODO CHANGE THIS INTO A LOCAL FUNCTION LIKE THE OTHERS AND RETRIEVE ITS JSON CONTENTS.
+
+            LocalGameForm gameForm = new LocalGameForm(sessionID, currentGame.getWidth(), currentGame.getHeight(), partialStatePreference);
+
+
         }
 
     }
@@ -121,7 +127,12 @@ public class LocalMain {
         if (status == ResponseStatus.OK) {
             JsonObject jsonObjectData = jsonObject.getAsJsonObject(Response.DATA_TAG);
             sessionID = jsonObjectData.get("sessionID").getAsString();
-            return true;
+            for (GameSpecification gs : allGames) {
+                if (gs.getToken().equals(gameToken)) {
+                    currentGame = gs;
+                    return true;
+                }
+            }
         }
         JOptionPane.showMessageDialog(null, jsonObject.get(Response.MESSAGE_TAG).getAsString(), jsonObject.get(Response.TITLE_TAG).getAsString(), JOptionPane.WARNING_MESSAGE);
         return false;
