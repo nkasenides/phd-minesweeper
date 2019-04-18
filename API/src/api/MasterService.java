@@ -10,7 +10,7 @@ public interface MasterService {
      * @param maxNumOfPlayers The maximum number of players allowed in the game.
      * @param width The total width of the board.
      * @param height The total height of the board.
-     * @param difficulty The game's difficulty @see{@link Difficulty}.
+     * @param difficulty The game's difficulty {@link Difficulty}.
      * @return Returns a JSON formatted string containing the created game's token as data.
      */
     String createGame(int maxNumOfPlayers, int width, int height, Difficulty difficulty);

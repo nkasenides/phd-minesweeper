@@ -7,8 +7,13 @@ import java.util.*;
 
 public class Datastore {
 
-    private static HashMap<String, Game> games = new HashMap<>(); //  Game token -> Game object
-    private static HashMap<String, Session> sessions = new HashMap<>();   // Session ID -> Session object
+    private static HashMap<String, Game> games;  //  Game token -> Game object
+    private static HashMap<String, Session> sessions;  // Session ID -> Session object
+
+    static {
+        games = new HashMap<>();
+        sessions = new HashMap<>();
+    }
 
     public static Session getSession(String sessionID) {
         return sessions.get(sessionID);
@@ -19,38 +24,19 @@ public class Datastore {
     }
 
     public static ArrayList<String> getGames() {
-        ArrayList<String> gamesList = new ArrayList<>();
-        Iterator it = games.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry pair = (Map.Entry)it.next();
-            gamesList.add((String) pair.getKey());
-            it.remove();
-        }
-        return gamesList;
+        return new ArrayList<>(games.keySet());
     }
 
     public static ArrayList<String> getSessions() {
-        ArrayList<String> sessionsList = new ArrayList<>();
-        Iterator it = sessions.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry pair = (Map.Entry)it.next();
-            sessionsList.add((String) pair.getKey());
-            it.remove();
-        }
-        return sessionsList;
+        return new ArrayList<>(sessions.keySet());
     }
 
     public static String addGame(int maxPlayers, int width, int height, Difficulty difficulty) {
-        try {
-            GameSpecification gameSpecification = new GameSpecification(maxPlayers, width, height, difficulty);
-            Game game = new Game(gameSpecification);
-            String gameID = UUID.randomUUID().toString();
-            games.put(gameID, game);
-            return gameID;
-        } catch (InvalidGameSpecificationException e) {
-            e.printStackTrace();
-            return null;
-        }
+        String gameID = UUID.randomUUID().toString();
+        GameSpecification gameSpecification = new GameSpecification(gameID, maxPlayers, width, height, difficulty);
+        Game game = new Game(gameSpecification);
+        games.put(gameID, game);
+        return gameID;
     }
 
     public static String addSession(String gameID, String playerName, PartialStatePreference partialStatePreference) {

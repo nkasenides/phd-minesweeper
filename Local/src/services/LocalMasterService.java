@@ -40,7 +40,7 @@ public class LocalMasterService implements MasterService {
         String gameToken = Datastore.addGame(maxNumOfPlayers, width, height, difficulty);
 
         if (gameToken == null) {
-            ErrorResponse errorResponse = new ErrorResponse("Game creation failed", "Failed to create game.");
+            ErrorResponse errorResponse = new ErrorResponse("Game creation failed", "Failed to create game (unknown).");
             return errorResponse.toJSON();
         }
 
@@ -64,24 +64,10 @@ public class LocalMasterService implements MasterService {
             SuccessResponse successResponse = new SuccessResponse("Games retrieved", games.size() + " games retrieved.");
             JsonObject data = new JsonObject();
 
-            class GameInstance {
-                private final String token;
-                private final int width;
-                private final int height;
-                private final String difficulty;
-
-                public GameInstance(String token, int width, int height, Difficulty difficulty) {
-                    this.token = token;
-                    this.width = width;
-                    this.height = height;
-                    this.difficulty = difficulty.toString();
-                }
-            }
-
-            ArrayList<GameInstance> gameInstances = new ArrayList<>();
+            ArrayList<GameSpecification> gameInstances = new ArrayList<>();
             for (String token : games) {
                 Game game = Datastore.getGame(token);
-                gameInstances.add(new GameInstance(token, game.getGameSpecification().getWidth(), game.getFullBoardState().getHeight(), game.getGameSpecification().getDifficulty()));
+                gameInstances.add(game.getGameSpecification());
             }
 
             data.add("games", JsonConvert.listToJsonArray(gameInstances));

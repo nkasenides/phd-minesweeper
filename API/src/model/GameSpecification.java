@@ -14,21 +14,16 @@ public class GameSpecification {
     private final String token;
     private final Difficulty difficulty;
 
-    public GameSpecification(int maxPlayers, int width, int height, Difficulty difficulty) throws InvalidGameSpecificationException {
-
-        if (maxPlayers < 1 || width < 0 || height < 0 || difficulty == null) {
-            throw new InvalidGameSpecificationException("Game specification cannot be initialized (Invalid parameters)");
-        }
-
+    public GameSpecification(String token, int maxPlayers, int width, int height, Difficulty difficulty) {
         this.maxPlayers = maxPlayers;
         this.width = width;
         this.height = height;
-        this.token = UUID.randomUUID().toString();
+        this.token = token;
         this.difficulty = difficulty;
     }
 
-    public GameSpecification(int maxPlayers, int width, int height) throws InvalidGameSpecificationException {
-        this(maxPlayers, width, height, DEFAULT_DIFFICULTY);
+    public GameSpecification(String token, int maxPlayers, int width, int height) throws InvalidGameSpecificationException {
+        this(token, maxPlayers, width, height, DEFAULT_DIFFICULTY);
     }
 
     public int getMaxPlayers() {
