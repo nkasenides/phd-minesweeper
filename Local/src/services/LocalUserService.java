@@ -189,17 +189,32 @@ public class LocalUserService implements UserService {
 
                 //Check if the cell is revealed:
                 if (referencedGame.getFullBoardState().getCells()[x][y].getRevealState() != RevealState.COVERED) {
-                    SuccessResponse response = new SuccessResponse("Cell already revealed", "The cell (" + x + "," + y + ") has already been revealed.");
-                    Gson gson = new Gson();
-                    JsonObject data = new JsonObject();
-                    data.add("gameState", gson.toJsonTree(referencedGame.getGameState()));
-                    data.add("revealState", gson.toJsonTree(referencedGame.getFullBoardState().getCells()[x][y].getRevealState()));
-                    response.setData(data);
-                    return response.toJSON();
+                    try {
+                        SuccessResponse response = new SuccessResponse("Cell already revealed", "The cell (" + x + "," + y + ") has already been revealed.");
+                        PartialBoardState partialBoardState = new PartialBoardState(partialStatePreference.getWidth(), partialStatePreference.getHeight(), referencedSession.getPositionX(), referencedSession.getPositionY(), referencedGame.getFullBoardState());
+                        Gson gson = new Gson();
+                        JsonObject data = new JsonObject();
+                        data.add("partialBoardState", gson.toJsonTree(partialBoardState));
+                        data.add("gameState", gson.toJsonTree(referencedGame.getGameState()));
+                        data.add("revealState", gson.toJsonTree(referencedGame.getFullBoardState().getCells()[x][y].getRevealState()));
+                        response.setData(data);
+                        return response.toJSON();
+                    } catch (InvalidCellReferenceException e) {
+                        e.printStackTrace();
+                        ErrorResponse errorResponse = new ErrorResponse("Failed to fetch partial state", "The cell (" + x + "," + y + ") has been already revealed, but failed to load partial state: " + e.getMessage());
+                        return errorResponse.toJSON();
+                    }
+
                 }
 
                 //Reveal and return partial state:
                 referencedGame.reveal(x, y);
+
+                //If the game has ended (player won or lost), reveal all of the cells:
+                if (referencedGame.getGameState() == GameState.ENDED_LOST ||
+                    referencedGame.getGameState() == GameState.ENDED_WON) {
+                    referencedGame.revealAll();
+                }
 
                 try {
                     PartialBoardState partialBoardState = new PartialBoardState(partialStatePreference.getWidth(), partialStatePreference.getHeight(), referencedSession.getPositionX(), referencedSession.getPositionY(), referencedGame.getFullBoardState());
@@ -257,6 +272,25 @@ public class LocalUserService implements UserService {
                 if (referencedGame.getGameState() == GameState.NOT_STARTED) {
                     ErrorResponse response = new ErrorResponse("Game not started", "The game you tried to play has not yet started.");
                     return response.toJSON();
+                }
+
+                //Check if the cell is already flagged and unflag it:
+                if (referencedGame.getFullBoardState().getCells()[x][y].getRevealState() == RevealState.FLAGGED) {
+                    try {
+                        referencedGame.flag(x, y);
+                        PartialBoardState partialBoardState = new PartialBoardState(partialStatePreference.getWidth(), partialStatePreference.getHeight(), referencedSession.getPositionX(), referencedSession.getPositionY(), referencedGame.getFullBoardState());
+                        SuccessResponse successResponse = new SuccessResponse("Cell unflagged", "The cell (" + x + "," + y + ") unflagged successfully.");
+                        Gson gson = new Gson();
+                        JsonObject data = new JsonObject();
+                        data.add("gameState", gson.toJsonTree(referencedGame.getGameState()));
+                        data.add("partialBoardState", gson.toJsonTree(partialBoardState));
+                        successResponse.setData(data);
+                        return successResponse.toJSON();
+                    } catch (InvalidCellReferenceException e) {
+                        e.printStackTrace();
+                        ErrorResponse errorResponse = new ErrorResponse("Cell unflagged, failed to fetch partial state", "The cell (" + x + "," + y + ") has been unflagged, but failed to load partial state: " + e.getMessage());
+                        return errorResponse.toJSON();
+                    }
                 }
 
                 //Check if the cell is revealed:

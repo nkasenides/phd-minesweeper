@@ -122,6 +122,21 @@ public class Game {
         }
     }
 
+    public void revealAll() {
+        FullBoardState state = getFullBoardState();
+        for (int x = 0; x < state.getWidth(); x++) {
+            for (int y = 0; y < state.getHeight(); y++) {
+                if (state.getCells()[x][y].isMined()) {
+                    state.getCells()[x][y].setRevealState(RevealState.REVEALED_MINE);
+                }
+                else {
+                    int adjacentMines = getFullBoardState().countAdjacentMines(x, y);
+                    state.getCells()[x][y].setRevealState(RevealState.getRevealStateFromNumberOfAdjacentMines(adjacentMines));
+                }
+            }
+        }
+    }
+
     public void reveal(int x, int y) {
         CellState referencedCell = fullBoardState.getCells()[x][y];
         if (referencedCell.getRevealState() == RevealState.COVERED) {

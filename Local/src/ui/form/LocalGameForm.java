@@ -31,6 +31,9 @@ public class LocalGameForm extends JFrame {
     private int currentX = 0;
     private int currentY = 0;
 
+    //Other
+    private final Gson gson = new Gson();
+
     public LocalGameForm(String sessionID, int totalWidth, int totalHeight, PartialStatePreference partialStatePreference) {
 
         //Initialize UI:
@@ -47,7 +50,7 @@ public class LocalGameForm extends JFrame {
 
         //Initialize state:
         if (retrieveGameState()) {
-            updateButtons();
+            update();
         }
 
         //Set key listener:
@@ -85,7 +88,7 @@ public class LocalGameForm extends JFrame {
                     System.out.println("cX: " + currentX + ", cY: " + currentY);
                     if (direction != null) {
                         move(direction, 1);
-                        updateButtons();
+                        update();
                     }
                 }
                 return false;
@@ -94,41 +97,8 @@ public class LocalGameForm extends JFrame {
         KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(keyEventDispatcher);
     }
 
-    //Calls the userService/getPartialState endpoint.
-    private boolean retrieveGameState() {
-        String json = LocalMain.userService.getPartialState(sessionID);
-        if (LocalMain.DEBUG) System.out.println(json);
-        Gson gson = new Gson();
-
-        JsonElement jsonElement = new JsonParser().parse(json);
-        JsonObject jsonObject = jsonElement.getAsJsonObject();
-        ResponseStatus status = ResponseStatus.fromString(jsonObject.get(Response.STATUS_TAG).getAsString());
-
-        if (status == ResponseStatus.OK) {
-            JsonObject jsonObjectData = jsonObject.getAsJsonObject(Response.DATA_TAG);
-            localGameState = GameState.valueOf(jsonObjectData.get("gameState").getAsString());
-            localGameBoardState = gson.fromJson(jsonObjectData.get("partialBoardState"), PartialBoardState.class);
-            return true;
-        }
-        else {
-            JOptionPane.showMessageDialog(null, jsonObject.get(Response.MESSAGE_TAG).getAsString(), jsonObject.get(Response.TITLE_TAG).getAsString(), JOptionPane.WARNING_MESSAGE);
-            return false;
-        }
-    }
-
-    //Calls the userService/move endpoint.
-    private boolean move(Direction direction, int units) {
-        if (units > 0) {
-            String json = LocalMain.userService.move(sessionID, direction, units);
-            Gson gson = new Gson();
-            //TODO
-        }
-        return true;
-    }
-
-    //Calls the userService/reveal endpoint.
-    private void reveal(int x, int y) {
-
+    public void setLocalGameState(GameState localGameState) {
+        this.localGameState = localGameState;
     }
 
     private void initializeButtons() {
@@ -156,43 +126,21 @@ public class LocalGameForm extends JFrame {
 
                         //Left mouse button
                         if (e.getButton() == MouseEvent.BUTTON1) {
-                            if (localGameBoardState.getCells()[innerX][innerY].getRevealState() == RevealState.COVERED) {
-                                String json = LocalMain.userService.reveal(sessionID, innerX, innerY);
-
-                                //TODO
-
-                                updateButtons();
-
-//                                RevealBundle bundle = USER_SERVICE.reveal(OldMain.sessionID, innerX, innerY);
-//                                if (bundle != null) {
-//                                    localGameBoardState = bundle.getPartialGameState();
-//                                    if (bundle.getGameState() == GameState.ENDED_LOST) {
-//                                        RevealBundle bundleLost = USER_SERVICE.revealAll(OldMain.sessionID);
-//                                        if (bundleLost != null) {
-//                                            localGameBoardState = bundle.getPartialGameState();
-//                                            updateButtons(bundleLost.getGameState());
-//                                        }
-//                                    }
-//                                    else {
-//                                        updateButtons(bundle.getGameState());
-//                                    }
-//                                }
+                            if (localGameState == GameState.STARTED) {
+                                if (localGameBoardState.getCells()[innerX][innerY].getRevealState() == RevealState.COVERED) {
+                                    reveal(innerX, innerY);
+                                }
                             }
                         }
 
                         //Right mouse button
                         else if (e.getButton() == MouseEvent.BUTTON3){
-                            String json = LocalMain.userService.flag(sessionID, innerX, innerY);
-
-                            // TODO
-
-                            updateButtons();
-
-//                            RevealBundle bundle = USER_SERVICE.flag(OldMain.sessionID, innerX, innerY);
-//                            if (bundle != null) {
-//                                localGameBoardState = bundle.getPartialGameState();
-//                                updateButtons(bundle.getGameState());
-//                            }
+                            if (localGameState == GameState.STARTED) {
+                                if (localGameBoardState.getCells()[innerX][innerY].getRevealState() == RevealState.COVERED
+                                || localGameBoardState.getCells()[innerX][innerY].getRevealState() == RevealState.FLAGGED) {
+                                    flag(innerX, innerY);
+                                }
+                            }
                         }
 
                     }
@@ -216,6 +164,28 @@ public class LocalGameForm extends JFrame {
         setVisible(true);
     }
 
+    private void update() {
+        switch (localGameState) {
+            case NOT_STARTED:
+                JOptionPane.showMessageDialog(null, "Game not started", "Error", JOptionPane.WARNING_MESSAGE);
+                dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+                break;
+            case STARTED:
+                updateButtons();
+                break;
+            case ENDED_WON:
+                updateButtons();
+                JOptionPane.showMessageDialog(null, "Congratulations! You won!", "Success", JOptionPane.WARNING_MESSAGE);
+                dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+                break;
+            case ENDED_LOST:
+                updateButtons();
+                JOptionPane.showMessageDialog(null, "You lost! :(", "Fail", JOptionPane.WARNING_MESSAGE);
+                dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+                break;
+        }
+    }
+
     private void updateButtons() {
         for (int x = 0; x < localGameBoardState.getWidth(); x++) {
             for (int y = 0; y < localGameBoardState.getHeight(); y++) {
@@ -226,6 +196,7 @@ public class LocalGameForm extends JFrame {
                         break;
                     case STARTED:
                         buttons[x][y].setBackground(Color.LIGHT_GRAY);
+                        //Set the background of blank revealed cells to a darker gray:
                         if (localGameBoardState.getCells()[x][y].getRevealState() == RevealState.REVEALED_0) {
                             buttons[x][y].setBackground(Color.GRAY);
                         }
@@ -280,8 +251,74 @@ public class LocalGameForm extends JFrame {
         }
     }
 
-    public void setLocalGameState(GameState localGameState) {
-        this.localGameState = localGameState;
+    //Calls the userService/getPartialState endpoint.
+    private boolean retrieveGameState() {
+        String json = LocalMain.userService.getPartialState(sessionID);
+        if (LocalMain.DEBUG) System.out.println(json);
+
+        JsonElement jsonElement = new JsonParser().parse(json);
+        JsonObject jsonObject = jsonElement.getAsJsonObject();
+        ResponseStatus status = ResponseStatus.fromString(jsonObject.get(Response.STATUS_TAG).getAsString());
+
+        if (status == ResponseStatus.OK) {
+            JsonObject jsonObjectData = jsonObject.getAsJsonObject(Response.DATA_TAG);
+            localGameState = GameState.valueOf(jsonObjectData.get("gameState").getAsString());
+            localGameBoardState = gson.fromJson(jsonObjectData.get("partialBoardState"), PartialBoardState.class);
+            return true;
+        }
+        else {
+            JOptionPane.showMessageDialog(null, jsonObject.get(Response.MESSAGE_TAG).getAsString(), jsonObject.get(Response.TITLE_TAG).getAsString(), JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+    }
+
+    //Calls the userService/reveal endpoint.
+    private void reveal(int x, int y) {
+        String json = LocalMain.userService.reveal(sessionID, x, y);
+        if (LocalMain.DEBUG) System.out.println(json);
+
+        JsonElement jsonElement = new JsonParser().parse(json);
+        JsonObject jsonObject = jsonElement.getAsJsonObject();
+        ResponseStatus status = ResponseStatus.fromString(jsonObject.get(Response.STATUS_TAG).getAsString());
+
+        if (status == ResponseStatus.OK) {
+            JsonObject jsonObjectData = jsonObject.get(Response.DATA_TAG).getAsJsonObject();
+            localGameState = GameState.valueOf(jsonObjectData.get("gameState").getAsString());
+            localGameBoardState = gson.fromJson(jsonObjectData.get("partialBoardState"), PartialBoardState.class);
+            update();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, jsonObject.get(Response.MESSAGE_TAG).getAsString(), jsonObject.get(Response.TITLE_TAG).getAsString(), JOptionPane.WARNING_MESSAGE);
+        }
+    }
+
+    //Calls the userService/flag endpoint.
+    private void flag(int x, int y) {
+        String json = LocalMain.userService.flag(sessionID, x, y);
+        if (LocalMain.DEBUG) System.out.println(json);
+
+        JsonElement jsonElement = new JsonParser().parse(json);
+        JsonObject jsonObject = jsonElement.getAsJsonObject();
+        ResponseStatus status = ResponseStatus.fromString(jsonObject.get(Response.STATUS_TAG).getAsString());
+
+        if (status == ResponseStatus.OK) {
+            JsonObject jsonObjectData = jsonObject.get(Response.DATA_TAG).getAsJsonObject();
+            localGameState = GameState.valueOf(jsonObjectData.get("gameState").getAsString());
+            localGameBoardState = gson.fromJson(jsonObjectData.get("partialBoardState"), PartialBoardState.class);
+            update();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, jsonObject.get(Response.MESSAGE_TAG).getAsString(), jsonObject.get(Response.TITLE_TAG).getAsString(), JOptionPane.WARNING_MESSAGE);
+        }
+    }
+
+    //Calls the userService/move endpoint.
+    private boolean move(Direction direction, int units) {
+        if (units > 0) {
+            String json = LocalMain.userService.move(sessionID, direction, units);
+            //TODO
+        }
+        return true;
     }
 
 }
