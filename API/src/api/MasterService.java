@@ -6,16 +6,6 @@ import model.PartialStatePreference;
 public interface MasterService {
 
     /**
-     * Creates a new game using the specified parameters.
-     * @param maxNumOfPlayers The maximum number of players allowed in the game.
-     * @param width The total width of the board.
-     * @param height The total height of the board.
-     * @param difficulty The game's difficulty {@link Difficulty}.
-     * @return Returns a JSON formatted string containing the created game's token as data.
-     */
-    String createGame(int maxNumOfPlayers, int width, int height, Difficulty difficulty);
-
-    /**
      * Retrieves a list of all games.
      * @return Returns a JSON formatted string containing the created games' tokens.
      */

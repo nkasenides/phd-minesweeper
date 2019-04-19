@@ -5,23 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6a608b0a-6e3a-43c4-8371-7eadd75f3133" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/API/src/api/AdminService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Local/src/services/LocalAdminService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Response/src/response/AuthErrorResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Local/src/datastore/Datastore.java" beforeDir="false" afterPath="$PROJECT_DIR$/Local/src/datastore/Datastore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Local/src/services/LocalUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Local/src/services/LocalUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/api/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/api/AdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/api/MasterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/api/MasterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Local/src/services/LocalAdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Local/src/services/LocalAdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Local/src/services/LocalMasterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Local/src/services/LocalMasterService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Local/src/ui/LocalMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Local/src/ui/LocalMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Local/src/ui/component/MinesweeperButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/Local/src/ui/component/MinesweeperButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Local/src/ui/form/GameForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/Local/src/ui/form/GameForm.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Local/src/ui/form/LocalGameForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/Local/src/ui/form/LocalGameForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Local/services/LocalUserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Local/services/LocalUserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Local/ui/LocalMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Local/ui/LocalMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Local/ui/component/MinesweeperButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Local/ui/component/MinesweeperButton.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Local/ui/form/LocalGameForm$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Local/ui/form/LocalGameForm$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Local/ui/form/LocalGameForm$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Local/ui/form/LocalGameForm$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Local/ui/form/LocalGameForm$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Local/ui/form/LocalGameForm$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Local/ui/form/LocalGameForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Local/ui/form/LocalGameForm.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,52 +25,7 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Local/src/datastore/Datastore.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="452">
-              <caret line="60" column="4" selection-start-line="60" selection-start-column="4" selection-end-line="60" selection-end-column="4" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#638#639#0" expanded="true" />
-                <element signature="e#692#693#0" expanded="true" />
-                <element signature="e#745#746#0" expanded="true" />
-                <element signature="e#802#803#0" expanded="true" />
-                <element signature="e#1643#1644#0" expanded="true" />
-                <element signature="e#1700#1701#0" expanded="true" />
-                <element signature="e#1755#1756#0" expanded="true" />
-                <element signature="e#1806#1807#0" expanded="true" />
-                <element signature="e#1978#1979#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Local/src/ui/LocalMain.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="58" column="144" selection-start-line="58" selection-start-column="144" selection-end-line="58" selection-end-column="144" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#createGame#0;class#LocalMain#0" />
-                <element signature="method#listGames#0;class#LocalMain#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Local/src/ui/form/LocalGameForm.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="87">
-              <caret line="224" column="37" selection-start-line="224" selection-start-column="37" selection-end-line="224" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -122,18 +68,19 @@
         <option value="$PROJECT_DIR$/API/src/model/FullBoardState.java" />
         <option value="$PROJECT_DIR$/Response/src/response/JsonConvert.java" />
         <option value="$PROJECT_DIR$/Response/src/response/ResponseStatus.java" />
-        <option value="$PROJECT_DIR$/API/src/api/MasterService.java" />
         <option value="$PROJECT_DIR$/API/src/model/GameSpecification.java" />
-        <option value="$PROJECT_DIR$/Local/src/services/LocalMasterService.java" />
         <option value="$PROJECT_DIR$/Local/src/services/LocalUserService.java" />
         <option value="$PROJECT_DIR$/Local/src/ui/form/GameForm.form" />
         <option value="$PROJECT_DIR$/Local/src/ui/component/MinesweeperButton.java" />
-        <option value="$PROJECT_DIR$/Local/src/ui/form/LocalGameForm.java" />
         <option value="$PROJECT_DIR$/Local/src/datastore/Datastore.java" />
-        <option value="$PROJECT_DIR$/API/src/api/AdminService.java" />
         <option value="$PROJECT_DIR$/API/src/model/Game.java" />
-        <option value="$PROJECT_DIR$/Local/src/services/LocalAdminService.java" />
+        <option value="$PROJECT_DIR$/API/src/api/MasterService.java" />
+        <option value="$PROJECT_DIR$/Local/src/services/LocalMasterService.java" />
+        <option value="$PROJECT_DIR$/Response/src/response/AuthErrorResponse.java" />
+        <option value="$PROJECT_DIR$/API/src/api/AdminService.java" />
+        <option value="$PROJECT_DIR$/Local/src/ui/form/LocalGameForm.java" />
         <option value="$PROJECT_DIR$/Local/src/ui/LocalMain.java" />
+        <option value="$PROJECT_DIR$/Local/src/services/LocalAdminService.java" />
       </list>
     </option>
   </component>
@@ -149,6 +96,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -251,7 +199,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -330,18 +277,18 @@
       <updated>1555488013237</updated>
       <workItem from="1555488014581" duration="7227000" />
       <workItem from="1555500372631" duration="10021000" />
-      <workItem from="1555579624253" duration="10562000" />
+      <workItem from="1555579624253" duration="10654000" />
+      <workItem from="1555659669862" duration="1203000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27810000" />
+    <option name="totallyTimeSpent" value="29105000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2553305" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25799572" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -350,7 +297,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32827735" />
+      <window_info active="true" anchor="bottom" x="-1920" y="23" width="1920" height="1057" id="Run" order="2" type="WINDOWED" visible="true" weight="0.3943662" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -503,16 +450,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Local/src/services/LocalMasterService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="68" column="53" selection-start-line="68" selection-start-column="53" selection-end-line="68" selection-end-column="53" />
-          <folding>
-            <element signature="method#join#0;class#LocalMasterService#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Response/src/response/JsonConvert.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -540,52 +477,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/API/src/api/MasterService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Local/src/datastore/Datastore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
-          <caret line="60" column="4" selection-start-line="60" selection-start-column="4" selection-end-line="60" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#638#639#0" expanded="true" />
-            <element signature="e#692#693#0" expanded="true" />
-            <element signature="e#745#746#0" expanded="true" />
-            <element signature="e#802#803#0" expanded="true" />
-            <element signature="e#1643#1644#0" expanded="true" />
-            <element signature="e#1700#1701#0" expanded="true" />
-            <element signature="e#1755#1756#0" expanded="true" />
-            <element signature="e#1806#1807#0" expanded="true" />
-            <element signature="e#1978#1979#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Local/src/services/LocalAdminService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="21" column="131" selection-start-line="21" selection-start-column="87" selection-end-line="21" selection-end-column="131" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/src/api/AdminService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="30" lean-forward="true" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Local/src/services/LocalUserService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="201">
@@ -609,21 +500,80 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Local/src/datastore/Datastore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="60" column="4" selection-start-line="60" selection-start-column="4" selection-end-line="60" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1974#1975#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/src/api/MasterService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Local/src/services/LocalMasterService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+          <folding>
+            <element signature="method#join#0;class#LocalMasterService#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Response/src/response/AuthErrorResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="61" lean-forward="true" selection-start-line="7" selection-start-column="61" selection-end-line="7" selection-end-column="104" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/src/api/AdminService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="40" lean-forward="true" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Local/src/ui/form/LocalGameForm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="224" column="37" selection-start-line="224" selection-start-column="37" selection-end-line="224" selection-end-column="37" />
+        <state relative-caret-position="753">
+          <caret line="285" selection-start-line="285" selection-end-line="285" />
+          <folding>
+            <element signature="e#11177#11178#0" expanded="true" />
+            <element signature="e#11229#11230#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Local/src/services/LocalAdminService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="685">
+          <caret line="86" column="9" lean-forward="true" selection-start-line="86" selection-start-column="9" selection-end-line="86" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Local/src/ui/LocalMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="58" column="144" selection-start-line="58" selection-start-column="144" selection-end-line="58" selection-end-column="144" />
+        <state relative-caret-position="617">
+          <caret line="151" column="58" selection-start-line="151" selection-start-column="58" selection-end-line="151" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#createGame#0;class#LocalMain#0" />
             <element signature="method#listGames#0;class#LocalMain#0" />
+            <element signature="method#join#0;class#LocalMain#0" />
           </folding>
         </state>
       </provider>

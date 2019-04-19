@@ -16,41 +16,6 @@ import java.util.regex.Pattern;
 
 public class LocalMasterService implements MasterService {
 
-
-    @Override
-    public String createGame(int maxNumOfPlayers, int width, int height, Difficulty difficulty) {
-
-        //Check parameters:
-        if (maxNumOfPlayers < 1) {
-            ErrorResponse errorResponse = new ErrorResponse("Invalid maxNumOfPlayers", "The maximum number of players must be 1 or more.");
-            return errorResponse.toJSON();
-        }
-
-        if (width < 5) {
-            ErrorResponse errorResponse = new ErrorResponse("Invalid width", "The width of a game must be 5 cells or more.");
-            return errorResponse.toJSON();
-        }
-
-        if (height < 5) {
-            ErrorResponse errorResponse = new ErrorResponse("Invalid height", "The height of a game must be 5 cells or more.");
-            return errorResponse.toJSON();
-        }
-
-        //Create the game:
-        String gameToken = Datastore.addGame(maxNumOfPlayers, width, height, difficulty);
-
-        if (gameToken == null) {
-            ErrorResponse errorResponse = new ErrorResponse("Game creation failed", "Failed to create game (unknown).");
-            return errorResponse.toJSON();
-        }
-
-        SuccessResponse successResponse = new SuccessResponse("Game created", "A game with the specified configuration was successfully created.");
-        JsonObject data = new JsonObject();
-        data.addProperty("gameToken", gameToken);
-        successResponse.setData(data);
-        return successResponse.toJSON();
-    }
-
     @Override
     public String listGames() {
         ArrayList<String> games = Datastore.getGames();

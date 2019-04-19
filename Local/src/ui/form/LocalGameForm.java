@@ -280,5 +280,8 @@ public class LocalGameForm extends JFrame {
         }
     }
 
+    public void setLocalGameState(GameState localGameState) {
+        this.localGameState = localGameState;
+    }
 
 }

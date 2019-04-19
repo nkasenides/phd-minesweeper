@@ -3,6 +3,7 @@ package ui;
 import com.google.gson.*;
 import model.Difficulty;
 import model.GameSpecification;
+import model.GameState;
 import model.PartialStatePreference;
 import response.Response;
 import response.ResponseStatus;
@@ -20,6 +21,7 @@ public class LocalMain {
     public static final LocalMasterService masterService = new LocalMasterService();
     public static final LocalUserService userService = new LocalUserService();
     public static final LocalAdminService adminService = new LocalAdminService();
+    public static final String ADMIN_PASSWORD = "1234";
     private static final Gson gson = new Gson();
 
     //Settings:
@@ -35,10 +37,10 @@ public class LocalMain {
     public static void main(String[] args) {
 
         //Create a 2 new games:
-        String game1Token = createGame(10, 10, 10, Difficulty.EASY);
+        String game1Token = createGame(ADMIN_PASSWORD, 10, 10, 10, Difficulty.EASY);
         System.out.println("Game created: " + game1Token);
 
-        String game2Token = createGame(50, 10, 10, Difficulty.EASY);
+        String game2Token = createGame(ADMIN_PASSWORD, 50, 10, 10, Difficulty.EASY);
         System.out.println("Game created: " + game2Token);
 
         //List the available games:
@@ -56,18 +58,15 @@ public class LocalMain {
             System.out.println("Joined game! --> " + sessionID);
 
             //Start the game:
-            adminService.startGame("1234", game2Token); //TODO CHANGE THIS INTO A LOCAL FUNCTION LIKE THE OTHERS AND RETRIEVE ITS JSON CONTENTS.
-
-            LocalGameForm gameForm = new LocalGameForm(sessionID, currentGame.getWidth(), currentGame.getHeight(), partialStatePreference);
-
+            startGame(ADMIN_PASSWORD, game2Token);
 
         }
 
     }
 
     //Calls masterService/createGame
-    public static String createGame(int maxNumOfPlayers, int width, int height, Difficulty difficulty) {
-        String json = masterService.createGame(maxNumOfPlayers, width, height, difficulty);
+    public static String createGame(String password, int maxNumOfPlayers, int width, int height, Difficulty difficulty) {
+        String json = adminService.createGame(password, maxNumOfPlayers, width, height, difficulty);
         if (DEBUG) System.out.println(json);
 
         JsonElement jsonElement = new JsonParser().parse(json);
@@ -133,6 +132,26 @@ public class LocalMain {
                     return true;
                 }
             }
+        }
+        JOptionPane.showMessageDialog(null, jsonObject.get(Response.MESSAGE_TAG).getAsString(), jsonObject.get(Response.TITLE_TAG).getAsString(), JOptionPane.WARNING_MESSAGE);
+        return false;
+    }
+
+    //Calls adminService/startGame
+    public static boolean startGame(String password, String gameToken) {
+        String json = adminService.startGame(password, gameToken);
+        if (DEBUG) System.out.println(json);
+
+        JsonElement jsonElement = new JsonParser().parse(json);
+        JsonObject jsonObject = jsonElement.getAsJsonObject();
+        ResponseStatus status = ResponseStatus.fromString(jsonObject.get(Response.STATUS_TAG).getAsString());
+
+        if (status == ResponseStatus.OK) {
+            JsonObject jsonObjectData = jsonObject.getAsJsonObject(Response.DATA_TAG);
+            GameState gameState = GameState.valueOf(jsonObjectData.get("gameState").getAsString());
+            LocalGameForm gameForm = new LocalGameForm(sessionID, currentGame.getWidth(), currentGame.getHeight(), partialStatePreference);
+            gameForm.setLocalGameState(gameState);
+            return true;
         }
         JOptionPane.showMessageDialog(null, jsonObject.get(Response.MESSAGE_TAG).getAsString(), jsonObject.get(Response.TITLE_TAG).getAsString(), JOptionPane.WARNING_MESSAGE);
         return false;
