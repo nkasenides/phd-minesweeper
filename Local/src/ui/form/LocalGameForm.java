@@ -57,14 +57,11 @@ public class LocalGameForm extends JFrame {
         KeyEventDispatcher keyEventDispatcher = new KeyEventDispatcher() {
             @Override
             public boolean dispatchKeyEvent(final KeyEvent e) {
-
-                //TODO FIX ISSUES WITH MOVEMENT
-
                 if (e.getID() == KeyEvent.KEY_PRESSED) {
                     Direction direction = null;
                     switch (e.getKeyCode()) {
                         case KeyEvent.VK_UP:
-                            if (currentX > 0) {
+                            if (currentX - 1 >= 0) {
                                 direction = Direction.UP;
                                 currentX--;
                             }
@@ -76,7 +73,7 @@ public class LocalGameForm extends JFrame {
                             }
                             break;
                         case KeyEvent.VK_LEFT:
-                            if (currentY > 0) {
+                            if (currentY - 1 >= 0) {
                                 direction = Direction.LEFT;
                                 currentY--;
                             }

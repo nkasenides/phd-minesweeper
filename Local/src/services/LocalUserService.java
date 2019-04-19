@@ -95,25 +95,25 @@ public class LocalUserService implements UserService {
                 boolean shifted = false;
                 switch (direction) {
                     case UP:
-                        if (currentX - unitOfMovement > 0) {
+                        if (currentX - unitOfMovement >= 0) {
                             referencedSession.setPositionX(currentX - unitOfMovement);
                             shifted = true;
                         }
                         break;
                     case DOWN:
-                        if (currentX + unitOfMovement < referencedGame.getGameSpecification().getWidth() - 1) {
+                        if (currentX + unitOfMovement <= referencedGame.getGameSpecification().getWidth() - 1) {
                             referencedSession.setPositionX(currentX + unitOfMovement);
                             shifted = true;
                         }
                         break;
                     case LEFT:
-                        if (currentY - unitOfMovement > 0) {
+                        if (currentY - unitOfMovement >= 0) {
                             referencedSession.setPositionY(currentY - unitOfMovement);
                             shifted = true;
                         }
                         break;
                     case RIGHT:
-                        if (currentY + unitOfMovement < referencedGame.getGameSpecification().getHeight() - 1) {
+                        if (currentY + unitOfMovement <= referencedGame.getGameSpecification().getHeight() - 1) {
                             referencedSession.setPositionY(currentY + unitOfMovement);
                             shifted = true;
                         }
