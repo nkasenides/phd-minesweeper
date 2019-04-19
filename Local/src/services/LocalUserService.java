@@ -51,7 +51,6 @@ public class LocalUserService implements UserService {
 
                 //If failed to get the partial state, return error:
                 catch (InvalidCellReferenceException e) {
-                    e.printStackTrace();
                     Response response = new ErrorResponse("Error fetching partial state for session '" + sessionID + "'.", e.getMessage());
                     return response.toJSON();
                 }
@@ -133,7 +132,6 @@ public class LocalUserService implements UserService {
                         response.setData(data);
                         return response.toJSON();
                     } catch (InvalidCellReferenceException e) {
-                        e.printStackTrace();
                         ErrorResponse errorResponse = new ErrorResponse("Position not shifted", "Could not shift position: " + e.getMessage());
                         return errorResponse.toJSON();
                     }
@@ -200,7 +198,6 @@ public class LocalUserService implements UserService {
                         response.setData(data);
                         return response.toJSON();
                     } catch (InvalidCellReferenceException e) {
-                        e.printStackTrace();
                         ErrorResponse errorResponse = new ErrorResponse("Failed to fetch partial state", "The cell (" + x + "," + y + ") has been already revealed, but failed to load partial state: " + e.getMessage());
                         return errorResponse.toJSON();
                     }
@@ -226,7 +223,6 @@ public class LocalUserService implements UserService {
                     response.setData(data);
                     return response.toJSON();
                 } catch (InvalidCellReferenceException e) {
-                    e.printStackTrace();
                     ErrorResponse errorResponse = new ErrorResponse("Cell revealed, failed to fetch partial state", "The cell (" + x + "," + y + ") has been revealed, but failed to load partial state: " + e.getMessage());
                     return errorResponse.toJSON();
                 }
@@ -287,7 +283,6 @@ public class LocalUserService implements UserService {
                         successResponse.setData(data);
                         return successResponse.toJSON();
                     } catch (InvalidCellReferenceException e) {
-                        e.printStackTrace();
                         ErrorResponse errorResponse = new ErrorResponse("Cell unflagged, failed to fetch partial state", "The cell (" + x + "," + y + ") has been unflagged, but failed to load partial state: " + e.getMessage());
                         return errorResponse.toJSON();
                     }
@@ -317,7 +312,6 @@ public class LocalUserService implements UserService {
                     response.setData(data);
                     return response.toJSON();
                 } catch (InvalidCellReferenceException e) {
-                    e.printStackTrace();
                     ErrorResponse errorResponse = new ErrorResponse("Cell flagged, failed to fetch partial state", "The cell (" + x + "," + y + ") has been flagged, but failed to load partial state: " + e.getMessage());
                     return errorResponse.toJSON();
                 }

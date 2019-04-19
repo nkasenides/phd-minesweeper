@@ -57,6 +57,9 @@ public class LocalGameForm extends JFrame {
         KeyEventDispatcher keyEventDispatcher = new KeyEventDispatcher() {
             @Override
             public boolean dispatchKeyEvent(final KeyEvent e) {
+
+                //TODO FIX ISSUES WITH MOVEMENT
+
                 if (e.getID() == KeyEvent.KEY_PRESSED) {
                     Direction direction = null;
                     switch (e.getKeyCode()) {
@@ -313,12 +316,25 @@ public class LocalGameForm extends JFrame {
     }
 
     //Calls the userService/move endpoint.
-    private boolean move(Direction direction, int units) {
+    private void move(Direction direction, int units) {
         if (units > 0) {
             String json = LocalMain.userService.move(sessionID, direction, units);
-            //TODO
+            if (LocalMain.DEBUG) System.out.println(json);
+
+            JsonElement jsonElement = new JsonParser().parse(json);
+            JsonObject jsonObject = jsonElement.getAsJsonObject();
+            ResponseStatus status = ResponseStatus.fromString(jsonObject.get(Response.STATUS_TAG).getAsString());
+
+            if (status == ResponseStatus.OK) {
+                JsonObject jsonObjectData = jsonObject.get(Response.DATA_TAG).getAsJsonObject();
+                localGameState = GameState.valueOf(jsonObjectData.get("gameState").getAsString());
+                localGameBoardState = gson.fromJson(jsonObjectData.get("partialBoardState"), PartialBoardState.class);
+                update();
+            }
+            else {
+                JOptionPane.showMessageDialog(null, jsonObject.get(Response.MESSAGE_TAG).getAsString(), jsonObject.get(Response.TITLE_TAG).getAsString(), JOptionPane.WARNING_MESSAGE);
+            }
         }
-        return true;
     }
 
 }
