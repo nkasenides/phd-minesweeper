@@ -30,11 +30,13 @@ public class LocalGameForm extends JFrame {
 
     //Other
     private final Gson gson = new Gson();
+    private LocalMainForm caller;
 
-    public LocalGameForm(String sessionID, int totalWidth, int totalHeight, PartialStatePreference partialStatePreference) {
+    public LocalGameForm(LocalMainForm form, String sessionID, int totalWidth, int totalHeight, PartialStatePreference partialStatePreference) {
 
         //Initialize UI:
-        super("Minesweeper");
+        super("Play | Minesweeper");
+        this.caller = form;
         this.sessionID = sessionID;
         this.partialStatePreference = partialStatePreference;
         this.totalWidth = totalWidth;
@@ -43,6 +45,8 @@ public class LocalGameForm extends JFrame {
 //        setExtendedState(JFrame.MAXIMIZED_BOTH);
 //        setUndecorated(true);
         setSize(WINDOW_SIZE, WINDOW_SIZE);
+        setLocationRelativeTo(null);
+        setVisible(true);
         initializeButtons();
 
         //Initialize state:
@@ -92,10 +96,45 @@ public class LocalGameForm extends JFrame {
             }
         };
         KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(keyEventDispatcher);
-    }
 
-    public void setLocalGameState(GameState localGameState) {
-        this.localGameState = localGameState;
+        //On close listener
+        addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+                caller.setVisible(true);
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+
+            }
+        });
+
     }
 
     private void initializeButtons() {
