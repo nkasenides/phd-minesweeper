@@ -4,15 +4,12 @@ import com.google.gson.*;
 import model.*;
 import response.Response;
 import response.ResponseStatus;
-import services.LocalMasterService;
-import services.LocalUserService;
 import ui.LocalMain;
 import ui.component.MinesweeperButton;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.HashMap;
 
 public class LocalGameForm extends JFrame {
 
@@ -28,8 +25,8 @@ public class LocalGameForm extends JFrame {
     private final int totalHeight;
     private PartialBoardState localGameBoardState;
     private GameState localGameState;
-    private int currentX = 0;
-    private int currentY = 0;
+    private int xShift = 0;
+    private int yShift = 0;
 
     //Other
     private final Gson gson = new Gson();
@@ -61,31 +58,31 @@ public class LocalGameForm extends JFrame {
                     Direction direction = null;
                     switch (e.getKeyCode()) {
                         case KeyEvent.VK_UP:
-                            if (currentX - 1 >= 0) {
+                            if (xShift - 1 >= 0) {
                                 direction = Direction.UP;
-                                currentX--;
+                                xShift--;
                             }
                             break;
                         case KeyEvent.VK_DOWN:
-                            if (currentX + partialStatePreference.getWidth() < totalWidth) {
+                            if (xShift + partialStatePreference.getWidth() < totalWidth) {
                                 direction = Direction.DOWN;
-                                currentX++;
+                                xShift++;
                             }
                             break;
                         case KeyEvent.VK_LEFT:
-                            if (currentY - 1 >= 0) {
+                            if (yShift - 1 >= 0) {
                                 direction = Direction.LEFT;
-                                currentY--;
+                                yShift--;
                             }
                             break;
                         case KeyEvent.VK_RIGHT:
-                            if (currentY + partialStatePreference.getHeight() < totalHeight) {
+                            if (yShift + partialStatePreference.getHeight() < totalHeight) {
                                 direction = Direction.RIGHT;
-                                currentY++;
+                                yShift++;
                             }
                             break;
                     }
-                    System.out.println("cX: " + currentX + ", cY: " + currentY);
+                    System.out.println("cX: " + xShift + ", cY: " + yShift);
                     if (direction != null) {
                         move(direction, 1);
                         update();
@@ -128,7 +125,7 @@ public class LocalGameForm extends JFrame {
                         if (e.getButton() == MouseEvent.BUTTON1) {
                             if (localGameState == GameState.STARTED) {
                                 if (localGameBoardState.getCells()[innerX][innerY].getRevealState() == RevealState.COVERED) {
-                                    reveal(innerX, innerY);
+                                    reveal(innerX + xShift, innerY + yShift);
                                 }
                             }
                         }
@@ -138,7 +135,7 @@ public class LocalGameForm extends JFrame {
                             if (localGameState == GameState.STARTED) {
                                 if (localGameBoardState.getCells()[innerX][innerY].getRevealState() == RevealState.COVERED
                                 || localGameBoardState.getCells()[innerX][innerY].getRevealState() == RevealState.FLAGGED) {
-                                    flag(innerX, innerY);
+                                    flag(innerX + xShift, innerY + yShift);
                                 }
                             }
                         }
