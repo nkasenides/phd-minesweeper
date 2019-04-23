@@ -71,7 +71,7 @@ public class LocalMainForm extends JFrame {
                 int selectedWidth = (int) widthSpinner.getValue();
                 int selectedHeight = (int) widthSpinner.getValue();
 
-                if (gamesList.getSelectedIndex() > 0) {
+                if (gamesList.getSelectedIndex() >= 0) {
                     GameSpecification selectedGame = allGames.get(gamesList.getSelectedIndex());
                     if (checkGameAndStatePreference(selectedGame, selectedWidth, selectedHeight)) {
                         PartialStatePreference partialStatePreference = new PartialStatePreference(selectedWidth, selectedHeight);
