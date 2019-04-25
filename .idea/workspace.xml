@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a608b0a-6e3a-43c4-8371-7eadd75f3133" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/API/src/model/ObserverForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/model/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Local/src/services/LocalMasterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Local/src/services/LocalMasterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Local/src/services/LocalUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Local/src/services/LocalUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Local/src/ui/LocalMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Local/src/ui/LocalMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Local/src/ui/form/LocalGameForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/Local/src/ui/form/LocalGameForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Local/src/ui/form/LocalMainForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/Local/src/ui/form/LocalMainForm.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,11 +23,109 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Local/src/ui/form/LocalGameForm.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="186">
+              <caret line="318" column="47" selection-start-line="318" selection-start-column="47" selection-end-line="318" selection-end-column="47" />
+              <folding>
+                <element signature="e#3820#3821#0" expanded="true" />
+                <element signature="e#3875#3876#0" expanded="true" />
+                <element signature="e#4334#4335#0" expanded="true" />
+                <element signature="e#4376#4377#0" expanded="true" />
+                <element signature="method#update#0;class#LocalGameForm#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Local/src/services/LocalUserService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="731">
+              <caret line="317" column="53" lean-forward="true" selection-start-line="317" selection-start-column="53" selection-end-line="317" selection-end-column="53" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#getPartialState#0;class#LocalUserService#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Local/src/ui/form/LocalMainForm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="73" column="51" selection-start-line="73" selection-start-column="51" selection-end-line="73" selection-end-column="51" />
+            <state relative-caret-position="237">
+              <caret line="76" column="42" selection-start-line="76" selection-start-column="42" selection-end-line="76" selection-end-column="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Local/src/ui/LocalMain.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="237">
+              <caret line="52" column="94" selection-start-line="52" selection-start-column="94" selection-end-line="52" selection-end-column="94" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Local/src/services/LocalMasterService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="25">
+              <caret line="83" selection-start-line="83" selection-end-line="83" />
+              <folding>
+                <element signature="method#listGames#0;class#LocalMasterService#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/API/src/model/Game.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="527">
+              <caret line="33" column="53" selection-start-line="33" selection-start-column="53" selection-end-line="33" selection-end-column="53" />
+              <folding>
+                <element signature="e#827#828#0" expanded="true" />
+                <element signature="e#846#847#0" expanded="true" />
+                <element signature="e#881#882#0" expanded="true" />
+                <element signature="e#921#922#0" expanded="true" />
+                <element signature="method#start#0;class#Game#0" />
+                <element signature="method#countFlaggedMines#0;class#Game#0" />
+                <element signature="method#countMines#0;class#Game#0" />
+                <element signature="method#computeGameState#0;class#Game#0" />
+                <element signature="method#revealAll#0;class#Game#0" />
+                <element signature="method#reveal#0;class#Game#0" />
+                <element signature="method#flag#0;class#Game#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/API/src/model/ObserverForm.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="373">
+              <caret line="56" column="8" selection-start-line="56" selection-start-column="8" selection-end-line="56" selection-end-column="35" />
+              <folding>
+                <element signature="e#867#868#0" expanded="true" />
+                <element signature="e#912#913#0" expanded="true" />
+                <element signature="e#998#999#0" expanded="true" />
+                <element signature="e#1027#1028#0" expanded="true" />
+                <element signature="e#1057#1058#0" expanded="true" />
+                <element signature="e#1086#1087#0" expanded="true" />
+                <element signature="e#1127#1128#0" expanded="true" />
+                <element signature="e#1163#1164#0" expanded="true" />
+                <element signature="e#1204#1205#0" expanded="true" />
+                <element signature="e#1240#1241#0" expanded="true" />
+                <element signature="e#1349#1350#0" expanded="true" />
+                <element signature="e#1391#1392#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -41,7 +146,15 @@
       <find>toJsonTree</find>
       <find>updateButtons</find>
       <find>e.print</find>
+      <find>localGameBoardState</find>
+      <find>join</find>
+      <find>retrieve</find>
+      <find>LocalMain</find>
     </findStrings>
+    <replaceStrings>
+      <replace>partialGamBoardState</replace>
+      <replace>partialBoardState</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -75,26 +188,28 @@
         <option value="$PROJECT_DIR$/Local/src/ui/component/MinesweeperButton.java" />
         <option value="$PROJECT_DIR$/Local/src/datastore/Datastore.java" />
         <option value="$PROJECT_DIR$/API/src/api/MasterService.java" />
-        <option value="$PROJECT_DIR$/Local/src/services/LocalMasterService.java" />
         <option value="$PROJECT_DIR$/Response/src/response/AuthErrorResponse.java" />
         <option value="$PROJECT_DIR$/API/src/api/AdminService.java" />
         <option value="$PROJECT_DIR$/Local/src/services/LocalAdminService.java" />
-        <option value="$PROJECT_DIR$/API/src/model/Game.java" />
-        <option value="$PROJECT_DIR$/Local/src/services/LocalUserService.java" />
         <option value="$PROJECT_DIR$/Local/src/ui/form/PreferenceOption.java" />
         <option value="$PROJECT_DIR$/Local/src/ui/form/StateOption.java" />
         <option value="$PROJECT_DIR$/Local/src/ui/form/LocalMainForm.form" />
+        <option value="$PROJECT_DIR$/Local/src/ui/form/ObserverForm.java" />
+        <option value="$PROJECT_DIR$/API/src/model/Game.java" />
+        <option value="$PROJECT_DIR$/Local/src/services/LocalMasterService.java" />
+        <option value="$PROJECT_DIR$/API/src/model/ObserverForm.java" />
+        <option value="$PROJECT_DIR$/Local/src/ui/form/LocalMainForm.java" />
         <option value="$PROJECT_DIR$/Local/src/ui/form/LocalGameForm.java" />
         <option value="$PROJECT_DIR$/Local/src/ui/LocalMain.java" />
-        <option value="$PROJECT_DIR$/Local/src/ui/form/LocalMainForm.java" />
+        <option value="$PROJECT_DIR$/Local/src/services/LocalUserService.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-125" />
-    <option name="y" value="-20" />
-    <option name="width" value="1920" />
-    <option name="height" value="1040" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -102,6 +217,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -191,29 +307,10 @@
               <item name="form" type="462c0819:PsiDirectoryNode" />
               <item name="LocalMainForm" type="e9f4de52:FormNode" />
             </path>
-            <path>
-              <item name="Minesweeper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minesweeper" type="462c0819:PsiDirectoryNode" />
-              <item name="Response" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Minesweeper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minesweeper" type="462c0819:PsiDirectoryNode" />
-              <item name="Response" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Minesweeper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minesweeper" type="462c0819:PsiDirectoryNode" />
-              <item name="Response" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="response" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -301,13 +398,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42394000" />
+    <option name="totallyTimeSpent" value="45411000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20895523" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21108742" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -316,7 +413,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" x="563" y="352" width="410" height="120" id="Run" order="2" visible="true" weight="0.39328277" />
+      <window_info anchor="bottom" x="563" y="352" width="410" height="120" id="Run" order="2" weight="0.39328277" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -497,45 +594,101 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/API/src/model/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="139" column="16" selection-start-line="139" selection-start-column="16" selection-end-line="139" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Local/src/services/LocalMasterService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="31" column="75" lean-forward="true" selection-start-line="31" selection-start-column="75" selection-end-line="31" selection-end-column="75" />
-          <folding>
-            <element signature="method#join#0;class#LocalMasterService#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Local/src/services/LocalAdminService.java" />
-    <entry file="file://$PROJECT_DIR$/Local/src/services/LocalUserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="115" column="56" selection-start-line="115" selection-start-column="56" selection-end-line="115" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#flag#0;class#LocalUserService#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Local/src/ui/form/StateOption.java" />
-    <entry file="file://$PROJECT_DIR$/Local/src/ui/form/LocalGameForm.java" />
-    <entry file="file://$PROJECT_DIR$/Local/src/ui/LocalMain.java" />
     <entry file="file://$PROJECT_DIR$/Local/src/ui/form/LocalMainForm.form">
       <provider selected="true" editor-type-id="ui-designer" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/Local/src/services/LocalMasterService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="83" selection-start-line="83" selection-end-line="83" />
+          <folding>
+            <element signature="method#listGames#0;class#LocalMasterService#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/src/model/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="33" column="53" selection-start-line="33" selection-start-column="53" selection-end-line="33" selection-end-column="53" />
+          <folding>
+            <element signature="e#827#828#0" expanded="true" />
+            <element signature="e#846#847#0" expanded="true" />
+            <element signature="e#881#882#0" expanded="true" />
+            <element signature="e#921#922#0" expanded="true" />
+            <element signature="method#start#0;class#Game#0" />
+            <element signature="method#countFlaggedMines#0;class#Game#0" />
+            <element signature="method#countMines#0;class#Game#0" />
+            <element signature="method#computeGameState#0;class#Game#0" />
+            <element signature="method#revealAll#0;class#Game#0" />
+            <element signature="method#reveal#0;class#Game#0" />
+            <element signature="method#flag#0;class#Game#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/src/model/ObserverForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="373">
+          <caret line="56" column="8" selection-start-line="56" selection-start-column="8" selection-end-line="56" selection-end-column="35" />
+          <folding>
+            <element signature="e#867#868#0" expanded="true" />
+            <element signature="e#912#913#0" expanded="true" />
+            <element signature="e#998#999#0" expanded="true" />
+            <element signature="e#1027#1028#0" expanded="true" />
+            <element signature="e#1057#1058#0" expanded="true" />
+            <element signature="e#1086#1087#0" expanded="true" />
+            <element signature="e#1127#1128#0" expanded="true" />
+            <element signature="e#1163#1164#0" expanded="true" />
+            <element signature="e#1204#1205#0" expanded="true" />
+            <element signature="e#1240#1241#0" expanded="true" />
+            <element signature="e#1349#1350#0" expanded="true" />
+            <element signature="e#1391#1392#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Local/src/ui/LocalMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="52" column="94" selection-start-line="52" selection-start-column="94" selection-end-line="52" selection-end-column="94" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Local/src/ui/form/LocalMainForm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="73" column="51" selection-start-line="73" selection-start-column="51" selection-end-line="73" selection-end-column="51" />
+        <state relative-caret-position="237">
+          <caret line="76" column="42" selection-start-line="76" selection-start-column="42" selection-end-line="76" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Local/src/ui/form/LocalGameForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="318" column="47" selection-start-line="318" selection-start-column="47" selection-end-line="318" selection-end-column="47" />
+          <folding>
+            <element signature="e#3820#3821#0" expanded="true" />
+            <element signature="e#3875#3876#0" expanded="true" />
+            <element signature="e#4334#4335#0" expanded="true" />
+            <element signature="e#4376#4377#0" expanded="true" />
+            <element signature="method#update#0;class#LocalGameForm#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Local/src/services/LocalUserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="317" column="53" lean-forward="true" selection-start-line="317" selection-start-column="53" selection-end-line="317" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getPartialState#0;class#LocalUserService#0" />
+          </folding>
         </state>
       </provider>
     </entry>

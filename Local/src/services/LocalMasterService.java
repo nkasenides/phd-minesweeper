@@ -82,4 +82,45 @@ public class LocalMasterService implements MasterService {
         return successResponse.toJSON();
     }
 
+    public String joinLocal(String token, String playerName, PartialStatePreference partialStatePreference, ObserverForm observerForm) {
+
+        //Check the game token:
+        Game referencedGame = Datastore.getGame(token);
+
+        if (referencedGame == null) {
+            ErrorResponse errorResponse = new ErrorResponse("Game does not exist", "The game with token '" + token + "' does not exist.");
+            return errorResponse.toJSON();
+        }
+
+        //Filter player name:
+        playerName = playerName.toLowerCase().trim();
+        Pattern p = Pattern.compile("^[a-zA-Z0-9]*$");
+        if (!p.matcher(playerName).find()) {
+            ErrorResponse errorResponse = new ErrorResponse("Invalid player name", "The player name must contain alphanumeric characters only.");
+            return errorResponse.toJSON();
+        }
+
+        //Check if the player's name exists in this game:
+        for (String sessionID : Datastore.getSessions()) {
+            Session s = Datastore.getSession(sessionID);
+            if (s.getGameID().equals(token)) {
+                if (s.getPlayerName().toLowerCase().equals(playerName)) {
+                    ErrorResponse errorResponse = new ErrorResponse("Player already exists", "The player with name '" + playerName + "' already exists in game with ID '" + token + "'");
+                    return errorResponse.toJSON();
+                }
+            }
+        }
+
+        //Create a new session:
+        String sessionID = Datastore.addSession(token, playerName, partialStatePreference);
+        SuccessResponse successResponse = new SuccessResponse("Game joined", "Successfully joined game with ID '" + token + "'.");
+        JsonObject data = new JsonObject();
+        data.addProperty("sessionID", sessionID);
+        data.addProperty("totalWidth", referencedGame.getGameSpecification().getWidth());
+        data.addProperty("totalHeight", referencedGame.getGameSpecification().getHeight());
+        successResponse.setData(data);
+        referencedGame.addObserver(observerForm);
+        return successResponse.toJSON();
+    }
+
 }

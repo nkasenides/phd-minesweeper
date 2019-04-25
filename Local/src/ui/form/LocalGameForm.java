@@ -11,7 +11,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class LocalGameForm extends JFrame {
+public class LocalGameForm extends ObserverForm {
 
     //UI
     private JPanel gamePanel;
@@ -19,26 +19,26 @@ public class LocalGameForm extends JFrame {
     private static final int WINDOW_SIZE = 500;
 
     //State
-    private final String sessionID;
-    private final PartialStatePreference partialStatePreference;
+//    private String sessionID;
+//    private final PartialStatePreference partialStatePreference;
     private final int totalWidth;
     private final int totalHeight;
-    private PartialBoardState localGameBoardState;
-    private GameState localGameState;
-    private int xShift = 0;
-    private int yShift = 0;
+//    private PartialBoardState partialBoardState;
+//    private GameState gameState;
+//    private int xShift = 0;
+//    private int yShift = 0;
 
     //Other
     private final Gson gson = new Gson();
     private LocalMainForm caller;
 
-    public LocalGameForm(LocalMainForm form, String sessionID, int totalWidth, int totalHeight, PartialStatePreference partialStatePreference) {
+    public LocalGameForm(LocalMainForm form, int totalWidth, int totalHeight, PartialStatePreference partialStatePreference) {
+
+        super(partialStatePreference);
 
         //Initialize UI:
-        super("Play | Minesweeper");
+        setTitle("Play | Minesweeper");
         this.caller = form;
-        this.sessionID = sessionID;
-        this.partialStatePreference = partialStatePreference;
         this.totalWidth = totalWidth;
         this.totalHeight = totalHeight;
         this.buttons = new MinesweeperButton[partialStatePreference.getWidth()][partialStatePreference.getHeight()];
@@ -46,13 +46,6 @@ public class LocalGameForm extends JFrame {
 //        setUndecorated(true);
         setSize(WINDOW_SIZE, WINDOW_SIZE);
         setLocationRelativeTo(null);
-        setVisible(true);
-        initializeButtons();
-
-        //Initialize state:
-        if (retrieveGameState()) {
-            update();
-        }
 
         //Set key listener:
         KeyEventDispatcher keyEventDispatcher = new KeyEventDispatcher() {
@@ -137,7 +130,14 @@ public class LocalGameForm extends JFrame {
 
     }
 
-    private void initializeButtons() {
+    public void setSessionID(String sessionID) {
+        this.sessionID = sessionID;
+    }
+
+    public void initialize(String sessionID) {
+
+        setSessionID(sessionID);
+
         gamePanel = new JPanel();
         gamePanel.setLayout(new GridLayout(partialStatePreference.getWidth(), partialStatePreference.getHeight()));
         for (int x = 0; x < partialStatePreference.getWidth(); x++) {
@@ -162,8 +162,8 @@ public class LocalGameForm extends JFrame {
 
                         //Left mouse button
                         if (e.getButton() == MouseEvent.BUTTON1) {
-                            if (localGameState == GameState.STARTED) {
-                                if (localGameBoardState.getCells()[innerX][innerY].getRevealState() == RevealState.COVERED) {
+                            if (gameState == GameState.STARTED) {
+                                if (partialBoardState.getCells()[innerX][innerY].getRevealState() == RevealState.COVERED) {
                                     reveal(innerX + xShift, innerY + yShift);
                                 }
                             }
@@ -171,9 +171,9 @@ public class LocalGameForm extends JFrame {
 
                         //Right mouse button
                         else if (e.getButton() == MouseEvent.BUTTON3){
-                            if (localGameState == GameState.STARTED) {
-                                if (localGameBoardState.getCells()[innerX][innerY].getRevealState() == RevealState.COVERED
-                                || localGameBoardState.getCells()[innerX][innerY].getRevealState() == RevealState.FLAGGED) {
+                            if (gameState == GameState.STARTED) {
+                                if (partialBoardState.getCells()[innerX][innerY].getRevealState() == RevealState.COVERED
+                                || partialBoardState.getCells()[innerX][innerY].getRevealState() == RevealState.FLAGGED) {
                                     flag(innerX + xShift, innerY + yShift);
                                 }
                             }
@@ -197,11 +197,17 @@ public class LocalGameForm extends JFrame {
             }
         }
         add(gamePanel);
+
+        //Initialize state:
+        if (retrieveGameState()) {
+            update();
+        }
+
         setVisible(true);
     }
 
-    private void update() {
-        switch (localGameState) {
+    public void update() {
+        switch (gameState) {
             case NOT_STARTED:
                 JOptionPane.showMessageDialog(null, "Game not started", "Error", JOptionPane.WARNING_MESSAGE);
                 dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
@@ -223,17 +229,17 @@ public class LocalGameForm extends JFrame {
     }
 
     private void updateButtons() {
-        for (int x = 0; x < localGameBoardState.getWidth(); x++) {
-            for (int y = 0; y < localGameBoardState.getHeight(); y++) {
+        for (int x = 0; x < partialBoardState.getWidth(); x++) {
+            for (int y = 0; y < partialBoardState.getHeight(); y++) {
 
                 //Set background:
-                switch (localGameState) {
+                switch (gameState) {
                     case NOT_STARTED:
                         break;
                     case STARTED:
                         buttons[x][y].setBackground(Color.LIGHT_GRAY);
                         //Set the background of blank revealed cells to a darker gray:
-                        if (localGameBoardState.getCells()[x][y].getRevealState() == RevealState.REVEALED_0) {
+                        if (partialBoardState.getCells()[x][y].getRevealState() == RevealState.REVEALED_0) {
                             buttons[x][y].setBackground(Color.GRAY);
                         }
                         break;
@@ -246,7 +252,7 @@ public class LocalGameForm extends JFrame {
                 }
 
                 //Set the icon:
-                switch (localGameBoardState.getCells()[x][y].getRevealState()) {
+                switch (partialBoardState.getCells()[x][y].getRevealState()) {
                     case COVERED:
                     case REVEALED_0:
                         buttons[x][y].setIcon(null);
@@ -298,8 +304,8 @@ public class LocalGameForm extends JFrame {
 
         if (status == ResponseStatus.OK) {
             JsonObject jsonObjectData = jsonObject.getAsJsonObject(Response.DATA_TAG);
-            localGameState = GameState.valueOf(jsonObjectData.get("gameState").getAsString());
-            localGameBoardState = gson.fromJson(jsonObjectData.get("partialBoardState"), PartialBoardState.class);
+            gameState = GameState.valueOf(jsonObjectData.get("gameState").getAsString());
+            partialBoardState = gson.fromJson(jsonObjectData.get("partialBoardState"), PartialBoardState.class);
             return true;
         }
         else {
@@ -319,8 +325,8 @@ public class LocalGameForm extends JFrame {
 
         if (status == ResponseStatus.OK) {
             JsonObject jsonObjectData = jsonObject.get(Response.DATA_TAG).getAsJsonObject();
-            localGameState = GameState.valueOf(jsonObjectData.get("gameState").getAsString());
-            localGameBoardState = gson.fromJson(jsonObjectData.get("partialBoardState"), PartialBoardState.class);
+            gameState = GameState.valueOf(jsonObjectData.get("gameState").getAsString());
+            partialBoardState = gson.fromJson(jsonObjectData.get("partialBoardState"), PartialBoardState.class);
             update();
         }
         else {
@@ -339,8 +345,8 @@ public class LocalGameForm extends JFrame {
 
         if (status == ResponseStatus.OK) {
             JsonObject jsonObjectData = jsonObject.get(Response.DATA_TAG).getAsJsonObject();
-            localGameState = GameState.valueOf(jsonObjectData.get("gameState").getAsString());
-            localGameBoardState = gson.fromJson(jsonObjectData.get("partialBoardState"), PartialBoardState.class);
+            gameState = GameState.valueOf(jsonObjectData.get("gameState").getAsString());
+            partialBoardState = gson.fromJson(jsonObjectData.get("partialBoardState"), PartialBoardState.class);
             update();
         }
         else {
@@ -360,8 +366,8 @@ public class LocalGameForm extends JFrame {
 
             if (status == ResponseStatus.OK) {
                 JsonObject jsonObjectData = jsonObject.get(Response.DATA_TAG).getAsJsonObject();
-                localGameState = GameState.valueOf(jsonObjectData.get("gameState").getAsString());
-                localGameBoardState = gson.fromJson(jsonObjectData.get("partialBoardState"), PartialBoardState.class);
+                gameState = GameState.valueOf(jsonObjectData.get("gameState").getAsString());
+                partialBoardState = gson.fromJson(jsonObjectData.get("partialBoardState"), PartialBoardState.class);
                 update();
             }
             else {

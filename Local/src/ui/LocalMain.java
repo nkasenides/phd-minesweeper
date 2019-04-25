@@ -25,8 +25,6 @@ public class LocalMain {
 
     //Settings:
     public static final boolean DEBUG = true; //Switch true for debugging
-    private static final PartialStatePreference partialStatePreference = new PartialStatePreference(5, 5);
-    private static final String playerName = "Player1";
     public static GameSpecification currentGame = null; //Game specification of the currently selected game (null if none).
 
     //Data:
@@ -46,7 +44,8 @@ public class LocalMain {
         startGame(ADMIN_PASSWORD, game2Token);
 
         //Show the game selection form:
-        LocalMainForm localMainForm = new LocalMainForm();
+        LocalMainForm localMainForm1 = new LocalMainForm();
+        LocalMainForm localMainForm2 = new LocalMainForm();
 
     }
 

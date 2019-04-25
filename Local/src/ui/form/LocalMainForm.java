@@ -1,10 +1,7 @@
 package ui.form;
 
 import com.google.gson.*;
-import model.Difficulty;
-import model.GameSpecification;
-import model.GameState;
-import model.PartialStatePreference;
+import model.*;
 import response.Response;
 import response.ResponseStatus;
 import services.LocalMasterService;
@@ -21,7 +18,6 @@ public class LocalMainForm extends JFrame {
 
     //API:
     public static final LocalMasterService masterService = new LocalMasterService();
-    private static final Gson gson = new Gson();
 
     //UI:
     private JList gamesList;
@@ -75,9 +71,14 @@ public class LocalMainForm extends JFrame {
                     GameSpecification selectedGame = allGames.get(gamesList.getSelectedIndex());
                     if (checkGameAndStatePreference(selectedGame, selectedWidth, selectedHeight)) {
                         PartialStatePreference partialStatePreference = new PartialStatePreference(selectedWidth, selectedHeight);
-                        if (join(selectedGame.getToken(), playerNameTextfield.getText(), partialStatePreference)) {
-                            LocalGameForm gameForm = new LocalGameForm(LocalMainForm.this, LocalMain.sessionID, selectedGame.getWidth(), selectedGame.getHeight(), partialStatePreference);
+                        LocalGameForm gameForm = new LocalGameForm(LocalMainForm.this, selectedGame.getWidth(), selectedGame.getHeight(), partialStatePreference);
+                        String sessionID = join(selectedGame.getToken(), playerNameTextfield.getText(), partialStatePreference, gameForm);
+                        if (sessionID != null) {
+                            gameForm.initialize(sessionID);
                             setVisible(false);
+                        }
+                        else {
+                            JOptionPane.showMessageDialog(null, "Could not join game.", "Invalid session ID", JOptionPane.WARNING_MESSAGE);
                         }
                     }
                     else {
@@ -135,8 +136,8 @@ public class LocalMainForm extends JFrame {
     }
 
     //Calls masterService/join
-    public boolean join(String gameToken, String playerName, PartialStatePreference partialStatePreference) {
-        String json = masterService.join(gameToken, playerName, partialStatePreference);
+    public String join(String gameToken, String playerName, PartialStatePreference partialStatePreference, ObserverForm observerForm) {
+        String json = masterService.joinLocal(gameToken, playerName, partialStatePreference, observerForm);
         if (LocalMain.DEBUG) System.out.println(json);
 
         JsonElement jsonElement = new JsonParser().parse(json);
@@ -145,18 +146,18 @@ public class LocalMainForm extends JFrame {
 
         if (status == ResponseStatus.OK) {
             JsonObject jsonObjectData = jsonObject.getAsJsonObject(Response.DATA_TAG);
-            LocalMain.sessionID = jsonObjectData.get("sessionID").getAsString();
+            String sessionID = jsonObjectData.get("sessionID").getAsString();
             for (GameSpecification gs : allGames) {
                 if (gs.getToken().equals(gameToken)) {
                     LocalMain.currentGame = gs;
-                    return true;
+                    return sessionID;
                 }
             }
-            return false;
+            return null;
         }
         else {
             JOptionPane.showMessageDialog(null, jsonObject.get(Response.MESSAGE_TAG).getAsString(), jsonObject.get(Response.TITLE_TAG).getAsString(), JOptionPane.WARNING_MESSAGE);
-            return false;
+            return null;
         }
     }
 

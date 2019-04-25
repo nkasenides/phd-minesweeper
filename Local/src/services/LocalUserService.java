@@ -130,6 +130,7 @@ public class LocalUserService implements UserService {
                         data.add("gameState", gson.toJsonTree(referencedGame.getGameState()));
                         SuccessResponse response = new SuccessResponse("Position shifted", "The position was shifted by " + unitOfMovement + " cells " + direction.getName() + "wards.");
                         response.setData(data);
+                        referencedGame.updateObservers();
                         return response.toJSON();
                     } catch (InvalidCellReferenceException e) {
                         ErrorResponse errorResponse = new ErrorResponse("Position not shifted", "Could not shift position: " + e.getMessage());
@@ -196,6 +197,7 @@ public class LocalUserService implements UserService {
                         data.add("gameState", gson.toJsonTree(referencedGame.getGameState()));
                         data.add("revealState", gson.toJsonTree(referencedGame.getFullBoardState().getCells()[x][y].getRevealState()));
                         response.setData(data);
+                        referencedGame.updateObservers();
                         return response.toJSON();
                     } catch (InvalidCellReferenceException e) {
                         ErrorResponse errorResponse = new ErrorResponse("Failed to fetch partial state", "The cell (" + x + "," + y + ") has been already revealed, but failed to load partial state: " + e.getMessage());
@@ -221,6 +223,7 @@ public class LocalUserService implements UserService {
                     data.add("gameState", gson.toJsonTree(referencedGame.getGameState()));
                     SuccessResponse response = new SuccessResponse("Cell revealed", "Cell (" + x + "," + y + ") revealed successfully.");
                     response.setData(data);
+                    referencedGame.updateObservers();
                     return response.toJSON();
                 } catch (InvalidCellReferenceException e) {
                     ErrorResponse errorResponse = new ErrorResponse("Cell revealed, failed to fetch partial state", "The cell (" + x + "," + y + ") has been revealed, but failed to load partial state: " + e.getMessage());
@@ -281,6 +284,7 @@ public class LocalUserService implements UserService {
                         data.add("gameState", gson.toJsonTree(referencedGame.getGameState()));
                         data.add("partialBoardState", gson.toJsonTree(partialBoardState));
                         successResponse.setData(data);
+                        referencedGame.updateObservers();
                         return successResponse.toJSON();
                     } catch (InvalidCellReferenceException e) {
                         ErrorResponse errorResponse = new ErrorResponse("Cell unflagged, failed to fetch partial state", "The cell (" + x + "," + y + ") has been unflagged, but failed to load partial state: " + e.getMessage());
@@ -295,6 +299,7 @@ public class LocalUserService implements UserService {
                     JsonObject data = new JsonObject();
                     data.add("gameState", gson.toJsonTree(referencedGame.getGameState()));
                     data.add("revealState", gson.toJsonTree(referencedGame.getFullBoardState().getCells()[x][y].getRevealState()));
+                    referencedGame.updateObservers();
                     response.setData(data);
                     return response.toJSON();
                 }
@@ -310,6 +315,7 @@ public class LocalUserService implements UserService {
                     data.add("partialBoardState", gson.toJsonTree(partialBoardState));
                     SuccessResponse response = new SuccessResponse("Cell flagged", "Cell (" + x + "," + y + ") flagged successfully.");
                     response.setData(data);
+                    referencedGame.updateObservers();
                     return response.toJSON();
                 } catch (InvalidCellReferenceException e) {
                     ErrorResponse errorResponse = new ErrorResponse("Cell flagged, failed to fetch partial state", "The cell (" + x + "," + y + ") has been flagged, but failed to load partial state: " + e.getMessage());

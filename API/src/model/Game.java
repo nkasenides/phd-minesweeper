@@ -9,16 +9,33 @@ public class Game {
     private GameSpecification gameSpecification;
     private FullBoardState fullBoardState;
     private GameState gameState;
+    private ArrayList<ObserverForm> observers;
 
     public Game(GameSpecification gameSpecification) {
         this.gameSpecification = gameSpecification;
         this.gameState = GameState.NOT_STARTED;
+        this.observers = new ArrayList<>();
         try {
             fullBoardState = new FullBoardState(gameSpecification.getWidth(), gameSpecification.getHeight());
             initializeMatrix();
             generateMines();
         } catch (InvalidCellReferenceException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void addObserver(ObserverForm observer) {
+        observers.add(observer);
+    }
+
+    public void updateObservers() {
+        for (ObserverForm o : observers) {
+            try {
+                PartialBoardState partialBoardState = new PartialBoardState(o.getPartialStatePreference().getWidth(), o.getPartialStatePreference().getHeight(), o.getxShift(), o.getyShift(), fullBoardState);
+                o.update(partialBoardState, gameState);
+            } catch (InvalidCellReferenceException e) {
+                e.printStackTrace();
+            }
         }
     }
 
