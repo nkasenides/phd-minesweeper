@@ -51,40 +51,44 @@ public class LocalGameForm extends ObserverForm {
         KeyEventDispatcher keyEventDispatcher = new KeyEventDispatcher() {
             @Override
             public boolean dispatchKeyEvent(final KeyEvent e) {
-                if (e.getID() == KeyEvent.KEY_PRESSED) {
-                    Direction direction = null;
-                    switch (e.getKeyCode()) {
-                        case KeyEvent.VK_UP:
-                            if (xShift - 1 >= 0) {
-                                direction = Direction.UP;
-                                xShift--;
-                            }
-                            break;
-                        case KeyEvent.VK_DOWN:
-                            if (xShift + partialStatePreference.getWidth() < totalWidth) {
-                                direction = Direction.DOWN;
-                                xShift++;
-                            }
-                            break;
-                        case KeyEvent.VK_LEFT:
-                            if (yShift - 1 >= 0) {
-                                direction = Direction.LEFT;
-                                yShift--;
-                            }
-                            break;
-                        case KeyEvent.VK_RIGHT:
-                            if (yShift + partialStatePreference.getHeight() < totalHeight) {
-                                direction = Direction.RIGHT;
-                                yShift++;
-                            }
-                            break;
-                    }
-                    System.out.println("cX: " + xShift + ", cY: " + yShift);
-                    if (direction != null) {
-                        move(direction, 1);
-                        update();
+
+                if (isActive()) {
+                    if (e.getID() == KeyEvent.KEY_PRESSED) {
+                        Direction direction = null;
+                        switch (e.getKeyCode()) {
+                            case KeyEvent.VK_UP:
+                                if (xShift - 1 >= 0) {
+                                    direction = Direction.UP;
+                                    xShift--;
+                                }
+                                break;
+                            case KeyEvent.VK_DOWN:
+                                if (xShift + partialStatePreference.getWidth() < totalWidth) {
+                                    direction = Direction.DOWN;
+                                    xShift++;
+                                }
+                                break;
+                            case KeyEvent.VK_LEFT:
+                                if (yShift - 1 >= 0) {
+                                    direction = Direction.LEFT;
+                                    yShift--;
+                                }
+                                break;
+                            case KeyEvent.VK_RIGHT:
+                                if (yShift + partialStatePreference.getHeight() < totalHeight) {
+                                    direction = Direction.RIGHT;
+                                    yShift++;
+                                }
+                                break;
+                        }
+                        System.out.println("cX: " + xShift + ", cY: " + yShift);
+                        if (direction != null) {
+                            move(direction, 1);
+                            update();
+                        }
                     }
                 }
+
                 return false;
             }
         };
@@ -137,6 +141,7 @@ public class LocalGameForm extends ObserverForm {
     public void initialize(String sessionID) {
 
         setSessionID(sessionID);
+        System.out.println("STARTED FORM WITH SESSION ID --> " + sessionID);
 
         gamePanel = new JPanel();
         gamePanel.setLayout(new GridLayout(partialStatePreference.getWidth(), partialStatePreference.getHeight()));

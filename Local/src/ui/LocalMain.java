@@ -24,11 +24,8 @@ public class LocalMain {
     public static final String ADMIN_PASSWORD = "1234";
 
     //Settings:
-    public static final boolean DEBUG = true; //Switch true for debugging
+    public static final boolean DEBUG = false; //Switch true for debugging
     public static GameSpecification currentGame = null; //Game specification of the currently selected game (null if none).
-
-    //Data:
-    public static String sessionID;
 
     public static void main(String[] args) {
 

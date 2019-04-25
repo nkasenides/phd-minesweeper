@@ -119,7 +119,7 @@ public class LocalMasterService implements MasterService {
         data.addProperty("totalWidth", referencedGame.getGameSpecification().getWidth());
         data.addProperty("totalHeight", referencedGame.getGameSpecification().getHeight());
         successResponse.setData(data);
-        referencedGame.addObserver(observerForm);
+        referencedGame.addObserver(sessionID, observerForm);
         return successResponse.toJSON();
     }
 

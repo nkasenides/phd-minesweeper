@@ -130,7 +130,7 @@ public class LocalUserService implements UserService {
                         data.add("gameState", gson.toJsonTree(referencedGame.getGameState()));
                         SuccessResponse response = new SuccessResponse("Position shifted", "The position was shifted by " + unitOfMovement + " cells " + direction.getName() + "wards.");
                         response.setData(data);
-                        referencedGame.updateObservers();
+                        referencedGame.updateObserver(sessionID);
                         return response.toJSON();
                     } catch (InvalidCellReferenceException e) {
                         ErrorResponse errorResponse = new ErrorResponse("Position not shifted", "Could not shift position: " + e.getMessage());

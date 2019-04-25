@@ -9,12 +9,12 @@ public class Game {
     private GameSpecification gameSpecification;
     private FullBoardState fullBoardState;
     private GameState gameState;
-    private ArrayList<ObserverForm> observers;
+    private HashMap<String, ObserverForm> observers;
 
     public Game(GameSpecification gameSpecification) {
         this.gameSpecification = gameSpecification;
         this.gameState = GameState.NOT_STARTED;
-        this.observers = new ArrayList<>();
+        this.observers = new HashMap<>();
         try {
             fullBoardState = new FullBoardState(gameSpecification.getWidth(), gameSpecification.getHeight());
             initializeMatrix();
@@ -24,18 +24,30 @@ public class Game {
         }
     }
 
-    public void addObserver(ObserverForm observer) {
-        observers.add(observer);
+    public void addObserver(String sessionID, ObserverForm observer) {
+        observers.put(sessionID, observer);
     }
 
     public void updateObservers() {
-        for (ObserverForm o : observers) {
+
+        for (Map.Entry<String, ObserverForm> entry : observers.entrySet()) {
+            ObserverForm o = entry.getValue();
             try {
                 PartialBoardState partialBoardState = new PartialBoardState(o.getPartialStatePreference().getWidth(), o.getPartialStatePreference().getHeight(), o.getxShift(), o.getyShift(), fullBoardState);
                 o.update(partialBoardState, gameState);
             } catch (InvalidCellReferenceException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    public void updateObserver(String sessionID) {
+        ObserverForm o = observers.get(sessionID);
+        try {
+            PartialBoardState partialBoardState = new PartialBoardState(o.getPartialStatePreference().getWidth(), o.getPartialStatePreference().getHeight(), o.getxShift(), o.getyShift(), fullBoardState);
+            o.update(partialBoardState, gameState);
+        } catch (InvalidCellReferenceException e) {
+            e.printStackTrace();
         }
     }
 
