@@ -1,6 +1,7 @@
 package api;
 
 import model.Difficulty;
+import model.PartialStatePreference;
 
 public interface AdminService {
 
@@ -22,5 +23,13 @@ public interface AdminService {
      * @return Returns JSON formatted string with the status of the game.
      */
     String startGame(String password, String gameToken);
+
+    /**
+     * Retrieves the state of a game using a gameToken.
+     * @param password Administrator password (admin access only).
+     * @param gameToken The game's token.
+     * @return Returns JSON formatted string with the partial board state and game state of the game.
+     */
+    String viewGame(String password, String gameToken, PartialStatePreference partialStatePreference, int startX, int startY);
 
 }

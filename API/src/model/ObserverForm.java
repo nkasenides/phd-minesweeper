@@ -22,7 +22,6 @@ public abstract class ObserverForm extends JFrame {
         this.partialBoardState = partialBoardState;
         this.gameState = gameState;
         update();
-        System.out.println("updateButtons()");
     }
 
     public PartialBoardState getPartialBoardState() {

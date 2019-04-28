@@ -4,11 +4,14 @@ import api.AdminService;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import datastore.Datastore;
-import model.Difficulty;
-import model.Game;
+import model.*;
+import model.exception.InvalidCellReferenceException;
 import response.AuthErrorResponse;
 import response.ErrorResponse;
+import response.Response;
 import response.SuccessResponse;
+
+import java.util.regex.Pattern;
 
 public class LocalAdminService implements AdminService {
 
@@ -85,6 +88,69 @@ public class LocalAdminService implements AdminService {
             errorResponse.setData(data);
             return errorResponse.toJSON();
         }
+
+    }
+
+    @Override
+    public String viewGame(String password, String gameToken, PartialStatePreference partialStatePreference, int startX, int startY) {
+        //Authentication check:
+        if (!Datastore.checkPassword(password)) {
+            AuthErrorResponse errorResponse = new AuthErrorResponse();
+            return errorResponse.toJSON();
+        }
+
+        //Find the game:
+        Game referencedGame = Datastore.getGame(gameToken);
+        if (referencedGame == null) {
+            ErrorResponse response = new ErrorResponse("Game not found", "Game with token '" + gameToken + "' not found.");
+            return response.toJSON();
+        }
+
+        try {
+            PartialBoardState partialBoardState = new PartialBoardState(partialStatePreference.getWidth(), partialStatePreference.getHeight(), startX, startY, referencedGame.getFullBoardState());
+            Response response = new SuccessResponse("Game state retrieved", "Game state retrieved.");
+            Gson gson = new Gson();
+            JsonObject data = new JsonObject();
+            data.add("partialBoardState", gson.toJsonTree(partialBoardState));
+            data.add("gameState", gson.toJsonTree(referencedGame.getGameState()));
+            response.setData(data);
+            return response.toJSON();
+        }
+
+        //If failed to get the partial state, return error:
+        catch (InvalidCellReferenceException e) {
+            Response response = new ErrorResponse("Game state not retrieved", e.getMessage());
+            return response.toJSON();
+        }
+
+    }
+
+    public String subscribe(String password, String token, PartialStatePreference partialStatePreference, int startX, int startY, ObserverForm observerForm) {
+
+        //Authentication check:
+        if (!Datastore.checkPassword(password)) {
+            AuthErrorResponse errorResponse = new AuthErrorResponse();
+            return errorResponse.toJSON();
+        }
+
+        //Check the game token:
+        Game referencedGame = Datastore.getGame(token);
+
+        if (referencedGame == null) {
+            ErrorResponse errorResponse = new ErrorResponse("Game does not exist", "The game with token '" + token + "' does not exist.");
+            return errorResponse.toJSON();
+        }
+
+        //Create a new session:
+        String sessionID = Datastore.addSession(token, "admin", partialStatePreference);
+        SuccessResponse successResponse = new SuccessResponse("Game joined", "Successfully joined game with ID '" + token + "'.");
+        JsonObject data = new JsonObject();
+        data.addProperty("sessionID", sessionID);
+        data.addProperty("totalWidth", referencedGame.getGameSpecification().getWidth());
+        data.addProperty("totalHeight", referencedGame.getGameSpecification().getHeight());
+        successResponse.setData(data);
+        if (observerForm != null) referencedGame.addObserver(sessionID, observerForm);
+        return successResponse.toJSON();
 
     }
 
