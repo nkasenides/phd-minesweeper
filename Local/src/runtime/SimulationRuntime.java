@@ -12,6 +12,9 @@ public class SimulationRuntime {
     public static boolean DEBUG = true;
 
     public static boolean makePlayerMove(String gameToken, SimulatedPlayer player) {
+
+        final long startTime = System.currentTimeMillis();
+
         Game game = Datastore.getGame(gameToken);
         Move playerMove = player.makeMove(game);
         if (playerMove.getMoveType() == MoveType.REVEAL) {
@@ -27,7 +30,10 @@ public class SimulationRuntime {
             System.out.println("Player '" + player.getName() + "' made move '" + playerMove.getMoveType() + "' on cell (" + playerMove.getX() + "," + playerMove.getY() + "). [Game state: " + game.getGameState() + "]");
         }
 
+        System.out.println("Took " + (System.currentTimeMillis() - startTime) + "ms to make move.");
         return game.getGameState().isEnded();
+
+
     }
 
     public static boolean isGameOver(String gameToken) {

@@ -20,7 +20,7 @@ public class LocalAdminGameForm extends ObserverForm {
     //UI
     private JPanel gamePanel;
     private MinesweeperButton[][] buttons;
-    private static final int WINDOW_SIZE = 500;
+    private static final int WINDOW_SIZE = 800;
 
     //State
     private final int totalWidth;
@@ -43,7 +43,7 @@ public class LocalAdminGameForm extends ObserverForm {
         setSize(WINDOW_SIZE, WINDOW_SIZE);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
+//        setExtendedState(JFrame.MAXIMIZED_BOTH);
 //        setUndecorated(true);
 
         //Set key listener:

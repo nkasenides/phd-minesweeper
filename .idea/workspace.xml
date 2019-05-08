@@ -2,20 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a608b0a-6e3a-43c4-8371-7eadd75f3133" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/API/src/model/simulated/DumbSimulatedPlayer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/model/simulated/Move.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/model/simulated/MoveType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/model/simulated/SimulatedPlayer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Local/src/runtime/SimulationRuntime.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Local/src/ui/form/LocalAdminGameForm.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Local/src/ui/form/LocalAdminGameForm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Local/src/ui/form/LocalSimulatedMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/api/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/api/AdminService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/model/ObserverForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/model/ObserverForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Local/src/services/LocalAdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Local/src/services/LocalAdminService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Local/src/services/LocalMasterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Local/src/services/LocalMasterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Local/src/runtime/SimulationRuntime.java" beforeDir="false" afterPath="$PROJECT_DIR$/Local/src/runtime/SimulationRuntime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Local/src/ui/form/LocalAdminGameForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/Local/src/ui/form/LocalAdminGameForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Local/src/ui/form/LocalSimulatedMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Local/src/ui/form/LocalSimulatedMain.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,11 +22,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Local/src/ui/form/LocalAdminGameForm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
-              <folding>
-                <element signature="class#1368:3274" />
-              </folding>
+            <state relative-caret-position="408">
+              <caret line="34" column="38" lean-forward="true" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -44,17 +31,27 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Local/src/ui/form/LocalSimulatedMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="29" column="106" selection-start-line="29" selection-start-column="106" selection-end-line="29" selection-end-column="106" />
+            <state relative-caret-position="-35">
+              <caret line="23" column="81" lean-forward="true" selection-start-line="23" selection-start-column="81" selection-end-line="23" selection-end-column="81" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#createGame#0;class#LocalSimulatedMain#0" />
                 <element signature="method#startGame#0;class#LocalSimulatedMain#0" />
                 <element signature="method#join#0;class#LocalSimulatedMain#0" />
-                <element signature="e#4650#4814#1" />
-                <element signature="method#join#1;class#LocalSimulatedMain#0" />
-                <element signature="e#6498#6662#1" />
                 <element signature="method#listGames#0;class#LocalSimulatedMain#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Local/src/ui/LocalMain.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="48" column="36" lean-forward="true" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
+              <folding>
+                <element signature="method#createGame#0;class#LocalMain#0" />
+                <element signature="method#startGame#0;class#LocalMain#0" />
               </folding>
             </state>
           </provider>
@@ -63,8 +60,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Local/src/runtime/SimulationRuntime.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="26" column="87" lean-forward="true" selection-start-line="26" selection-start-column="87" selection-end-line="26" selection-end-column="87" />
+            <state relative-caret-position="274">
+              <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -75,7 +72,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/API/src/model/simulated/DumbSimulatedPlayer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="356">
+            <state relative-caret-position="459">
               <caret line="31" column="27" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -100,7 +97,7 @@
         <entry file="file://$PROJECT_DIR$/Local/src/services/LocalAdminService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="663">
-              <caret line="151" column="86" lean-forward="true" selection-start-line="151" selection-start-column="86" selection-end-line="151" selection-end-column="86" />
+              <caret line="151" column="86" selection-start-line="151" selection-start-column="86" selection-end-line="151" selection-end-column="86" />
               <folding>
                 <element signature="method#createGame#0;class#LocalAdminService#0" />
                 <element signature="method#startGame#0;class#LocalAdminService#0" />
@@ -197,10 +194,10 @@
         <option value="$PROJECT_DIR$/Local/src/services/LocalUserService.java" />
         <option value="$PROJECT_DIR$/Local/src/runtime/Runtime.java" />
         <option value="$PROJECT_DIR$/API/src/model/ObserverForm.java" />
-        <option value="$PROJECT_DIR$/Local/src/runtime/SimulationRuntime.java" />
         <option value="$PROJECT_DIR$/API/src/model/simulated/DumbSimulatedPlayer.java" />
-        <option value="$PROJECT_DIR$/Local/src/ui/form/LocalAdminGameForm.java" />
+        <option value="$PROJECT_DIR$/Local/src/runtime/SimulationRuntime.java" />
         <option value="$PROJECT_DIR$/Local/src/ui/form/LocalSimulatedMain.java" />
+        <option value="$PROJECT_DIR$/Local/src/ui/form/LocalAdminGameForm.java" />
       </list>
     </option>
   </component>
@@ -312,24 +309,6 @@
               <item name="ui" type="462c0819:PsiDirectoryNode" />
               <item name="form" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Minesweeper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minesweeper" type="462c0819:PsiDirectoryNode" />
-              <item name="Local" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="form" type="462c0819:PsiDirectoryNode" />
-              <item name="LocalGameForm" type="e9f4de52:FormNode" />
-            </path>
-            <path>
-              <item name="Minesweeper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minesweeper" type="462c0819:PsiDirectoryNode" />
-              <item name="Local" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="form" type="462c0819:PsiDirectoryNode" />
-              <item name="LocalMainForm" type="e9f4de52:FormNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -432,18 +411,18 @@
       <workItem from="1555740081471" duration="6378000" />
       <workItem from="1556002604795" duration="92000" />
       <workItem from="1556270136838" duration="3876000" />
-      <workItem from="1556475989419" duration="5111000" />
+      <workItem from="1556475989419" duration="5627000" />
+      <workItem from="1557299251027" duration="845000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56356000" />
+    <option name="totallyTimeSpent" value="57717000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2153518" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21748401" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -452,7 +431,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" x="563" y="352" width="410" height="120" id="Run" order="2" visible="true" weight="0.39328277" />
+      <window_info anchor="bottom" x="563" y="352" width="410" height="120" id="Run" order="2" weight="0.39328277" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -672,35 +651,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Local/src/ui/LocalMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="43" column="17" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
-          <folding>
-            <element signature="method#createGame#0;class#LocalMain#0" />
-            <element signature="method#startGame#0;class#LocalMain#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Local/src/services/LocalMasterService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="362">
           <caret line="122" column="40" lean-forward="true" selection-start-line="86" selection-start-column="8" selection-end-line="122" selection-end-column="40" />
           <folding>
             <element signature="method#listGames#0;class#LocalMasterService#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Local/src/services/LocalAdminService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="151" column="86" lean-forward="true" selection-start-line="151" selection-start-column="86" selection-end-line="151" selection-end-column="86" />
-          <folding>
-            <element signature="method#createGame#0;class#LocalAdminService#0" />
-            <element signature="method#startGame#0;class#LocalAdminService#0" />
-            <element signature="method#viewGame#0;class#LocalAdminService#0" />
           </folding>
         </state>
       </provider>
@@ -721,16 +677,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/src/model/simulated/SimulatedPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -770,16 +716,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/API/src/model/simulated/DumbSimulatedPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="31" column="27" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Local/src/ui/form/LocalGameForm.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="383">
@@ -794,38 +730,75 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Local/src/runtime/SimulationRuntime.java">
+    <entry file="file://$PROJECT_DIR$/API/src/model/simulated/DumbSimulatedPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="26" column="87" lean-forward="true" selection-start-line="26" selection-start-column="87" selection-end-line="26" selection-end-column="87" />
+        <state relative-caret-position="459">
+          <caret line="31" column="27" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/src/model/simulated/SimulatedPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Local/src/services/LocalAdminService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="151" column="86" selection-start-line="151" selection-start-column="86" selection-end-line="151" selection-end-column="86" />
+          <folding>
+            <element signature="method#createGame#0;class#LocalAdminService#0" />
+            <element signature="method#startGame#0;class#LocalAdminService#0" />
+            <element signature="method#viewGame#0;class#LocalAdminService#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Local/src/runtime/SimulationRuntime.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Local/src/ui/LocalMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="48" column="36" lean-forward="true" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
+          <folding>
+            <element signature="method#createGame#0;class#LocalMain#0" />
+            <element signature="method#startGame#0;class#LocalMain#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Local/src/ui/form/LocalAdminGameForm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
-          <folding>
-            <element signature="class#1368:3274" />
-          </folding>
+        <state relative-caret-position="408">
+          <caret line="34" column="38" lean-forward="true" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Local/src/ui/form/LocalSimulatedMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="29" column="106" selection-start-line="29" selection-start-column="106" selection-end-line="29" selection-end-column="106" />
+        <state relative-caret-position="-35">
+          <caret line="23" column="81" lean-forward="true" selection-start-line="23" selection-start-column="81" selection-end-line="23" selection-end-column="81" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#createGame#0;class#LocalSimulatedMain#0" />
             <element signature="method#startGame#0;class#LocalSimulatedMain#0" />
             <element signature="method#join#0;class#LocalSimulatedMain#0" />
-            <element signature="e#4650#4814#1" />
-            <element signature="method#join#1;class#LocalSimulatedMain#0" />
-            <element signature="e#6498#6662#1" />
             <element signature="method#listGames#0;class#LocalSimulatedMain#0" />
           </folding>
         </state>

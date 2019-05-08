@@ -27,7 +27,7 @@ public class LocalSimulatedMain {
     private static final Scanner SCANNER = new Scanner(System.in);
     private static ArrayList<SimulatedPlayer> players = new ArrayList<>();
     private static ArrayList<GameSpecification> games = new ArrayList<>();
-    private static final PartialStatePreference partialStatePreference = new PartialStatePreference(10, 10);
+    private static final PartialStatePreference partialStatePreference = new PartialStatePreference(25, 25);
 
     public static void main(String[] args) {
 
